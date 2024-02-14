@@ -153,7 +153,9 @@ PlayerSettings:
   resetResolutionOnWindowResize: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Android: com.DefaultCompany.AR_Nav_Teamproject
+    Standalone: com.DefaultCompany.AR-Nav-Teamproject
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -749,7 +751,7 @@ PlayerSettings:
   suppressCommonWarnings: 1
   allowUnsafeCode: 0
   useDeterministicCompilation: 1
-  selectedPlatform: 0
+  selectedPlatform: 2
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
   gcIncremental: 1
@@ -757,8 +759,8 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: AR_Nav_Teamproject
-  metroPackageVersion: 
+  metroPackageName: ARNavTeamproject
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -766,7 +768,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: AR_Nav_Teamproject
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: AR_Nav_Teamproject
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
