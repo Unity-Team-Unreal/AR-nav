@@ -1,9 +1,23 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Backbutton : MonoBehaviour
+public class BackButton : MonoBehaviour
 {
     public string previousSceneName; // 이전 씬의 이름
+
+    private void Update()
+    {
+        CheckBackButtonPress();
+    }
+
+    // Android의 뒤로가기 버튼 감지 메서드
+    private void CheckBackButtonPress()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GoBack();
+        }
+    }
 
     // 씬을 로드하고 이전 씬의 이름을 업데이트하는 메서드
     public void LoadScene(string sceneName)
