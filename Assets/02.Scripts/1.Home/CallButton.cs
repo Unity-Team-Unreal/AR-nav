@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class CallButton : MonoBehaviour
+public class DialButton : MonoBehaviour
 {
     public void OnButtonClick()
     {
-        Application.OpenURL("telprompt://112");
+        Application.OpenURL("tel:112");
     }
 }
