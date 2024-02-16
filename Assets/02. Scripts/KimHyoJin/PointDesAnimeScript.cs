@@ -4,14 +4,16 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+
 public class PointDesAnimeScript : MonoBehaviour
 {
-    public Text PointName;
-    public Text PointDescript;
+    [SerializeField]Text PointName;
+    [SerializeField]Text PointDescript;
     Animator _animator;
     [HideInInspector]public bool isActivate;
 
-    void Start()
+    void Awake()
     {
         _animator = GetComponent<Animator>();
     }

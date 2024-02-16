@@ -10,7 +10,7 @@ public class CategoryToggle : MonoBehaviour
 {
     ToggleGroup group;
     Toggle activedToggle;
-    private void Awake()
+    private void Start()
     {
         group = gameObject.GetComponent<ToggleGroup>();
         activedToggle = group.GetFirstActiveToggle();   //현재 켜져있는 토글을 활성화된 토글로 지정
@@ -36,11 +36,6 @@ public class CategoryToggle : MonoBehaviour
                     SellectCategory.state = CategoryState.Photozone;
                     break;
             } //선택한 카테고리에 따라 카테고리 CategoryState 변경
-
-            {
-                Debug.Log($"Now {SellectCategory.state} is ON ");
-            }
-            //상태값 확인용 디버그로그
     }
 
 

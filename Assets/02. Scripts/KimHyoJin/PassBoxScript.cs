@@ -6,7 +6,7 @@ public class PassBoxScript : MonoBehaviour
 {
     Animator _animator;
     [HideInInspector] public bool isSearching;
-    void Start()
+    void Awake()
     {
         _animator = GetComponent<Animator>();
     }

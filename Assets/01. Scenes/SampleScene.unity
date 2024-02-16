@@ -2950,6 +2950,8 @@ GameObject:
   - component: {fileID: 2005741236}
   - component: {fileID: 2005741235}
   - component: {fileID: 2005741237}
+  - component: {fileID: 2005741238}
+  - component: {fileID: 2005741239}
   m_Layer: 0
   m_Name: NavManager
   m_TagString: Untagged
@@ -2996,12 +2998,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206a807b07c9e614db9580ccade3a85c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapBaseURL: https://naveropenapi.apigw.ntruss.com/map-static/v2/raster
+  clientID: r2kal6fto4
+  clientPW: hEidFWsoN8dBnqFCreezcSC5HEE1NuYMNTmboVNz
   MapImage: {fileID: 425695506}
   width: 900
   hight: 2000
-  latitude: 35.813306
-  longitude: 127.149251
-  MapLevel: 19
+  MapLevel: 6
+--- !u!114 &2005741238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005741234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8363c48fea95ec248a7e839dc0b2a402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  directionBaseURL: https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving
+  clientID: r2kal6fto4
+  clientPW: hEidFWsoN8dBnqFCreezcSC5HEE1NuYMNTmboVNz
+--- !u!114 &2005741239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005741234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25d4135737a3284429911c0cff0f20e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  POIwebURL: https://docs.google.com/spreadsheets/d/10GaozCAYllIZpwaNcOVs_IMyFdZO7P77DjIqR2mWiBY/edit#gid=0&range=A2:D5
 --- !u!1 &2006334107
 GameObject:
   m_ObjectHideFlags: 0

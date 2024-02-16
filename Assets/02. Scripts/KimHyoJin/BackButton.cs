@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class BackButton : MonoBehaviour
 {
-    Button button;
     [SerializeField]PointDesAnimeScript pointdes;   //POI 설명상자 스크립트를 받아온다.
     [SerializeField]PassBoxScript passbox;  //길찾기 상자 스크립트를 받아온다.
-    void Start()
+
+    Button button;
+    void Awake()
     {
         button = GetComponent<Button>();
         pointdes = pointdes.GetComponent<PointDesAnimeScript>();
+
     }
 
     public void BackbuttonEvnet()
