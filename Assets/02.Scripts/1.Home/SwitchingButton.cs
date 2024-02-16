@@ -3,53 +3,64 @@ using UnityEngine.UI;
 
 public class SwitchingButton : MonoBehaviour
 {
-    public ToggleGroup toggleGroup; // Toggle Group을 Inspector에서 할당해주세요.
-    public Toggle aToggle;
-    public Toggle bToggle;
-    public GameObject aImage;
-    public GameObject bImage;
+    [SerializeField] private Toggle toggleA;
+    [SerializeField] private Toggle toggleB;
+    [SerializeField] private GameObject imageA;
+    [SerializeField] private GameObject imageB;
+    [SerializeField] private GameObject scrollViewA;
+    [SerializeField] private GameObject scrollViewB;
 
-    void Start()
+    private Toggle activeToggle;
+
+    void Awake()
     {
-        // 각 토글의 Toggle Group을 설정합니다.
-        aToggle.group = toggleGroup;
-        bToggle.group = toggleGroup;
+        toggleA.group = toggleB.group; // 토글 그룹 설정
 
-        // 각 토글의 상태 변경 이벤트에 대한 리스너를 등록합니다.
-        aToggle.onValueChanged.AddListener(OnAToggleValueChanged);
-        bToggle.onValueChanged.AddListener(OnBToggleValueChanged);
+        // 상태 변경 이벤트에 대한 리스너 등록
+        toggleA.onValueChanged.AddListener(OnToggleValueChanged);
+        toggleB.onValueChanged.AddListener(OnToggleValueChanged);
 
-        // A 토글을 초기에 활성화합니다.
-        aToggle.isOn = true;
-        ToggleImages(aToggle, aImage, bImage);
+        // toggleA를 초기에 활성화
+        toggleA.isOn = true;
+
+        // toggleB를 초기에 비활성화
+        toggleB.isOn = false;
+
+        ToggleElements(toggleA, imageA, imageB, scrollViewA, scrollViewB);
+
+        activeToggle = toggleA;
     }
 
-    void OnAToggleValueChanged(bool isOn)
+    void OnToggleValueChanged(bool isOn)
     {
-        // A 토글이 눌려진 상태라면 A 이미지를 보이게 합니다.
         if (isOn)
         {
-            ToggleImages(aToggle, aImage, bImage);
+            if (activeToggle == toggleA)
+            {
+                ToggleElements(toggleA, imageA, imageB, scrollViewA, scrollViewB);
+                activeToggle = toggleA;
+            }
+            else if (activeToggle == toggleB)
+            {
+                ToggleElements(toggleB, imageB, imageA, scrollViewB, scrollViewA);
+                activeToggle = toggleB;
+            }
         }
     }
 
-    void OnBToggleValueChanged(bool isOn)
+    // 이미지와 스크롤뷰를 활성화 또는 비활성화하는 함수
+    void ToggleElements(Toggle toggle, GameObject activeElement, GameObject inactiveElement, GameObject activeScrollView, GameObject inactiveScrollView)
     {
-        // B 토글이 눌려진 상태라면 B 이미지를 보이게 합니다.
-        if (isOn)
-        {
-            ToggleImages(bToggle, bImage, aImage);
-        }
-    }
+        if (activeElement != null)
+            activeElement.SetActive(toggle.isOn);
 
-    // 이미지를 활성화 또는 비활성화하는 함수
-    void ToggleImages(Toggle toggle, GameObject activeImage, GameObject inactiveImage)
-    {
-        // Toggle이 현재 상태와 일치하면 이미지를 조작합니다.
-        if (toggle.isOn)
-        {
-            activeImage.SetActive(true);
-            inactiveImage.SetActive(false);
-        }
+        if (inactiveElement != null)
+            inactiveElement.SetActive(!toggle.isOn);
+
+        if (activeScrollView != null)
+            activeScrollView.SetActive(toggle.isOn);
+
+        if (inactiveScrollView != null)
+            inactiveScrollView.SetActive(!toggle.isOn);
     }
 }
