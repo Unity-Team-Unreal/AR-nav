@@ -55,7 +55,7 @@ public class DetailedDescriptionPageManager : MonoBehaviour
         // 핸드폰에 카메라접근 허용이 켜져있으면 바로 카메라로 이동
         else
         {
-            SceneManager.LoadScene("임시 카메라 촬영"); // ""내에 카메라 촬영 씬의 이름을 적으면 된다.
+            SceneManager.LoadScene("도슨트 체험 페이지"); // ""내에 카메라 촬영 씬의 이름을 적으면 된다.
         }
     }
 }
