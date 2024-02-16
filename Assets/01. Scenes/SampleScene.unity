@@ -705,7 +705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9433962, g: 0.9433962, b: 0.9433962, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -958,8 +958,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774b9f72cfe15154abaaa3697499c342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointdes: {fileID: 812761348}
-  passbox: {fileID: 945226100}
+  pointdesBox: {fileID: 812761348}
+  pathbox: {fileID: 945226100}
 --- !u!1 &560882324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1557,8 +1557,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 945226100}
-        m_TargetAssemblyTypeName: PassBoxScript, Assembly-CSharp
-        m_MethodName: PassBoxActivate
+        m_TargetAssemblyTypeName: PathBoxScript, Assembly-CSharp
+        m_MethodName: PathBoxActivate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1621,7 +1621,7 @@ GameObject:
   - component: {fileID: 945226099}
   - component: {fileID: 945226100}
   m_Layer: 5
-  m_Name: SerachPassBox
+  m_Name: SerachPathBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1746,7 +1746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00cb0df52281b949b74d5dfdb9b1f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSearching: 0
+  isActivate: 0
 --- !u!1 &1036436364
 GameObject:
   m_ObjectHideFlags: 0
@@ -2948,7 +2948,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2005741236}
-  - component: {fileID: 2005741235}
   - component: {fileID: 2005741237}
   - component: {fileID: 2005741238}
   - component: {fileID: 2005741239}
@@ -2959,18 +2958,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2005741235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2005741234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 810476ca7ecf5c54d87872ee302c5968, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2005741236
 Transform:
   m_ObjectHideFlags: 0
@@ -3002,9 +2989,7 @@ MonoBehaviour:
   clientID: r2kal6fto4
   clientPW: hEidFWsoN8dBnqFCreezcSC5HEE1NuYMNTmboVNz
   MapImage: {fileID: 425695506}
-  width: 900
-  hight: 2000
-  MapLevel: 6
+  MapSizeLevel: 6
 --- !u!114 &2005741238
 MonoBehaviour:
   m_ObjectHideFlags: 0

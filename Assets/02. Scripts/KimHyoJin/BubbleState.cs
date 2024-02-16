@@ -13,9 +13,8 @@ public class BubbleState : MonoBehaviour
     private void Awake()
     {
         button = GetComponent<Button>();
-
         button.onClick.AddListener(GameObject.Find("PointDescriptionPage")
-            .GetComponent<PointDesAnimeScript>().DescriptionBoxActivate);   //POI 버블 누르면 POI 설명창이 올라온다.
+            .GetComponent<PointDesBoxScript>().DescriptionBoxActivate);   //POI 버블 누르면 POI 설명창이 올라온다.
     }
 
     void Update()

@@ -2,25 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PassBoxScript : MonoBehaviour
+public class PathBoxScript : MonoBehaviour
 {
     Animator _animator;
-    [HideInInspector] public bool isSearching;
+    [HideInInspector] public bool isActivate;
     void Awake()
     {
         _animator = GetComponent<Animator>();
     }
 
-    public void PassBoxActivate()
+    public void PathBoxActivate()
     {
         //GPS 접근권한이 허용되어 있다면
-        isSearching = true;
+        isActivate = true;
         _animator.Play("Play");
     }
 
-    public void PassBoxDeactivate()
+    public void PathBoxDeactivate()
     {
-        isSearching = false;
+        isActivate = false;
         _animator.Play("Reverse");
     }
 }

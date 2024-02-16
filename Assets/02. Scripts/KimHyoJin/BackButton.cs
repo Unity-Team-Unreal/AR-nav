@@ -5,25 +5,22 @@ using UnityEngine.UI;
 
 public class BackButton : MonoBehaviour
 {
-    [SerializeField]PointDesAnimeScript pointdes;   //POI 설명상자 스크립트를 받아온다.
-    [SerializeField]PassBoxScript passbox;  //길찾기 상자 스크립트를 받아온다.
+    [SerializeField]PointDesBoxScript pointdesBox;   //POI 설명상자 스크립트를 받아온다.
+    [SerializeField]PathBoxScript pathbox;  //길찾기 상자 스크립트를 받아온다.
 
     Button button;
     void Awake()
     {
         button = GetComponent<Button>();
-        pointdes = pointdes.GetComponent<PointDesAnimeScript>();
-
     }
 
     public void BackbuttonEvnet()
     {
-        if (passbox.isSearching)
+        if (pathbox.isActivate)
         {
             CancelSearching();
-            BackToNav();
         }
-        else if(pointdes.isActivate)  BackToNav();
+        if(pointdesBox.isActivate)  BackToNav();
         else BackToHome();
     }  //설명상자가 올라와있을 때 누르면 설명상자 닫고 아니라면 홈화면으로 옮기기
 
@@ -34,11 +31,11 @@ public class BackButton : MonoBehaviour
 
     void BackToNav()
     {
-        pointdes.DescriptionBoxDeactivate();
+        pointdesBox.DescriptionBoxDeactivate();
     }
 
     void CancelSearching()
     {
-        passbox.PassBoxDeactivate();
+        pathbox.PathBoxDeactivate();
     }
 }

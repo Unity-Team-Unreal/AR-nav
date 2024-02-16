@@ -834,11 +834,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: a51856cb-32a9-47b8-be35-9c157dda3970
+  cloudProjectId: 293e9393-baec-48e7-b928-264a47c8f93b
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: AR_Nav_Teamproject
-  organizationId: park-hyeon-su-6e0b347b-5dbe-4113-afdd-fb13f4042c49
+  projectName: AR_Nav_Teamproject (1)
+  organizationId: hyojin1537
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

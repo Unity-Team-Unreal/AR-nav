@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 
 
-public class PointDesAnimeScript : MonoBehaviour
+public class PointDesBoxScript : MonoBehaviour
 {
     [SerializeField]Text PointName;
     [SerializeField]Text PointDescript;
@@ -19,8 +19,8 @@ public class PointDesAnimeScript : MonoBehaviour
     }
     public void DescriptionBoxActivate()
     {
-        PointName.text = "경기인력개발원";
-        PointDescript.text = "지옥이다.";
+        PointName.text = POI.datalist[4].Name();
+        PointDescript.text = POI.datalist[4].Description();
         if (!isActivate) { isActivate = true; _animator.Play("Play"); }
 
     }   //POI 설명상자 ON(POI버블 버튼에서 작동)

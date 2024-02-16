@@ -20,37 +20,31 @@ public class StaticMapManager : MonoBehaviour
     }
 
     [Header("지도정보")]
-    [SerializeField] int width = 900;
-    [SerializeField] int hight = 2000;
+    int width=Screen.width/2;
+    int hight=Screen.height/2;
     string latitude;
     string longitude;
-    [SerializeField] int MapLevel = 20;
+    [SerializeField] int MapSizeLevel;
 
     private void Start()
     {
-        StartCoroutine(waitForGetPOI());
-    }
-
-    IEnumerator waitForGetPOI()
-    {
-        while (true)
-        {
-            if (POI.datalist[0].Name()==null) yield return null;
-
-            else break;
-        }
-
-        latitude = POI.datalist[0].Latitude();
-        longitude = POI.datalist[0].Longitude();
-
-
+        MapSizeLevel = Mathf.Clamp(MapSizeLevel, 1, 20);
         StartCoroutine(NaverMapAPIRequest());
     }
     IEnumerator NaverMapAPIRequest()
     {
 
-        string APIrequestURL = mapBaseURL + $"?w={width}&h={hight}" +
-            $"&center={longitude},{latitude}&level={MapLevel}" +
+
+        while(true)
+        {
+            if (POI.datalist.Count > 0)   { Debug.Log("Load Complete"); break; }
+            else yield return null; 
+        }
+
+        latitude = POI.datalist[1].Latitude();
+        longitude = POI.datalist[1].Longitude();
+
+        string APIrequestURL = mapBaseURL + $"?w={width}&h={hight}&center={longitude},{latitude}&level={MapSizeLevel}" +
             $"&scale=2&format=png";
 
         UnityWebRequest req = UnityWebRequestTexture.GetTexture(APIrequestURL);     //요청한 API 지도 텍스처를 받아올 인스턴스
@@ -64,9 +58,9 @@ public class StaticMapManager : MonoBehaviour
         switch (req.result)
         {
             case UnityWebRequest.Result.Success: break;
-            case UnityWebRequest.Result.ConnectionError: Debug.Log("Error"); yield break;
-            case UnityWebRequest.Result.ProtocolError: Debug.Log("Error"); yield break;
-            case UnityWebRequest.Result.DataProcessingError: Debug.Log("Error"); yield break;
+            case UnityWebRequest.Result.ConnectionError: Debug.Log("Connection Error"); yield break;
+            case UnityWebRequest.Result.ProtocolError: Debug.Log("Protocol Error"); yield break;
+            case UnityWebRequest.Result.DataProcessingError: Debug.Log("DataProcessing Error"); yield break;
         }
     }//네이버 지도 API를 받아와 MapImage에 표시하는 메서드
 }

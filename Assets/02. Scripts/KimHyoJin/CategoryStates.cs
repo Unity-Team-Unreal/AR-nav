@@ -10,8 +10,3 @@ public static class SellectCategory    //현재 카테고리 상태를 나타내는 static 클
     public static CategoryState state = CategoryState.All;
 }
 
-
-public class CategoryStates : MonoBehaviour
-{
-
-}

@@ -20,16 +20,16 @@ public struct POIData
         this.latitude = latitude;
         this.longitude = longtitude;
     }
-
-    public string Name() { return name; }
-    public string Description() { return description; }
-    public string Latitude() { return latitude; }
-    public string Longitude() { return longitude; }
+    public string Name() => name;
+    public string Description() =>description;
+    public string Latitude() => latitude;
+    public string Longitude() => longitude;
 }
+
 
 public static class POI
 {
-    public static POIData[] datalist = new POIData[1];
+    public static List<POIData> datalist = new List<POIData>();
 }
 
 
@@ -52,16 +52,13 @@ public class POI_Info : MonoBehaviour
         string[] jsonRow = json.Split('\n');
         //예제에는 name,description,latitude,longtitude 순서로 설정하였음.
 
-        
-
-        string[] splited = jsonRow[4].Split(',');
-
-        foreach(string s in splited)
+        for(int i = 3; i < jsonRow.Length; i++)
         {
-            Debug.Log(s);
+            string[] splited = jsonRow[i].Split(',');
+
+            if(splited.Length==4) POI.datalist.Add(new POIData(splited[0], splited[1], splited[2], splited[3]));
         }
 
-        POI.datalist[0] = new POIData(splited[0], splited[1], splited[2], splited[3]);
 
         yield break;
 
