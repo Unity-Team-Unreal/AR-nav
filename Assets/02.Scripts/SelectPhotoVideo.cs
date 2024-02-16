@@ -7,8 +7,13 @@ using UnityEngine.UI;
 
 public class SelectPhotoVideo : MonoBehaviour, IDragHandler, IEndDragHandler
 {
-    [SerializeField] private Button photoButton;
-    [SerializeField] private Button videoButton;
+    [SerializeField] private Button photoModeButton;
+    [SerializeField] private Button videoModeButton;
+
+    [SerializeField] private Button photoBtn;
+    [SerializeField] private Button videoBtn;
+
+    [SerializeField] private Animator swipeAnimator;
 
     private bool isPhotoSelected = true; // 초기에는 사진이 선택됨
     private Vector2 fingerDownPosition;
@@ -18,8 +23,10 @@ public class SelectPhotoVideo : MonoBehaviour, IDragHandler, IEndDragHandler
 
     void Start()
     {
-        photoButton.onClick.AddListener(SelectPhoto);
-        videoButton.onClick.AddListener(SelectVideo);
+        photoBtn.gameObject.SetActive(true);
+        videoBtn.gameObject.SetActive(false);
+        photoModeButton.onClick.AddListener(SelectPhoto);
+        videoModeButton.onClick.AddListener(SelectVideo);
     }
 
     public void OnDrag(PointerEventData eventData) { }
@@ -57,15 +64,27 @@ public class SelectPhotoVideo : MonoBehaviour, IDragHandler, IEndDragHandler
 
     void SelectPhoto()
     {
+        if (isPhotoSelected)
+            return;
+
         isPhotoSelected = true;
-        Debug.Log("Photo selected");
+
         //포토모드로 변경하고, 사진촬영 버튼으로 변경
+        swipeAnimator.SetTrigger("DoPhotoSwipe");
+        photoBtn.gameObject.SetActive(true);
+        videoBtn.gameObject.SetActive(false);
     }
 
     void SelectVideo()
     {
+        if(!isPhotoSelected)
+            return;
+
         isPhotoSelected = false;
-        Debug.Log("Video selected");
+
         //동영상 모드로 변경하고, 동영상 촬영 버튼으로 변경
+        swipeAnimator.SetTrigger("DoVideoSwipe");
+        photoBtn.gameObject.SetActive(false);
+        videoBtn.gameObject.SetActive(true);
     }
 }
