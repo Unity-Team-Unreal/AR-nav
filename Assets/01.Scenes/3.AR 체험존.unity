@@ -2446,6 +2446,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   POIwebURL: https://docs.google.com/spreadsheets/d/1IvrflSuhz0SyUppKPaiRQAeIQcxmbsudvWExyd3tOec/export?format=tsv&range=A1:E6
+  rowsData: []
+  columnsData: []
 --- !u!1 &1616229321
 GameObject:
   m_ObjectHideFlags: 0

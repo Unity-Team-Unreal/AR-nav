@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e39bc6dc3d9dc5449374f2f8ab4c695, type: 3}
   m_Name: ScriptableObjectExample
   m_EditorClassIdentifier: 
-  ARContentsData: []
+  contentsData: []
