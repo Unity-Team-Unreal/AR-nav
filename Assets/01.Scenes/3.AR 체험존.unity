@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2445,7 +2445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4dd64b952586e44906f8c71f8b2a92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  POIwebURL: https://docs.google.com/spreadsheets/d/1IvrflSuhz0SyUppKPaiRQAeIQcxmbsudvWExyd3tOec/export?format=tsv&range=A1:E6
+  image: {fileID: 0}
+  poi: {fileID: 11400000, guid: 299334ba461c3064a921385d89bd0283, type: 2}
   rowsData: []
   columnsData: []
 --- !u!1 &1616229321
