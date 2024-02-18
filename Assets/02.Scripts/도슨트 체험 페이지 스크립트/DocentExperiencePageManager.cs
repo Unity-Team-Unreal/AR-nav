@@ -20,7 +20,7 @@ public class DocentExperiencePageManager : MonoBehaviour
     [SerializeField] Slider docentTimeLine;
 
     [SerializeField] TextMeshProUGUI testText;
-    
+
     void Awake()
     {
         imageManager = GetComponent<ARTrackedImageManager>();
@@ -30,14 +30,25 @@ public class DocentExperiencePageManager : MonoBehaviour
 
     void Start()
     {
+        PlayerPrefs.GetString("PreviousScene");
+
         backButton.onClick.AddListener(OnBackPage);
         returnButton.onClick.AddListener(OnTimeLineReturn);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            OnBackPage();
+        }
     }
 
     void OnBackPage()
     {
         imageManager.trackedImagesChanged -= OnImageTrackedEvent;
-        SceneManager.LoadScene("도슨트 상세설명 페이지");
+        // 바로 전에 있던 씬으로 이동 => 바로 전에 있던 씬의 이름을 가져와야 한다.
+        SceneManager.LoadScene("");
     }
 
     void OnTimeLineReturn()

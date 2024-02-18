@@ -16,9 +16,20 @@ public class DetailedDescriptionPageManager : MonoBehaviour
 
     void Start()
     {
+        string sceneName = SceneManager.GetActiveScene().name;
+        PlayerPrefs.SetString("PreviousScene", sceneName);
+
         backButton.onClick.AddListener(OnBackPage);
         viewLocationButton.onClick.AddListener(OnViewLocation);
         docentStartButton.onClick.AddListener(OnDocentStart);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            OnBackPage();
+        }
     }
 
     void OnBackPage()
