@@ -43,3 +43,9 @@ MonoBehaviour:
     longitude: 
     guide: 
     Image: {fileID: 0}
+  - contentsname: 
+    description: 
+    latitude: 
+    longitude: 
+    guide: 
+    Image: {fileID: 0}
