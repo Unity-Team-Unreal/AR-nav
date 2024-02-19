@@ -14,8 +14,6 @@ public class DocentExperiencePageManager : MonoBehaviour
 {
     ARTrackedImageManager imageManager;
 
-    [SerializeField] TextMeshProUGUI testText;
-
     void Awake()
     {
         imageManager = GetComponent<ARTrackedImageManager>();
@@ -25,8 +23,6 @@ public class DocentExperiencePageManager : MonoBehaviour
 
     void OnImageTrackedEvent(ARTrackedImagesChangedEventArgs arg)
     {
-        testText.text = "이미지가 트랙되었습니다.";
-
         foreach (ARTrackedImage trackedImage in arg.added)
         {
             string imageName = trackedImage.referenceImage.name;
