@@ -3,7 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class POIPrefab : MonoBehaviour
+public class POIPrefabs : MonoBehaviour
 {
     public TMP_Text contentsNameText; // UI 요소
     public TMP_Text descriptionText; // UI 요소
@@ -33,8 +33,10 @@ public class POIPrefab : MonoBehaviour
     // 프리팹 클릭 시 이벤트
     public void OnClick()
     {
+        // 클릭된 데이터를 DataManager에 저장
+        DataManager.Instance.contentsData = _contentsData;
+
         Debug.Log("클릭됨");
-        //SceneManager.LoadScene("DetailScene");
-        //PlayerPrefs.SetString("SelectedPOI", JsonUtility.ToJson(_contentsData));
+        SceneManager.LoadScene("3-1.AR 체험존 상세페이지");
     }
 }

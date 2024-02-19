@@ -7,9 +7,13 @@ using UnityEngine.UI;
 
 public class POI_Info : MonoBehaviour
 {
+    [Header("컨텐츠 링크")]
     string PhotozonewebURL = "https://docs.google.com/spreadsheets/d/1IvrflSuhz0SyUppKPaiRQAeIQcxmbsudvWExyd3tOec/export?format=tsv&range=A2:E6"; // POI 데이터를 불러올 웹 
     string DocentPOIwebURL = "https://docs.google.com/spreadsheets/d/1IvrflSuhz0SyUppKPaiRQAeIQcxmbsudvWExyd3tOec/export?format=tsv&gid=1564857787&range=A2:E6"; // POI 데이터를 불러올 웹 
     //gid=1564857787
+
+    string[] rowsData;  // 행 데이터를 저장하는 배열
+    string[] columnsData;   // 열 데이터를 저장하는 배열
 
     [Header("컨텐츠 이미지")]
     public Texture2D[] Photozoneimage;
@@ -19,14 +23,14 @@ public class POI_Info : MonoBehaviour
     public string Photo_floder = "Photoimage";
     public string Docent_floder = "Docentimage";
 
-
-    public POI poi;
+    [Header("POI 데이터")]
+    public POI photozone;
     public POI Docent;
-    
-    public string[] rowsData;  // 행 데이터를 저장하는 배열
-    public string[] columnsData;   // 열 데이터를 저장하는 배열
 
+    [Header("컨텐츠 생성 오브젝트")]
     public GameObject contentsDataPfb; //POI 프리팹
+
+    [Header("컨텐츠 생성 위치")]
     public Transform PhotoscrollViewContent; //스크롤 뷰의 Contents를 가리키는 변수
     public Transform Docentscrolltransform; //스크롤 뷰의 Contents를 가리키는 변수
 
@@ -40,7 +44,7 @@ public class POI_Info : MonoBehaviour
 
         //StartCoroutine(requestCoroutine(PhotozonewebURL)); // 코루틴 시작 
 
-        StartCoroutine(requestCoroutine(poi, PhotozonewebURL, Photozoneimage, PhotoscrollViewContent)); // 코루틴 시작 
+        StartCoroutine(requestCoroutine(photozone, PhotozonewebURL, Photozoneimage, PhotoscrollViewContent)); // 코루틴 시작 
         StartCoroutine(requestCoroutine(Docent, DocentPOIwebURL, Docentimage, Docentscrolltransform));
     }
 
@@ -98,7 +102,7 @@ public class POI_Info : MonoBehaviour
                 contentsData.Image = texture2D[i];
             }
 
-            poiPrefabsIntance.GetComponent<POIPrefab>().Init(poi.contentsdata[i]);
+            poiPrefabsIntance.GetComponent<POIPrefabs>().Init(poi.contentsdata[i]);
 
             // 구글 스프레드 시트 데이터 디버그
             foreach (var column in columnsData)
