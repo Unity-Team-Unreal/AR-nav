@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class StaticMapManager : MonoBehaviour
+public class MapRequestManager : MonoBehaviour
 {
     [Header("네이버 API를 받기 위한 정보")]
     [SerializeField]string mapBaseURL = "https://naveropenapi.apigw.ntruss.com/map-static/v2/raster"; 
@@ -22,16 +22,16 @@ public class StaticMapManager : MonoBehaviour
     [Header("지도정보")]
     int width=Screen.width/2;
     int hight=Screen.height/2;
-    string latitude;
-    string longitude;
+    float latitude;
+    float longitude;
     [SerializeField] int MapSizeLevel;
 
     private void Start()
     {
         MapSizeLevel = Mathf.Clamp(MapSizeLevel, 1, 20);
-        StartCoroutine(NaverMapAPIRequest());
+        StartCoroutine(MapAPIRequest());
     }
-    IEnumerator NaverMapAPIRequest()
+    IEnumerator MapAPIRequest()
     {
 
 

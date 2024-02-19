@@ -19,10 +19,10 @@ public class Direction : MonoBehaviour
 
     void FindDirection()
     {
-        StartCoroutine(NaverMapAPIRequest());
+        StartCoroutine(NaverMapDirectionAPIRequest());
     }
 
-    IEnumerator NaverMapAPIRequest()
+    IEnumerator NaverMapDirectionAPIRequest()
     {
 
         string APIrequestURL = directionBaseURL + $"?start={myPoint_longitude},{myPoint_latitude}&goal={destination_longitude},{destination_latitude}&option={optionCode}";

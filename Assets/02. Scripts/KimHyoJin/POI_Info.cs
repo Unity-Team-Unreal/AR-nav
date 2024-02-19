@@ -11,9 +11,9 @@ public struct POIData
 {
     private string name;
     private string description;
-    private string latitude;
-    private string longitude;
-    public POIData(string name, string description, string latitude, string longtitude)
+    private float latitude;
+    private float longitude;
+    public POIData(string name, string description, float latitude, float longtitude)
     {
         this.name = name;
         this.description = description;
@@ -22,8 +22,8 @@ public struct POIData
     }
     public string Name() => name;
     public string Description() =>description;
-    public string Latitude() => latitude;
-    public string Longitude() => longitude;
+    public float Latitude() => latitude;
+    public float Longitude() => longitude;
 }
 
 
@@ -56,7 +56,10 @@ public class POI_Info : MonoBehaviour
         {
             string[] splited = jsonRow[i].Split(',');
 
-            if(splited.Length==4) POI.datalist.Add(new POIData(splited[0], splited[1], splited[2], splited[3]));
+
+            if (splited.Length == 4 && float.TryParse(splited[2], out float splited_2) && float.TryParse(splited[3],out float splited_3))
+                POI.datalist.Add(new POIData(splited[0], splited[1],splited_2, splited_3));
+
         }
 
 
