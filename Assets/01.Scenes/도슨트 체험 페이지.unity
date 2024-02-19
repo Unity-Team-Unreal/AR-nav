@@ -1276,6 +1276,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1533957181}
   - component: {fileID: 1533957180}
+  - component: {fileID: 1533957182}
+  - component: {fileID: 1533957183}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: Untagged
@@ -1316,6 +1318,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1533957182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533957179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef25a6e76ef90d458588fe9566ccc93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testText: {fileID: 1538102451}
+--- !u!114 &1533957183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533957179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dea56a9eaadd1c439095de4f9a371cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedLibrary: {fileID: 11400000, guid: be0560839995dd64a9107ff9aa31d71b, type: 2}
+  m_MaxNumberOfMovingImages: 2
+  m_TrackedImagePrefab: {fileID: 0}
 --- !u!1 &1538102450
 GameObject:
   m_ObjectHideFlags: 0
@@ -1500,7 +1530,7 @@ GameObject:
   - component: {fileID: 1844555490}
   - component: {fileID: 1844555489}
   - component: {fileID: 1844555488}
-  - component: {fileID: 1844555492}
+  - component: {fileID: 1844555493}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1594,7 +1624,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1844555492
+--- !u!114 &1844555493
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1603,13 +1633,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1844555487}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef25a6e76ef90d458588fe9566ccc93, type: 3}
+  m_Script: {fileID: 11500000, guid: dc7db4965bc113c4b94f090be0425ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   backButton: {fileID: 921713851}
   returnButton: {fileID: 555018924}
   docentTimeLine: {fileID: 1096195993}
-  testText: {fileID: 1538102451}
 --- !u!1 &1903366810
 GameObject:
   m_ObjectHideFlags: 0

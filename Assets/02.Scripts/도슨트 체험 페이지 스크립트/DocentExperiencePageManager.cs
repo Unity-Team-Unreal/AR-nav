@@ -14,11 +14,6 @@ public class DocentExperiencePageManager : MonoBehaviour
 {
     ARTrackedImageManager imageManager;
 
-    [SerializeField] Button backButton;
-    [SerializeField] Button returnButton;
-
-    [SerializeField] Slider docentTimeLine;
-
     [SerializeField] TextMeshProUGUI testText;
 
     void Awake()
@@ -26,35 +21,6 @@ public class DocentExperiencePageManager : MonoBehaviour
         imageManager = GetComponent<ARTrackedImageManager>();
 
         imageManager.trackedImagesChanged += OnImageTrackedEvent;
-    }
-
-    void Start()
-    {
-        PlayerPrefs.GetString("PreviousScene");
-
-        backButton.onClick.AddListener(OnBackPage);
-        returnButton.onClick.AddListener(OnTimeLineReturn);
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            OnBackPage();
-        }
-    }
-
-    void OnBackPage()
-    {
-        imageManager.trackedImagesChanged -= OnImageTrackedEvent;
-        // 바로 전에 있던 씬으로 이동 => 바로 전에 있던 씬의 이름을 가져와야 한다.
-        SceneManager.LoadScene("");
-    }
-
-    void OnTimeLineReturn()
-    {
-        imageManager.trackedImagesChanged -= OnImageTrackedEvent;
-        docentTimeLine.value = 0;
     }
 
     void OnImageTrackedEvent(ARTrackedImagesChangedEventArgs arg)
@@ -81,6 +47,14 @@ public class DocentExperiencePageManager : MonoBehaviour
                 trackedImage.transform.GetChild(0).position = trackedImage.transform.position;
                 trackedImage.transform.GetChild(0).rotation = trackedImage.transform.rotation;
                 trackedImage.transform.GetChild(0).gameObject.SetActive(true);
+            }
+        }
+
+        foreach (ARTrackedImage trackedImage in arg.removed)
+        {
+            if (trackedImage.transform.childCount > 0)
+            {
+                trackedImage.transform.GetChild(0).gameObject.SetActive(false);
             }
         }
     }
