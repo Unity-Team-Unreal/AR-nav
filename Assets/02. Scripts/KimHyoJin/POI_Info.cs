@@ -49,13 +49,11 @@ public class POI_Info : MonoBehaviour
         yield return WebData.SendWebRequest();
         string json = WebData.downloadHandler.text;
 
-        string[] jsonRow = json.Split('\n');
-        //예제에는 name,description,latitude,longtitude 순서로 설정하였음.
+        string[] jsonRow = json.Split('\n');    //예제에는 name,description,latitude,longtitude 순서로 설정하였음.
 
         for(int i = 3; i < jsonRow.Length; i++)
         {
             string[] splited = jsonRow[i].Split(',');
-
 
             if (splited.Length == 4 && float.TryParse(splited[2], out float splited_2) && float.TryParse(splited[3],out float splited_3))
                 POI.datalist.Add(new POIData(splited[0], splited[1],splited_2, splited_3));

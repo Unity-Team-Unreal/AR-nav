@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
+
 public class MapRequestManager : MonoBehaviour
 {
     [Header("네이버 API를 받기 위한 정보")]
@@ -13,18 +14,26 @@ public class MapRequestManager : MonoBehaviour
     [SerializeField]string clientPW = "hEidFWsoN8dBnqFCreezcSC5HEE1NuYMNTmboVNz";
 
     [Header("지도 표시할 캔버스 이미지")]
-    [SerializeField] RawImage MapImage; 
+    [SerializeField] RawImage MapImage;
+
+    [Header("지도정보")]
+    int width = Screen.width / 2;
+    int hight = Screen.height / 2;
+    float latitude=0f;
+    float longitude=0f;
+    [SerializeField] int MapSizeLevel;
+
+    [Header("GPS를 받기 위한 정보")]
+    GPS gps;
+
+
     void Awake()
     {
+       gps=GetComponent<GPS>();
+        gps.Request();
         MapImage = MapImage.gameObject.GetComponent<RawImage>();
     }
 
-    [Header("지도정보")]
-    int width=Screen.width/2;
-    int hight=Screen.height/2;
-    float latitude;
-    float longitude;
-    [SerializeField] int MapSizeLevel;
 
     private void Start()
     {
@@ -33,16 +42,16 @@ public class MapRequestManager : MonoBehaviour
     }
     IEnumerator MapAPIRequest()
     {
+        
 
+        yield return new WaitUntil(() => POI.datalist.Count > 0);
 
-        while(true)
-        {
-            if (POI.datalist.Count > 0)   { Debug.Log("Load Complete"); break; }
-            else yield return null; 
-        }
+            if(!gps.GetMyLocation(ref latitude, ref longitude))
+            {
+                latitude = POI.datalist[1].Latitude();
+                longitude = POI.datalist[1].Longitude();
+            }
 
-        latitude = POI.datalist[1].Latitude();
-        longitude = POI.datalist[1].Longitude();
 
         string APIrequestURL = mapBaseURL + $"?w={width}&h={hight}&center={longitude},{latitude}&level={MapSizeLevel}" +
             $"&scale=2&format=png";

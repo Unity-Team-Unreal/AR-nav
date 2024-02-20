@@ -3037,6 +3037,7 @@ GameObject:
   - component: {fileID: 2005741237}
   - component: {fileID: 2005741238}
   - component: {fileID: 2005741239}
+  - component: {fileID: 2005741240}
   m_Layer: 0
   m_Name: NavManager
   m_TagString: Untagged
@@ -3104,6 +3105,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   POIwebURL: https://docs.google.com/spreadsheets/d/10GaozCAYllIZpwaNcOVs_IMyFdZO7P77DjIqR2mWiBY/edit#gid=0&range=A2:D5
+--- !u!114 &2005741240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005741234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58eeea845b9719e4ebfcc53e6e26119a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2006334107
 GameObject:
   m_ObjectHideFlags: 0

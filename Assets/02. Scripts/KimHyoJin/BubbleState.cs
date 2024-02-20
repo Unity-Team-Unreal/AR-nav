@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class BubbleState : MonoBehaviour
 {
+    enum Mark { Park, Hospital, ParkingPlace, Subway, Toildet, Dosent, Camera }
+
     CategoryState thisState;   //POI버블이 어떤 카테고리에 속하는지
-    enum Mark {Park, Hospital, ParkingPlace, Subway, Toildet, Dosent, Camera }
+
     [SerializeField]Sprite[] MarkImage = new Sprite[7];
     Button button;
     Image image;
