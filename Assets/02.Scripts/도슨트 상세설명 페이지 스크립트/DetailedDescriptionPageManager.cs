@@ -34,7 +34,7 @@ public class DetailedDescriptionPageManager : MonoBehaviour
 
     void OnBackPage()
     {
-        SceneManager.LoadScene("Test Scene"); // ""내에 도슨트 리스트 페이지 씬의 이름을 적으면 된다.
+        //SceneManager.LoadScene("Test Scene"); // ""내에 도슨트 리스트 페이지 씬의 이름을 적으면 된다.
     }
 
 
