@@ -10,7 +10,7 @@ using UnityEngine.UI;
 /// </summary>
 public class POIDataRequest : MonoBehaviour
 {
-    public string pOIUrl = "https://docs.google.com/spreadsheets/d/1rDtc2JqJ6ZSvvy6dujlc-bsF-dbw2E5rZJjGxmAryfA/edit#gid=0";
+    public string pOIUrl = "https://docs.google.com/spreadsheets/d/12Tqn4M1GYrbYsB8X-1fSUCQAk45D33LB5Rj7kckgG0g/A13:H17";
 
     [SerializeField] TextMeshProUGUI businessName;
     [SerializeField] TextMeshProUGUI branchName;
