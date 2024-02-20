@@ -41,9 +41,9 @@ public class POI_Info : MonoBehaviour
 
     private void Awake()
     {
-        StartCoroutine(requestCoroutine());
+        StartCoroutine(RequestCoroutine());
     }
-    IEnumerator requestCoroutine()
+    IEnumerator RequestCoroutine()
     {
         UnityWebRequest WebData = UnityWebRequest.Get(POIwebURL);
         yield return WebData.SendWebRequest();
