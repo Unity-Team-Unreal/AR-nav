@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scenes/PhotoZone_main.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: "Assets/01.Scenes/\uD3EC\uD1A0\uC874 \uC0C1\uC138\uC124\uBA85 \uD398\uC774\uC9C0.unity"
+    guid: 82b2f8f1389502644b8d489d6a2fa75e
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 2ef5240974802c1469264a9889848114, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: a5ce7e5f33479594abb9374704757e77, type: 2}

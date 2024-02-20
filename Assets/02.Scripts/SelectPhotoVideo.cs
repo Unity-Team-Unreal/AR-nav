@@ -19,14 +19,19 @@ public class SelectPhotoVideo : MonoBehaviour, IDragHandler, IEndDragHandler
     private Vector2 fingerDownPosition;
     private Vector2 fingerUpPosition;
 
-    private float swipeLength = 2f;
+    private float swipeLength = 0.1f;
+
+    private void Awake()
+    {
+        photoModeButton.onClick.AddListener(SelectPhoto);
+        videoModeButton.onClick.AddListener(SelectVideo);
+    }
 
     void Start()
     {
         photoBtn.gameObject.SetActive(true);
         videoBtn.gameObject.SetActive(false);
-        photoModeButton.onClick.AddListener(SelectPhoto);
-        videoModeButton.onClick.AddListener(SelectVideo);
+        
     }
 
     public void OnDrag(PointerEventData eventData) { }
