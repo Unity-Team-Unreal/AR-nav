@@ -7,7 +7,7 @@ public class BackButton : MonoBehaviour
 {
     [SerializeField]PointDesBoxScript pointdesBox;   //POI 설명상자 스크립트를 받아온다.
     [SerializeField]PathBoxScript pathbox;  //길찾기 상자 스크립트를 받아온다.
-
+    //test
     Button button;
     void Awake()
     {
