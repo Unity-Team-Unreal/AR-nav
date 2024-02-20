@@ -3076,7 +3076,7 @@ MonoBehaviour:
   clientID: r2kal6fto4
   clientPW: hEidFWsoN8dBnqFCreezcSC5HEE1NuYMNTmboVNz
   MapImage: {fileID: 425695506}
-  MapSizeLevel: 6
+  MapSizeLevel: 15
 --- !u!114 &2005741238
 MonoBehaviour:
   m_ObjectHideFlags: 0
