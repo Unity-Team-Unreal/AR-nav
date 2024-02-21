@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
+
     // 각 버튼과 씬 이름을 연결하는 클래스
     [System.Serializable]
     public class ButtonSceneMapping
