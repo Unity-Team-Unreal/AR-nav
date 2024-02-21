@@ -3076,7 +3076,8 @@ MonoBehaviour:
   clientID: r2kal6fto4
   clientPW: hEidFWsoN8dBnqFCreezcSC5HEE1NuYMNTmboVNz
   MapImage: {fileID: 425695506}
-  MapSizeLevel: 15
+  MapSizeLevel: 17
+  Marker: {fileID: 4339955371568456598, guid: 5d685c7ae1ed5484886fb17ed0768290, type: 3}
 --- !u!114 &2005741238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3226,7 +3227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2035258923
 RectTransform:
   m_ObjectHideFlags: 0
