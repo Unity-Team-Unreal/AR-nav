@@ -3,14 +3,20 @@ using UnityEngine.UI;
 
 public class SwitchingButton : MonoBehaviour
 {
-    [SerializeField] private Toggle toggleA;
-    [SerializeField] private Toggle toggleB;
+
+    [SerializeField] public Toggle toggleA;
+    [SerializeField] public Toggle toggleB;
     [SerializeField] private GameObject imageA;
     [SerializeField] private GameObject imageB;
     [SerializeField] private GameObject scrollViewA;
     [SerializeField] private GameObject scrollViewB;
 
+
     private Toggle activeToggle;
+
+    public Toggle ActiveToggle { get { return activeToggle; } private set { activeToggle = value; } }
+
+
 
     void Awake()
     {
@@ -23,27 +29,37 @@ public class SwitchingButton : MonoBehaviour
         // toggleA를 초기에 활성화
         toggleA.isOn = true;
 
+
         // toggleB를 초기에 비활성화
         toggleB.isOn = false;
 
         ToggleElements(toggleA, imageA, imageB, scrollViewA, scrollViewB);
 
         activeToggle = toggleA;
+
     }
 
     void OnToggleValueChanged(bool isOn)
     {
         if (isOn)
         {
-            if (activeToggle == toggleA)
+            if (toggleA.isOn)
             {
+
+
                 ToggleElements(toggleA, imageA, imageB, scrollViewA, scrollViewB);
                 activeToggle = toggleA;
+
+
             }
-            else if (activeToggle == toggleB)
+            else if (toggleB.isOn)
             {
+
+
                 ToggleElements(toggleB, imageB, imageA, scrollViewB, scrollViewA);
                 activeToggle = toggleB;
+
+
             }
         }
     }
@@ -62,5 +78,6 @@ public class SwitchingButton : MonoBehaviour
 
         if (inactiveScrollView != null)
             inactiveScrollView.SetActive(!toggle.isOn);
+
     }
 }
