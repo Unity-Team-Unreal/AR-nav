@@ -1,81 +1,93 @@
-using UnityEngine;
 using System;
-using System.IO;
 using System.Collections;
-using Unity.VisualScripting;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
-using System.Runtime.InteropServices;
+using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
+using UnityEngine.UI;
 
+
+
+#if UNITY_ANDROID
+using UnityEngine.XR.ARCore;
+using UnityEngine.XR.ARFoundation;
+#endif
+
+
+
+[RequireComponent(typeof(ARSession))]
 public class RecordVideos : MonoBehaviour
 {
-    // 비디오 설정
-    public int width = Screen.width;
-    public int height = Screen.height;
-    public int frameRate = 30;
+    [SerializeField] private Button StartRecordBtn;
+    [SerializeField] private Button EndRecordBtn;
 
-    // 녹화 여부
-    private bool isRecording = false;
+    ARSession m_Session;
 
-    // 프레임 텍스처
-    private RenderTexture renderTexture;
+#if UNITY_ANDROID
+    ArStatus? m_SetMp4DatasetResult;
+    ArPlaybackStatus m_PlaybackStatus = (ArPlaybackStatus)(-1);
+    ArRecordingStatus m_RecordingStatus = (ArRecordingStatus)(-1);
+#endif
 
-    // 비디오 코덱
-    //private AVCodecContext* context;
-    // 비디오 파일
-    private FileStream fileStream;
+    string m_Mp4Path;
 
-    // 녹화 시작
-    public void StartRecording()
+    void Awake()
     {
-        // 녹화 시작 플래그 설정
-        isRecording = true;
-
-        // 프레임 텍스처 생성
-        renderTexture = new RenderTexture(width, height, 24);
-        renderTexture.Create();
-
-        // 비디오 파일 생성
-        string filePath = Application.dataPath + "/video.mp4";
-        fileStream = new FileStream(filePath, FileMode.Create);
-
-        // 녹화 코루틴 시작
-        StartCoroutine(RecordingCoroutine());
+        m_Session = GetComponent<ARSession>();
+        
     }
 
-    // 녹화 중지
-    public void StopRecording()
+    static int GetRotation() => Screen.orientation switch
     {
-        // 녹화 중지 플래그 설정
-        isRecording = false;
+        ScreenOrientation.Portrait => 0,
+        ScreenOrientation.LandscapeLeft => 90,
+        ScreenOrientation.PortraitUpsideDown => 180,
+        ScreenOrientation.LandscapeRight => 270,
+        _ => 0
+    };
 
-        // 녹화 코루틴 종료
-        StopCoroutine(RecordingCoroutine());
-
-        // 비디오 파일 종료
-        fileStream.Close();
-
-        // 프레임 텍스처 해제
-        renderTexture.Release();
-    }
-
-    // 녹화 코루틴
-    private IEnumerator RecordingCoroutine()
+    public void StartRecordingSession()
     {
-        while (isRecording)
+        StartRecordBtn.gameObject.SetActive(false);
+        EndRecordBtn.gameObject.SetActive(true);
+#if UNITY_ANDROID
+        if (m_Session.subsystem is ARCoreSessionSubsystem subsystem)
         {
-            // 프레임 렌더링
-            RenderTexture.active = renderTexture;
-            GL.Clear(true, true, Color.clear);
-            Graphics.Blit(null, renderTexture);
-            RenderTexture.active = null;
+            var session = subsystem.session;
+            if (session == null)
+                return;
 
-            // 비디오 파일에 프레임 데이터 쓰기
-            //fileStream.Write(encodedFrame, 0, encodedFrame.Length);
+            var playbackStatus = subsystem.playbackStatus;
+            var recordingStatus = subsystem.recordingStatus;
 
-            // 다음 프레임까지 대기
-            yield return new WaitForEndOfFrame();
+            if (!playbackStatus.Playing() && !recordingStatus.Recording())
+            {
+                using (var config = new ArRecordingConfig(session))
+                {
+                    string fileName = DateTime.Now.ToString("yyyyMMdd_HHmmss") + "ar-video.mp4";
+                    m_Mp4Path = Path.Combine(Application.persistentDataPath, fileName);
+                    config.SetMp4DatasetFilePath(session, m_Mp4Path);
+                    config.SetRecordingRotation(session, GetRotation());
+                    subsystem.StartRecording(config);
+                }
+            }
         }
+#endif
     }
 
-}
+    public void StopRecordingSession()
+    {
+        StartRecordBtn.gameObject.SetActive(true);
+        EndRecordBtn.gameObject.SetActive(false);
+#if UNITY_ANDROID
+        if (m_Session.subsystem is ARCoreSessionSubsystem subsystem)
+        {
+            var recordingStatus = subsystem.recordingStatus;
 
+            if (recordingStatus.Recording())
+            {
+                subsystem.StopRecording();
+            }
+        }
+#endif
+    }
+}
