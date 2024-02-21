@@ -135,9 +135,9 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   bundleVersion: 0.1
   preloadedAssets:
-  - {fileID: 11400000, guid: bf51dd89d373c0c4c8ff619bc5c61ea5, type: 2}
-  - {fileID: 11400000, guid: 54c491785c17d0f4cb1c2e4274059702, type: 2}
-  - {fileID: -8349707133868591165, guid: aebd162b8d1999142b284955e47b640c, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -165,7 +165,7 @@ PlayerSettings:
     tvOS: 0
   overrideDefaultApplicationIdentifier: 0
   AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 30
+  AndroidMinSdkVersion: 24
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
   aotOptions: 
@@ -839,11 +839,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 293e9393-baec-48e7-b928-264a47c8f93b
+  cloudProjectId: acf475aa-140a-4f40-b07a-f49cfc67e254
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: AR_Nav_Teamproject (1)
-  organizationId: hyojin1537
+  organizationId: sn000
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

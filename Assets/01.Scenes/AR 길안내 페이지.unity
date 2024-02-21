@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7616341
 RectTransform:
   m_ObjectHideFlags: 0
@@ -725,6 +725,112 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &359585251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 359585255}
+  - component: {fileID: 359585254}
+  - component: {fileID: 359585253}
+  - component: {fileID: 359585252}
+  m_Layer: 0
+  m_Name: Plane
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!64 &359585252
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359585251}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &359585253
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359585251}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &359585254
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359585251}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &359585255
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359585251}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 968.66113, y: 1298.1943, z: 0.6654973}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &413930127
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,6 +910,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9fecf58dcb917e49b66e5865aa16ba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lats: []
+  longs: []
+  pOILocationInformationButton: {fileID: 0}
 --- !u!1 &576353342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1179,19 +1288,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a793046ecbeb684db0cf3c7b622ac70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pOIUrl: https://docs.google.com/spreadsheets/d/1rDtc2JqJ6ZSvvy6dujlc-bsF-dbw2E5rZJjGxmAryfA/edit#gid=0
-  businessName: {fileID: 0}
-  branchName: {fileID: 0}
-  getCoupon: {fileID: 0}
-  popupBusinessName: {fileID: 0}
-  address: {fileID: 0}
-  openingHours: {fileID: 0}
-  couponEventInformationText: {fileID: 0}
-  classification: {fileID: 0}
-  couponIcon: {fileID: 0}
-  popupClassification: {fileID: 0}
-  popupCouponIcon: {fileID: 0}
-  barcode: {fileID: 0}
+  businessName: {fileID: 1056307066}
+  branchName: {fileID: 1850949955}
+  getCoupon: {fileID: 757050672}
+  popupBusinessName: {fileID: 630804299}
+  address: {fileID: 1376806864}
+  openingHours: {fileID: 588913689}
+  couponEventInformationText: {fileID: 1695430155}
+  classification: {fileID: 249995584}
+  couponIcon: {fileID: 1132439564}
+  popupClassification: {fileID: 1123384019}
+  popupCouponIcon: {fileID: 714964316}
+  barcode: {fileID: 576353344}
 --- !u!4 &690416363
 Transform:
   m_ObjectHideFlags: 0
@@ -1876,7 +1984,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1191735490
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2882,6 +2990,8 @@ GameObject:
   - component: {fileID: 2124659146}
   - component: {fileID: 2124659145}
   - component: {fileID: 2124659144}
+  - component: {fileID: 2124659148}
+  - component: {fileID: 2124659149}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2964,10 +3074,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1592701396}
-  - {fileID: 1846324252}
   - {fileID: 7616341}
   - {fileID: 1191735490}
+  - {fileID: 1592701396}
+  - {fileID: 1846324252}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2976,3 +3086,36 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2124659148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124659143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5e0dd3e00fd8e44ae7e10c1eb7ddba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  operationEndsButton: {fileID: 1592701397}
+  pOILocationInformationButton: {fileID: 7616342}
+  popupEscapeButton: {fileID: 1518108583}
+  couponInformationPopupPanel: {fileID: 1191735489}
+--- !u!114 &2124659149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124659143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9fecf58dcb917e49b66e5865aa16ba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lats:
+  - 37.714083
+  longs:
+  - 126.744504
+  pOILocationInformationButton: {fileID: 7616342}
