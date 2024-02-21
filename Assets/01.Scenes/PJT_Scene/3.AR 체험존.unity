@@ -2067,8 +2067,8 @@ MonoBehaviour:
   Docentimage: []
   Photo_floder: Photoimage
   Docent_floder: Docentimage
-  photozone: {fileID: 11400000, guid: 299334ba461c3064a921385d89bd0283, type: 2}
-  Docent: {fileID: 11400000, guid: 067d5c3a007231143b6bd38835a7c2f7, type: 2}
+  photozone: {fileID: 11400000, guid: 50f597fd5bb6a51429abdbf398e67551, type: 2}
+  Docent: {fileID: 11400000, guid: d6e892f606e662d4b9df6e59bd144a69, type: 2}
   contentsDataPfb: {fileID: 6486758063497948400, guid: a955d6d76295e1246ba994a407b080a8, type: 3}
   PhotoscrollViewContent: {fileID: 2072987531}
   Docentscrolltransform: {fileID: 1721814185}
