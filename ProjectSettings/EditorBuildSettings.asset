@@ -12,25 +12,25 @@ EditorBuildSettings:
     path: Assets/01.Scenes/PhotoZoneDocument.unity
     guid: 82b2f8f1389502644b8d489d6a2fa75e
   - enabled: 0
-    path: Assets/01.Scenes/PJT_Scene/0.LoadingScene.unity
+    path: Assets/01.Scenes/PJT_Scene/0.Loading Page.unity
     guid: 78f4832bda767cb47ac3b906a8348d75
   - enabled: 0
-    path: Assets/01.Scenes/PJT_Scene/1.Home.unity
+    path: Assets/01.Scenes/PJT_Scene/1.Home Page.unity
     guid: a90186c659956214984892f3063f8528
   - enabled: 0
-    path: "Assets/01.Scenes/PJT_Scene/2.AR \uAE38\uCC3E\uAE30.unity"
+    path: Assets/01.Scenes/PJT_Scene/2.AR Navigation Page.unity
     guid: 2df5e7b5b9235a44eb5102b9136a61b2
   - enabled: 0
-    path: "Assets/01.Scenes/PJT_Scene/3-1.AR \uCCB4\uD5D8\uC874 \uC0C1\uC138\uD398\uC774\uC9C0.unity"
+    path: Assets/01.Scenes/PJT_Scene/3-1.AR Contents Detail Page.unity
     guid: 64182bfafe465bb44953378368a6df44
   - enabled: 0
-    path: "Assets/01.Scenes/PJT_Scene/3.AR \uCCB4\uD5D8\uC874.unity"
+    path: Assets/01.Scenes/PJT_Scene/3.AR Contents Page.unity
     guid: 0fa1c50aa147e174bb33782de02a3a87
   - enabled: 0
-    path: "Assets/01.Scenes/PJT_Scene/4.\uC2DC\uAC04\uC5EC\uD589.unity"
+    path: Assets/01.Scenes/PJT_Scene/4.Timemuchine Page.unity
     guid: 843f6b6b95017a047b28e768af65c13a
   - enabled: 0
-    path: "Assets/01.Scenes/PJT_Scene/5.\uC2E4\uBC84 \uC11C\uBE44\uC2A4.unity"
+    path: Assets/01.Scenes/PJT_Scene/5.Sliver Service Page.unity
     guid: 93cb3c56b65fd8a4090ddd93bfa48a3a
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 2ef5240974802c1469264a9889848114, type: 2}
