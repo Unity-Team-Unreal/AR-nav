@@ -35,8 +35,6 @@ public class MapRequestManager : MonoBehaviour
 
     [Header("마커위치 테스트")]
     Vector2 point = new();
-
-
     [SerializeField] GameObject Marker;
 
 
@@ -70,6 +68,7 @@ public class MapRequestManager : MonoBehaviour
 
             /// 마커배치 테스트///
             
+
          
         latitude = 37.466480f;
         longitude = 126.657566f;
@@ -123,12 +122,14 @@ public class MapRequestManager : MonoBehaviour
 
 
         Vector2 direction = new Vector2(Mathf.Sin(bearing * Mathf.Deg2Rad), Mathf.Cos(bearing * Mathf.Deg2Rad));
+        Debug.Log(direction);
+
         point = new Vector2(0,0)+ direction.normalized * distance;
 
         Debug.Log(point);
 
         Marker = Instantiate(Marker, point, quaternion.identity);
-        Marker.transform.SetParent(GameObject.Find("Canvas").transform,false);
+        Marker.transform.SetParent(GameObject.Find("StaticMapImage").transform,false);
 
 
         ///테스트 끝///
