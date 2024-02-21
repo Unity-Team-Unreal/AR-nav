@@ -3,6 +3,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// LodingScenePage
+/// 로딩 지현 기능을 설정했다
+/// </summary>
 public class LoadingScreen : MonoBehaviour
 {
     [SerializeField] private Image loadingBar;  // 로딩바 이미지
@@ -16,7 +20,7 @@ public class LoadingScreen : MonoBehaviour
     IEnumerator LoadAsyncScene()
     {
         // 다음 씬으로 비동기 로드
-        AsyncOperation operation = SceneManager.LoadSceneAsync("1.Home");
+        AsyncOperation operation = SceneManager.LoadSceneAsync("1.Home Page");
         operation.allowSceneActivation = false;
 
         float timer = 0.0f;
@@ -25,7 +29,7 @@ public class LoadingScreen : MonoBehaviour
         {
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
 
-            // 로딩이 80% 진행되었을 때, 5초간 천천히 진행
+            // 로딩이 80% 진행되었을 때, 3초간 천천히 진행
             if (progress >= 0.8f)
             {
                 timer += Time.deltaTime;
