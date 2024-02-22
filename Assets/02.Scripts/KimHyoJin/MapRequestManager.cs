@@ -63,15 +63,15 @@ public class MapRequestManager : MonoBehaviour
         longitude = new float[POI.datalist.Count];
 
         if (!gps.GetMyLocation(ref latitude[0], ref longitude[0]))     //GPS를 받아올 수 있다면 위도, 경도를 현재 위치로 설정
-            {
-                latitude[0] = POI.datalist[1].Latitude();          
-                longitude[0] = POI.datalist[1].Longitude();        //그렇지 않다면 POI 데이터중 하나(테스트용 임시)로 설정
-            }
+        {
+            latitude[0] = 37.466480f;
+            longitude[0] = 126.657566f;     //그렇지 않다면 재물포역으로
+        }
 
 
 
 
-        /// 마커배치 테스트용 위,경도 ///
+        /// 테스트용 위,경도 ///
 
         latitude[0] = 37.466480f;
         longitude[0] = 126.657566f;
@@ -79,22 +79,24 @@ public class MapRequestManager : MonoBehaviour
         latitude[1] = 37.467262f;
         longitude[1] = 126.657732f;
 
-        latitude[2] = 37.467144f;
-        longitude[2] = 126.656698f;
+        latitude[2] = 37.466177f;
+        longitude[2] = 126.657768f;
 
-        for (int i = 0; i < POI.datalist.Count; i++)
+        /// 테스트용 위,경도 ///
+
+        for (int i = 0; i < POI.datalist.Count; i++)    //POI datalist 리스트의 위도 경도를 불러와 마커 배치
         {
             if (latitude[i] == 0) continue;
             markerInstantiate.MarkerMake(width, height, MapSizeLevel, latitude[0], longitude[0], latitude[i], longitude[i]);
         }
 
-        ///   테스트 끝    ///
 
 
 
         string APIrequestURL = mapBaseURL + $"?w={width}&h={height}&center={longitude[0]},{latitude[0]}&level={MapSizeLevel}" +
             $"&markers=type:d|size:mid|pos:{longitude[0]}%20{latitude[0]}" +
             $"&markers=type:d|size:mid|color:red|pos:{longitude[1]}%20{latitude[1]}" +
+            $"&markers=type:d|size:mid|color:red|pos:{longitude[2]}%20{latitude[2]}" +
             $"&scale=2&format=png";     //지도 API를 받아오기 위한 요청
 
         UnityWebRequest req = UnityWebRequestTexture.GetTexture(APIrequestURL);     //요청한 API 지도 텍스처를 받아올 인스턴스

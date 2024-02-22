@@ -11,12 +11,16 @@ public class MarkerInstantiate : MonoBehaviour
     /// 마커가 배치될 위치를 정하고 마커를 생성하는 스크립트
     /// </summary>
 
-    [Header("마커위와 마커 프리펩")]
+    [Header("마커 위치와 마커 프리펩")]
     Vector2 point = new();
     [SerializeField] GameObject Marker;
 
 
-    public void MarkerMake(int width, int height, float Level,float latitude, float longitude, float latitude2 ,float longitude2)
+
+    
+    //    마커를 생성하는 메서드.
+    //    매개변수 : (순서대로)화면 가로, 화면 세로, 지도 줌 레벨, 기준점 위도, 기준점 경도, 마커 위도, 마커 경도
+    public void MarkerMake(int width, int height, float Level, float latitude, float longitude, float latitude2 ,float longitude2)
     {
         {
 
@@ -37,7 +41,7 @@ public class MarkerInstantiate : MonoBehaviour
             Debug.Log(distance);
             Debug.Log(bearing);
 
-            distance = distance  / inUnityPerPixel;
+            distance = distance / inUnityPerPixel;
 
             Debug.Log(distance);
 
@@ -45,7 +49,7 @@ public class MarkerInstantiate : MonoBehaviour
             Vector2 direction = new Vector2(Mathf.Sin(bearing * Mathf.Deg2Rad), Mathf.Cos(bearing * Mathf.Deg2Rad));
             Debug.Log(direction);
 
-            point = new Vector2(0, 0) + direction.normalized * distance;
+            point = new Vector2(0, 0) + direction.normalized * 1000 * distance;
             Debug.Log(point);
 
             Marker = Instantiate(Marker, point, quaternion.identity);

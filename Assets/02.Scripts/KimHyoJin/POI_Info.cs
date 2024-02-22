@@ -54,7 +54,7 @@ public class POI_Info : MonoBehaviour
 
         string[] jsonRow = json.Split('\n');    //POI 데이터를 각 줄마다 분리.
 
-        for(int i = 3; i < jsonRow.Length; i++) //3인 이유는 예제에서 실질적인 데이터가 4번째 줄부터 시작하기 때문
+        for(int i = 1; i < jsonRow.Length; i++) //0은 현재 위치를 받아와야 함
         {
             string[] splited = jsonRow[i].Split(',');   //예제상 이름,설명,위도,경도 로 출력되어 ,를 기준으로 분리
 

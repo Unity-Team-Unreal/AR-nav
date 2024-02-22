@@ -76,7 +76,8 @@ public class BubbleState : MonoBehaviour
     }
 
     public void bubbleOnOff()  //POI 마커의 표시 여부를 가리는 메서드
-    {   
+    {
+        lastState = SellectCategory.state;
         //이 POI의 카테고리와 활성화된 카테고리가 동일 또는 모두 보기 카테고리라면 버튼 활성화
         if (SellectCategory.state != CategoryState.All)
         {

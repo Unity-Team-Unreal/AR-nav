@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 public class Direction : MonoBehaviour
 {
     /// <summary>
-    /// 길찾기 기능을 구현하는 스크립트이며 아직 미완성
+    /// 길찾기 기능을 구현하는 스크립트이며 미완성
     /// </summary>
     [Header("네이버 API를 받기 위한 정보")]
     [SerializeField] string directionBaseURL = "https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving";
