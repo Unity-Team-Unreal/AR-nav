@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -33,8 +35,9 @@ public class Contents_POI_Info : MonoBehaviour
 
     //POI 데이터 링크
     [Header("컨텐츠 링크")]
-    string PhotozonewebURL = "https://docs.google.com/spreadsheets/d/1IvrflSuhz0SyUppKPaiRQAeIQcxmbsudvWExyd3tOec/export?format=tsv&range=A2:E6"; // POI 데이터를 불러올 웹 
-    string DocentPOIwebURL = "https://docs.google.com/spreadsheets/d/1IvrflSuhz0SyUppKPaiRQAeIQcxmbsudvWExyd3tOec/export?format=tsv&gid=1564857787&range=A2:E6"; // POI 데이터를 불러올 웹 
+    string PhotozonewebURL = "https://docs.google.com/spreadsheets/d/1IvrflSuhz0SyUppKPaiRQAeIQcxmbsudvWExyd3tOec/export?format=tsv&range=A2:F6"; // POI 데이터를 불러올 웹 
+    string DocentPOIwebURL = "https://docs.google.com/spreadsheets/d/1IvrflSuhz0SyUppKPaiRQAeIQcxmbsudvWExyd3tOec/export?format=tsv&gid=1564857787&range=A2:F6"; // POI 데이터를 불러올 웹 
+
     //gid=1564857787
 
     //데이터 배열
@@ -84,6 +87,8 @@ public class Contents_POI_Info : MonoBehaviour
         //데이터 불러오기 시작
         StartCoroutine(requestCoroutine(photozone, PhotozonewebURL, Photozoneimage, PhotoscrollViewContent)); // 코루틴 시작 
         StartCoroutine(requestCoroutine(Docent, DocentPOIwebURL, Docentimage, Docentscrolltransform));
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
 
@@ -152,21 +157,35 @@ public class Contents_POI_Info : MonoBehaviour
             {
 
                 ContentsData contentsData = poi.contentsdata[i];
-                contentsData.contentsname = columnsData[0];
-                contentsData.description = columnsData[1];
-                contentsData.latitude = columnsData[2];
-                contentsData.longitude = columnsData[3];
-                contentsData.guide = columnsData[4];
+                contentsData.number = int.Parse(columnsData[0]);
+                contentsData.contentsname = columnsData[1];
+                contentsData.description = columnsData[2];
+                contentsData.latitude = columnsData[3];
+                contentsData.longitude = columnsData[4];
+                contentsData.guide = columnsData[5];
                 contentsData.Image = texture2D[i];
 
                 poiPrefabsIntance.GetComponent<POIPrefabs>().Init(poi.contentsdata[i]);
             }
 
-            // 구글 스프레드 시트 데이터 디버그
-            //foreach (var column in columnsData)
-            //{
-            //    Debug.Log("line: " + i + ": " + column);
-            //}
+            //구글 스프레드 시트 데이터 디버그
+            foreach (var column in columnsData)
+            {
+                Debug.Log("line: " + i + ": " + column);
+            }
+        }
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // 여기서 "My Scene"는 이 오브젝트가 활성화되어야 하는 씬의 이름입니다.
+        // 이 이름을 자신의 씬 이름으로 변경하세요.
+        if (scene.name == "3.AR Contents Page")
+        {
+            this.gameObject.SetActive(true);
+        }
+        else
+        {
+            this.gameObject.SetActive(false);
         }
     }
 }
