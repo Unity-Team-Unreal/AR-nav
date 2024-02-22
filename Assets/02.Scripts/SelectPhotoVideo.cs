@@ -19,7 +19,7 @@ public class SelectPhotoVideo : MonoBehaviour, IDragHandler, IEndDragHandler
     private Vector2 fingerDownPosition;
     private Vector2 fingerUpPosition;
 
-    private float swipeLength = 0.1f;
+    private float swipeLength = 0.5f;
 
     private void Awake()
     {

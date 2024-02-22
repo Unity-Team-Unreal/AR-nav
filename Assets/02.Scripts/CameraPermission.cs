@@ -13,7 +13,6 @@ public class CameraPermission : MonoBehaviour
     {
         // 카메라 권한 요청
         StartCoroutine(CheckCameraPermission());
-
     }
 
     IEnumerator CheckCameraPermission()
