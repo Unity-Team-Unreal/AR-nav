@@ -34,7 +34,6 @@ public class POIDataRequest : MonoBehaviour
     void Start()
     {
         StartCoroutine(RequestPOI());
-        TestServer();
     }
 
     IEnumerator RequestPOI()
@@ -64,6 +63,7 @@ public class POIDataRequest : MonoBehaviour
             string[] rows = json.Split('\n');
             for (int i = 0; i < rows.Length; i++)
             {
+                Debug.Log(rows[i]);
                 string[] columns = rows[i].Split('\t');
 
                 foreach (string column in columns)
@@ -102,6 +102,9 @@ public class POIDataRequest : MonoBehaviour
                 datas2 = columns;
             }
         }
+
+
+        TestServer();
     }
 
     void TestServer()
