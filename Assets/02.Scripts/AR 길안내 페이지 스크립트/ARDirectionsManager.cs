@@ -5,75 +5,44 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Android;
 using UnityEngine.UI;
-using UnityEngine.XR.ARFoundation;
 
-public class ARDirectionsManager : MonoBehaviour
+/// <summary>
+/// 특정 좌표 주위에 도달하면 꺼져있던 UI가 켜지는 기능 구현
+/// </summary>
+public class ARDirectionsManager : GPS
 {
-    bool isFirst = false;
-
     [SerializeField] double[] lats;
     [SerializeField] double[] longs;
 
-    [SerializeField] Button pOILocationInformationButton;
+    ARDirectionUIManager arUIManager;
 
-    IEnumerator Start()
+    public Text test_text; // 삭제 가능
+    public Text test2_text; // 삭제 가능
+
+    void Awake()
     {
-        while (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
-        {
-            yield return null;
-            Permission.RequestUserPermission(Permission.FineLocation);
-        }
-        if (!Input.location.isEnabledByUser)
-        {
-            Debug.Log("Location not enabled on device or app does not have permission to access location");
-            yield break;
-        }
-        Input.location.Start(10, 1);
-
-        int maxWait = 20;
-        while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0)
-        {
-            yield return new WaitForSeconds(1);
-            maxWait--;
-        }
-
-        if (maxWait < 1)
-        {
-            Debug.Log("Timed out");
-            yield break;
-        }
-
-        if (Input.location.status == LocationServiceStatus.Failed)
-        {
-            Debug.LogError("Unable to determine device location");
-            yield break;
-        }
-        else
-        {
-            Debug.Log("Location: " + Input.location.lastData.latitude + " " + Input.location.lastData.longitude + " " + Input.location.lastData.altitude + " " + Input.location.lastData.horizontalAccuracy + " " + Input.location.lastData.timestamp);
-
-        }
-
-        //Input.location.Stop();
+        arUIManager = GetComponent<ARDirectionUIManager>();
+        Request();
     }
 
+    float myLat = 0f;
+    float myLong = 0f;
     void Update()
     {
-        if (Input.location.status == LocationServiceStatus.Running)
+        test();
+    }
+
+    void test()
+    {
+        if (GetMyLocation(ref myLat, ref myLong))
         {
-            double myLat = Input.location.lastData.latitude;
-            double myLong = Input.location.lastData.longitude;
+            test2_text.text = $"{myLat}, {myLong}";
 
             double remainDistance = Distance(myLat, myLong, lats[0], longs[0]);
 
-            if (remainDistance <= 10f) // 10m
-            {
-                if (!isFirst)
-                {
-                    isFirst = true;
-                    pOILocationInformationButton.gameObject.SetActive(true);
-                }
-            }
+            test_text.text = $"목표와의 거리 : {remainDistance}";
+
+            arUIManager.OnPOIButton(remainDistance <= 30f) ;
         }
     }
 
@@ -91,7 +60,6 @@ public class ARDirectionsManager : MonoBehaviour
         dist = dist * 60 * 1.1515;
 
         dist = dist * 1609.344; // 미터 변환
-
         return dist;
     }
 

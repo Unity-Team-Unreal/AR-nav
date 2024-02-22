@@ -165,7 +165,7 @@ PlayerSettings:
     tvOS: 0
   overrideDefaultApplicationIdentifier: 0
   AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 30
+  AndroidMinSdkVersion: 24
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
   aotOptions: 
@@ -840,11 +840,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: f87c6c01-1c8b-4b28-b612-61c123afda6b
+  cloudProjectId: ab5b16ff-b349-41b6-b760-6ed5bf3ab4e5
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: AR_Nav_Teamproject (1)
-  organizationId: jjunnnnnngtae
+  projectName: AR_Nav_Teamproject (2)
+  organizationId: sn000
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

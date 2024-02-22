@@ -12,11 +12,15 @@ public class ARDirectionUIManager : MonoBehaviour
 
     [SerializeField] GameObject couponInformationPopupPanel;
 
+    public Text test3_text; // 삭제 가능
+
     void Start()
     {
         operationEndsButton.onClick.AddListener(OnOperationEnds);
         pOILocationInformationButton.onClick.AddListener(OnPOILocationInformation);
         popupEscapeButton.onClick.AddListener(OnPopupEscape);
+
+        pOILocationInformationButton.gameObject.SetActive(false);
     }
 
     void OnOperationEnds()
@@ -36,4 +40,17 @@ public class ARDirectionUIManager : MonoBehaviour
         pOILocationInformationButton.gameObject.SetActive(true);
     }
 
+    public void OnPOIButton(bool test)
+    {
+        if (test)
+        {
+            test3_text.text = "된다";
+            pOILocationInformationButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            test3_text.text = "안 된다";
+            pOILocationInformationButton.gameObject.SetActive(false);
+        }
+    }
 }
