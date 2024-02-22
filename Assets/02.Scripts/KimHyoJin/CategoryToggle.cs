@@ -8,8 +8,11 @@ using UnityEngine.UI;
 
 public class CategoryToggle : MonoBehaviour
 {
+    /// <summary>
+    /// 화면 하단의 카테고리 바를 눌렀을 때 카테고리 상태(SellectCategory.state)를 변경하는 스크립트
+    /// </summary>
     ToggleGroup group;
-    Toggle activedToggle;
+    Toggle activedToggle;   //현재 켜져있는 토글
     private void Start()
     {
         group = gameObject.GetComponent<ToggleGroup>();
@@ -19,10 +22,10 @@ public class CategoryToggle : MonoBehaviour
     {
         if (activedToggle == group.GetFirstActiveToggle()) return;   //토글의 OnValueChanged 때문에 메서드가 두번 호출되는 것을 막기 위함
 
-        activedToggle = group.GetFirstActiveToggle();
+        activedToggle = group.GetFirstActiveToggle();   //현재 켜져있는 토글을 토글 그룹에서 활성화된 토글로 지정
 
-        switch (group.GetFirstActiveToggle().name) 
-            {
+        switch (group.GetFirstActiveToggle().name) //선택한 토글에 따라 CategoryState 변경
+        {
                 case "Bottom_All":
                     SellectCategory.state = CategoryState.All;
                     break;
@@ -35,7 +38,7 @@ public class CategoryToggle : MonoBehaviour
                 case "Bottom_Photozone":
                     SellectCategory.state = CategoryState.Photozone;
                     break;
-            } //선택한 카테고리에 따라 카테고리 CategoryState 변경
+            } 
     }
 
 
