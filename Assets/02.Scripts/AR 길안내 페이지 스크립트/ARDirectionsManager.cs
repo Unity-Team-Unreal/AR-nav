@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Android;
-using UnityEngine.UI;
-using UnityEngine.XR.ARFoundation;
 
+/// <summary>
+/// 특정 좌표 주위에 도달하면 꺼져있던 UI가 켜지는 기능 구현
+/// </summary>
 public class ARDirectionsManager : MonoBehaviour
 {
     bool isFirst = false;
@@ -14,7 +15,7 @@ public class ARDirectionsManager : MonoBehaviour
     [SerializeField] double[] lats;
     [SerializeField] double[] longs;
 
-    [SerializeField] Button pOILocationInformationButton;
+    ARDirectionUIManager arUIManager;
 
     IEnumerator Start()
     {
@@ -71,8 +72,13 @@ public class ARDirectionsManager : MonoBehaviour
                 if (!isFirst)
                 {
                     isFirst = true;
-                    pOILocationInformationButton.gameObject.SetActive(true);
+                    arUIManager.POILocationInformationButton.gameObject.SetActive(true);
                 }
+            }
+            else
+            {
+                isFirst = false;
+                arUIManager.POILocationInformationButton.gameObject.SetActive(false);
             }
         }
     }

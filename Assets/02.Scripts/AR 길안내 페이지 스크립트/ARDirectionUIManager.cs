@@ -12,6 +12,12 @@ public class ARDirectionUIManager : MonoBehaviour
 
     [SerializeField] GameObject couponInformationPopupPanel;
 
+    public Button POILocationInformationButton
+    {
+        get { return pOILocationInformationButton; }
+        set { pOILocationInformationButton = value; }
+    }
+
     void Start()
     {
         operationEndsButton.onClick.AddListener(OnOperationEnds);
