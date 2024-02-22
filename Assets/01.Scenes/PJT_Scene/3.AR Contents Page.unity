@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -784,7 +784,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5342040734450512651, guid: 827955cf4b867af4085389fbcc25d636, type: 3}
       propertyPath: previousSceneName
-      value: 1.Home
+      value: 1.Home Page
       objectReference: {fileID: 0}
     - target: {fileID: 8474124459550089234, guid: 827955cf4b867af4085389fbcc25d636, type: 3}
       propertyPath: m_Pivot.x
@@ -2067,8 +2067,8 @@ MonoBehaviour:
   Docentimage: []
   Photo_floder: Photoimage
   Docent_floder: Docentimage
-  photozone: {fileID: 11400000, guid: 50f597fd5bb6a51429abdbf398e67551, type: 2}
-  Docent: {fileID: 11400000, guid: d6e892f606e662d4b9df6e59bd144a69, type: 2}
+  photozone: {fileID: 11400000, guid: f8884a2c12e0a184993ff3a396662185, type: 2}
+  Docent: {fileID: 11400000, guid: 90fedf261a3524146b70a5ee42501908, type: 2}
   contentsDataPfb: {fileID: 6486758063497948400, guid: a955d6d76295e1246ba994a407b080a8, type: 3}
   PhotoscrollViewContent: {fileID: 2072987531}
   Docentscrolltransform: {fileID: 1721814185}

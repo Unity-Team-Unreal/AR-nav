@@ -2,18 +2,23 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
+
 
 public class POIPrefabs : MonoBehaviour
 {
     public TMP_Text contentsNameText; // UI 요소
     public TMP_Text descriptionText; // UI 요소
     public Image poiImage; // UI 요소
-
     private ContentsData _contentsData; // 프리팹이 가지고 있는 데이터
+    
+    
+
 
     public void Init(ContentsData contentsData)
     {
         _contentsData = contentsData;
+        //Type = _contentsPOI.type;
 
         // UI 요소에 데이터 할당
         contentsNameText.text = _contentsData.contentsname;
@@ -32,11 +37,18 @@ public class POIPrefabs : MonoBehaviour
 
     // 프리팹 클릭 시 이벤트
     public void OnClick()
-    {
+    { 
         // 클릭된 데이터를 DataManager에 저장
         DataManager.Instance.contentsData = _contentsData;
+        
+        if (_contentsData.number == 2)
+        {
+            SceneManager.LoadScene("3_1.AR Contents Detail Page");
+        }
+        else
+        {
+            SceneManager.LoadScene("3_2.AR Contents Detail Page");
+        }
 
-        Debug.Log("클릭됨");
-        SceneManager.LoadScene("3-1.AR 체험존 상세페이지");
     }
 }
