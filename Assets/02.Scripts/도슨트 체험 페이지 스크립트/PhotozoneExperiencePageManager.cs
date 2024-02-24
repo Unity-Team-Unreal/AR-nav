@@ -6,19 +6,17 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 
-/// <summary>
-/// 도슨트 체험 페이지의 도슨트 촬영 화면 구현
-/// 도슨트 촬영 화면은 Image Detection을 이용하여 3D 오브젝트를 구현
-/// </summary>
+
 public class PhotozoneExperiencePageManager : MonoBehaviour
 {
     ARTrackedImageManager imageManager;
 
     void Awake()
     {
-        imageManager = GetComponent<ARTrackedImageManager>();
 
+        imageManager = GetComponent<ARTrackedImageManager>();
         imageManager.trackedImagesChanged += OnImageTrackedEvent;
+
     }
 
     void OnImageTrackedEvent(ARTrackedImagesChangedEventArgs arg)
