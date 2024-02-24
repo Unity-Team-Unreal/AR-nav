@@ -12,22 +12,22 @@ EditorBuildSettings:
     path: Assets/01.Scenes/PJT_Scene/1.Home Page.unity
     guid: a90186c659956214984892f3063f8528
   - enabled: 0
-    path: Assets/01.Scenes/PJT_Scene/2.AR Navigation Page.unity
+    path: Assets/01.Scenes/PJT_Scene/1_1.AR Navigation Page.unity
     guid: 2df5e7b5b9235a44eb5102b9136a61b2
   - enabled: 0
-    path: Assets/01.Scenes/PJT_Scene/3.AR Contents Page.unity
+    path: Assets/01.Scenes/PJT_Scene/1_3.AR Contents Page.unity
     guid: 0fa1c50aa147e174bb33782de02a3a87
   - enabled: 0
-    path: Assets/01.Scenes/PJT_Scene/4.Timemuchine Page.unity
+    path: Assets/01.Scenes/PJT_Scene/1_2.Smart senior center Page.unity
     guid: 843f6b6b95017a047b28e768af65c13a
   - enabled: 0
-    path: Assets/01.Scenes/PJT_Scene/5.Sliver Service Page.unity
+    path: Assets/01.Scenes/PJT_Scene/1_4.VR Experience Page.unity
     guid: 93cb3c56b65fd8a4090ddd93bfa48a3a
   - enabled: 0
-    path: Assets/01.Scenes/PJT_Scene/3_1.AR Contents Detail Page.unity
+    path: Assets/01.Scenes/PJT_Scene/1_3_1.AR Contents Detail Page.unity
     guid: 64182bfafe465bb44953378368a6df44
   - enabled: 0
-    path: Assets/01.Scenes/PJT_Scene/3_2.AR Contents Detail Page.unity
+    path: Assets/01.Scenes/PJT_Scene/1_3_2.AR Contents Detail Page.unity
     guid: f53dbf4b61e298c4ba6b963bc77e3a24
   - enabled: 0
     path: "Assets/01.Scenes/\uB3C4\uC2A8\uD2B8 \uCCB4\uD5D8 \uD398\uC774\uC9C0.unity"

@@ -13,10 +13,8 @@ public class PhotozoneExperiencePageManager : MonoBehaviour
 
     void Awake()
     {
-
         imageManager = GetComponent<ARTrackedImageManager>();
         imageManager.trackedImagesChanged += OnImageTrackedEvent;
-
     }
 
     void OnImageTrackedEvent(ARTrackedImagesChangedEventArgs arg)
@@ -57,4 +55,5 @@ public class PhotozoneExperiencePageManager : MonoBehaviour
     {
         imageManager.trackedImagesChanged -= OnImageTrackedEvent;
     }
+
 }

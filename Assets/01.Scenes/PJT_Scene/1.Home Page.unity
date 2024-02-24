@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 18, y: 0}
-  m_SizeDelta: {x: 155, y: 70}
+  m_AnchoredPosition: {x: 50, y: 0}
+  m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &29357666
 MonoBehaviour:
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "(AR \uB0B4\uBE44\uAC8C\uC774\uC158)"
+  m_text: "\uB178\uB798\uAD50\uC2E4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e59d942860f86e0489bb4c2c5da60cf2, type: 2}
   m_sharedMaterial: {fileID: 5094387424940840064, guid: e59d942860f86e0489bb4c2c5da60cf2, type: 2}
@@ -208,8 +208,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 13
-  m_fontSizeBase: 13
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -293,8 +293,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 18, y: 70}
-  m_SizeDelta: {x: 155, y: 100}
+  m_AnchoredPosition: {x: 50, y: 230}
+  m_SizeDelta: {x: 400, y: 200}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &67227205
 MonoBehaviour:
@@ -316,7 +316,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC2DC\uAC04\uC5EC\uD589"
+  m_text: "AR \uCCB4\uD5D8\uC874\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e59d942860f86e0489bb4c2c5da60cf2, type: 2}
   m_sharedMaterial: {fileID: 5094387424940840064, guid: e59d942860f86e0489bb4c2c5da60cf2, type: 2}
@@ -343,13 +343,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
   m_fontSizeMax: 0
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 1024
   m_textAlignment: 65535
@@ -429,8 +429,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -15}
-  m_SizeDelta: {x: 170, y: 170}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &277752412
 MonoBehaviour:
@@ -561,8 +561,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 18, y: 0}
-  m_SizeDelta: {x: 155, y: 70}
+  m_AnchoredPosition: {x: 50, y: 0}
+  m_SizeDelta: {x: 400, y: 230}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &295863074
 MonoBehaviour:
@@ -584,7 +584,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB178\uB798\uAD50\uC2E4"
+  m_text: "VR \uB4DC\uB77C\uB9C8(\uACFC\uAC70)\nVR \uC0B0\uCC45(\uD604\uC7AC)\nVR
+    \uC544\uCE74\uC774\uBE0C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e59d942860f86e0489bb4c2c5da60cf2, type: 2}
   m_sharedMaterial: {fileID: 5094387424940840064, guid: e59d942860f86e0489bb4c2c5da60cf2, type: 2}
@@ -611,8 +612,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 13
-  m_fontSizeBase: 13
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -623,7 +624,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 20.66
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -696,8 +697,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 18, y: 70}
-  m_SizeDelta: {x: 155, y: 100}
+  m_AnchoredPosition: {x: 50, y: 230}
+  m_SizeDelta: {x: 400, y: 200}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &375812514
 MonoBehaviour:
@@ -719,7 +720,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC2E4\uBC84 \uC11C\uBE44\uC2A4"
+  m_text: "VR \uCCB4\uD5D8\uC874"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e59d942860f86e0489bb4c2c5da60cf2, type: 2}
   m_sharedMaterial: {fileID: 5094387424940840064, guid: e59d942860f86e0489bb4c2c5da60cf2, type: 2}
@@ -746,13 +747,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
   m_fontSizeMax: 0
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 1024
   m_textAlignment: 65535
@@ -833,7 +834,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &455246968
 MonoBehaviour:
@@ -984,8 +985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleFactor: 4
-  AutosizeText:
-  - {fileID: 1933728197}
+  AutosizeText: []
 --- !u!1 &508908556
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,7 +1002,7 @@ GameObject:
   - component: {fileID: 508908564}
   - component: {fileID: 508908565}
   m_Layer: 5
-  m_Name: AR_Button
+  m_Name: Smart senior center_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1017,7 +1017,7 @@ RectTransform:
   m_GameObject: {fileID: 508908556}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 611413127}
@@ -1028,7 +1028,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 171, y: 250}
+  m_SizeDelta: {x: 450, y: 680}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &508908559
 MonoBehaviour:
@@ -1195,7 +1195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -160}
+  m_AnchoredPosition: {x: 0, y: -140}
   m_SizeDelta: {x: 320, y: 140}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &527399635
@@ -1330,7 +1330,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -203.5}
+  m_AnchoredPosition: {x: 0, y: -240}
   m_SizeDelta: {x: 856.82, y: 214.21}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &527877456
@@ -1386,7 +1386,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -1555,11 +1555,11 @@ MonoBehaviour:
   - button: {fileID: 1318747609}
     sceneName: KimHyoJin
   - button: {fileID: 508908565}
-    sceneName: 3.AR Contents Page
+    sceneName: 1_2.Smart senior center Page
   - button: {fileID: 2104057255}
-    sceneName: 4.Timemuchine Page
+    sceneName: 1_3.AR Contents Page
   - button: {fileID: 1924310077}
-    sceneName: 5.Sliver Service Page
+    sceneName: 1_4.VR Experience Page
 --- !u!1 &605001293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1631,8 +1631,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 18, y: 70}
-  m_SizeDelta: {x: 155, y: 100}
+  m_AnchoredPosition: {x: 50, y: 100}
+  m_SizeDelta: {x: 400, y: 300}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &611413128
 MonoBehaviour:
@@ -1654,7 +1654,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "AR \uCCB4\uD5D8\uC874"
+  m_text: "\uC2A4\uB9C8\uD2B8\n\uACBD\uB85C\uB2F9"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e59d942860f86e0489bb4c2c5da60cf2, type: 2}
   m_sharedMaterial: {fileID: 5094387424940840064, guid: e59d942860f86e0489bb4c2c5da60cf2, type: 2}
@@ -1681,13 +1681,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
   m_fontSizeMax: 0
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 1024
   m_textAlignment: 65535
@@ -1860,8 +1860,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 18, y: 70}
-  m_SizeDelta: {x: 155, y: 100}
+  m_AnchoredPosition: {x: 50, y: 100}
+  m_SizeDelta: {x: 400, y: 200}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &784910445
 MonoBehaviour:
@@ -1910,13 +1910,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
   m_fontSizeMax: 0
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 1024
   m_textAlignment: 65535
@@ -2087,7 +2087,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -160}
+  m_AnchoredPosition: {x: 0, y: -140}
   m_SizeDelta: {x: 320, y: 140}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1051661533
@@ -2222,8 +2222,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 18, y: 0}
-  m_SizeDelta: {x: 155, y: 70}
+  m_AnchoredPosition: {x: 50, y: 0}
+  m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1159505292
 MonoBehaviour:
@@ -2272,8 +2272,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 13
-  m_fontSizeBase: 13
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -2359,8 +2359,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: -175}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1318747600
 GameObject:
@@ -2378,7 +2378,7 @@ GameObject:
   - component: {fileID: 1318747608}
   - component: {fileID: 1318747609}
   m_Layer: 5
-  m_Name: "\uAE38\uCC3E\uAE30_Button"
+  m_Name: Navigation_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2393,7 +2393,7 @@ RectTransform:
   m_GameObject: {fileID: 1318747600}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 784910444}
@@ -2404,7 +2404,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 171, y: 250}
+  m_SizeDelta: {x: 450, y: 680}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1318747603
 MonoBehaviour:
@@ -2435,7 +2435,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.35
 --- !u!222 &1318747604
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2571,7 +2571,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -160, y: 230}
+  m_AnchoredPosition: {x: -110, y: 180}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 0}
 --- !u!1 &1764657187
@@ -2708,14 +2708,13 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 527877455}
-  - {fileID: 1924728135}
   m_Father: {fileID: 505816256}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -150}
-  m_SizeDelta: {x: 180, y: 180}
+  m_AnchoredPosition: {x: 0, y: -265}
+  m_SizeDelta: {x: 240, y: 240}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1902011217
 MonoBehaviour:
@@ -2839,7 +2838,7 @@ GameObject:
   - component: {fileID: 1924310076}
   - component: {fileID: 1924310077}
   m_Layer: 5
-  m_Name: "\uC2E4\uBC84\uC11C\uBE44\uC2A4_Button"
+  m_Name: VRExperience_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2854,7 +2853,7 @@ RectTransform:
   m_GameObject: {fileID: 1924310068}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 375812513}
@@ -2865,7 +2864,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 171, y: 250}
+  m_SizeDelta: {x: 450, y: 680}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1924310071
 MonoBehaviour:
@@ -2997,42 +2996,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &1924728134
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1924728135}
-  m_Layer: 5
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1924728135
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924728134}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1902011216}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1933728195
 GameObject:
   m_ObjectHideFlags: 0
@@ -3068,8 +3031,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 18, y: 0}
-  m_SizeDelta: {x: 155, y: 70}
+  m_AnchoredPosition: {x: 50, y: 0}
+  m_SizeDelta: {x: 400, y: 230}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1933728197
 MonoBehaviour:
@@ -3091,8 +3054,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "VR \uB4DC\uB77C\uB9C8 (\uACFC\uAC70)\nVR\uC0B0\uCC45 (\uD604\uC7AC)\n3D
-    \uC870\uAC10\uB3C4 (\uBBF8\uB798)"
+  m_text: "\uD3EC\uD1A0\uC874/\uB3C4\uC2A8\uD2B8"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e59d942860f86e0489bb4c2c5da60cf2, type: 2}
   m_sharedMaterial: {fileID: 5094387424940840064, guid: e59d942860f86e0489bb4c2c5da60cf2, type: 2}
@@ -3119,8 +3081,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 13
-  m_fontSizeBase: 13
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 1.57
@@ -3185,7 +3147,7 @@ GameObject:
   - component: {fileID: 2104057254}
   - component: {fileID: 2104057255}
   m_Layer: 5
-  m_Name: "\uC2DC\uAC04\uC5EC\uD589_Button"
+  m_Name: ARExperience_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3200,7 +3162,7 @@ RectTransform:
   m_GameObject: {fileID: 2104057246}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 67227204}
@@ -3211,7 +3173,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 171, y: 250}
+  m_SizeDelta: {x: 450, y: 680}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &2104057249
 MonoBehaviour:
@@ -3379,7 +3341,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 160, y: 230}
+  m_AnchoredPosition: {x: 120, y: 180}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &2143412651
