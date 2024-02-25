@@ -41,10 +41,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/01.Scenes/PhotoZoneDocument.unity
     guid: 82b2f8f1389502644b8d489d6a2fa75e
-  - enabled: 0
+  - enabled: 1
     path: Assets/01.Scenes/PJT_Scene/PJT_AR_LeafEffect/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/03.Prefabs/Cartoon Cat/Cartoon Cat.unity
     guid: 8e64fa02faa950a4ea21df03f406f41f
   m_configObjects:
