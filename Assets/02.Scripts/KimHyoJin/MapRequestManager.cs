@@ -27,12 +27,12 @@ public class MapRequestManager : MonoBehaviour
     [Header("지도정보")]
     int width = 360;
     int height = 800;
-    float []latitude;
-    float []longitude;
-    int MapSizeLevel=17;
+     float latitude=0f;
+     float longitude=0f;
+    [SerializeField]int MapSizeLevel=17;
 
     [Header("GPS를 받기 위한 정보")]
-    GPS gps;
+     GPS gps;
 
 
     MarkerInstantiate markerInstantiate;
@@ -45,8 +45,6 @@ public class MapRequestManager : MonoBehaviour
         gps.Request();  //GPS 클래스의 request 메서드를 호출. 사용자에게서 GPS 권한을 받아오고 수락시 location service 실행
         MapSizeLevel = Mathf.Clamp(MapSizeLevel, 1, 20);    //지도의 확대 레벨을 1~20 사이로 제한
 
-        latitude = new float[POI.datalist.Count];
-        longitude = new float[POI.datalist.Count];
     }
 
 
@@ -59,44 +57,29 @@ public class MapRequestManager : MonoBehaviour
         yield return new WaitUntil(() => POI.datalist.Count > 0);   //POI 데이터를 받아올 때 까지 대기
 
 
-        latitude = new float[POI.datalist.Count];
-        longitude = new float[POI.datalist.Count];
-
-        if (!gps.GetMyLocation(ref latitude[0], ref longitude[0]))     //GPS를 받아올 수 있다면 위도, 경도를 현재 위치로 설정
+        if (!gps.GetMyLocation(ref latitude, ref longitude))     //GPS를 받아올 수 있다면 위도, 경도를 현재 위치로 설정
         {
-            latitude[0] = 37.466480f;
-            longitude[0] = 126.657566f;     //그렇지 않다면 재물포역으로
+            latitude = 37.466480f;
+            longitude = 126.657566f;     //그렇지 않다면 재물포역으로
+
+            latitude = 37.713670f;
+            longitude = 126.743557f;    //테스트용 경인개
+        }
+
+
+        string markerRequestAPI = "";
+
+        for (int i = 0; i < POI.datalist.Count; i++)    //POI datalist 리스트를 불러와 마커 배치
+        {
+            markerInstantiate.MarkerMake(i, width, height, MapSizeLevel, latitude, longitude, POI.datalist[i]) ;
+            markerRequestAPI += $"&markers=type:d|size:mid|color:red|pos:{POI.datalist[i].Longitude()}%20{POI.datalist[i].Latitude()}";
         }
 
 
 
-
-        /// 테스트용 위,경도 ///
-
-        latitude[0] = 37.466480f;
-        longitude[0] = 126.657566f;
-
-        latitude[1] = 37.467262f;
-        longitude[1] = 126.657732f;
-
-        latitude[2] = 37.466177f;
-        longitude[2] = 126.657768f;
-
-        /// 테스트용 위,경도 ///
-
-        for (int i = 0; i < POI.datalist.Count; i++)    //POI datalist 리스트의 위도 경도를 불러와 마커 배치
-        {
-            if (latitude[i] == 0) continue;
-            markerInstantiate.MarkerMake(width, height, MapSizeLevel, latitude[0], longitude[0], latitude[i], longitude[i]);
-        }
-
-
-
-
-        string APIrequestURL = mapBaseURL + $"?w={width}&h={height}&center={longitude[0]},{latitude[0]}&level={MapSizeLevel}" +
-            $"&markers=type:d|size:mid|pos:{longitude[0]}%20{latitude[0]}" +
-            $"&markers=type:d|size:mid|color:red|pos:{longitude[1]}%20{latitude[1]}" +
-            $"&markers=type:d|size:mid|color:red|pos:{longitude[2]}%20{latitude[2]}" +
+        string APIrequestURL = mapBaseURL + $"?w={width}&h={height}&center={longitude},{latitude}&level={MapSizeLevel}" +
+            $"&markers=type:d|size:mid|pos:{longitude}%20{latitude}" +
+            markerRequestAPI +
             $"&scale=2&format=png";     //지도 API를 받아오기 위한 요청
 
         UnityWebRequest req = UnityWebRequestTexture.GetTexture(APIrequestURL);     //요청한 API 지도 텍스처를 받아올 인스턴스
@@ -109,7 +92,7 @@ public class MapRequestManager : MonoBehaviour
 
         switch (req.result)     //받아오는데 성공시 종료. 실패할 경우 디버그로그(임시)로 실패원인 출력
         {
-            case UnityWebRequest.Result.Success: break;
+            case UnityWebRequest.Result.Success: yield break;
             case UnityWebRequest.Result.ConnectionError: Debug.Log("Connection Error"); yield break;
             case UnityWebRequest.Result.ProtocolError: Debug.Log("Protocol Error"); yield break;
             case UnityWebRequest.Result.DataProcessingError: Debug.Log("DataProcessing Error"); yield break;
@@ -117,5 +100,20 @@ public class MapRequestManager : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            MapSizeLevel--;
+            StartCoroutine(MapAPIRequest());
+        }
+
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            MapSizeLevel++;
+            StartCoroutine(MapAPIRequest());
+
+        }
+    }
 
 }

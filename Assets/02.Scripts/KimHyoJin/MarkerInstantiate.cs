@@ -14,13 +14,14 @@ public class MarkerInstantiate : MonoBehaviour
     [Header("마커 위치와 마커 프리펩")]
     Vector2 point = new();
     [SerializeField] GameObject Marker;
+    BubbleState MarkersbubbleState;
 
 
 
     
     //    마커를 생성하는 메서드.
-    //    매개변수 : (순서대로)화면 가로, 화면 세로, 지도 줌 레벨, 기준점 위도, 기준점 경도, 마커 위도, 마커 경도
-    public void MarkerMake(int width, int height, float Level, float latitude, float longitude, float latitude2 ,float longitude2)
+    //    매개변수 : (순서대로)화면 가로, 화면 세로, 지도 줌 레벨, 기준점 위도, 기준점 경도, POI데이터
+    public void MarkerMake(int num, int width, int height, float Level, float latitude, float longitude, POIData poidata)
     {
         {
 
@@ -30,30 +31,40 @@ public class MarkerInstantiate : MonoBehaviour
             float defaulte = 256f;      //기준 픽셀은 256이다.
 
             float widthPer = defaulte / width;
-            float heightPer = defaulte / height;
-
-            float inUnityPerPixel = widthPer * heightPer * perPixel;
+            float heightPer = defaulte / height;        //기준픽셀 나누기 지도 해상도
 
 
-            float distance = (float)distanceInKilometerByHaversine(latitude, longitude, latitude2, longitude2);
-            int bearing = bearingP1toP2(latitude, longitude, latitude2, longitude2);
-
-            Debug.Log(distance);
-            Debug.Log(bearing);
-
-            distance = distance / inUnityPerPixel;
-
-            Debug.Log(distance);
+            float inUnityPerPixel = widthPer * heightPer * perPixel;    //실제로 띄울 해상도의 픽셀당 미터값
 
 
-            Vector2 direction = new Vector2(Mathf.Sin(bearing * Mathf.Deg2Rad), Mathf.Cos(bearing * Mathf.Deg2Rad));
-            Debug.Log(direction);
+            float distance = (float)distanceInKilometerByHaversine(latitude, longitude, poidata.Latitude(), poidata.Longitude());     //기준점과 마커와의 실제 거리 재기
+            int bearing = bearingP1toP2(latitude, longitude, poidata.Latitude(), poidata.Longitude());    //기준점과 마커와의 방위각 재기
 
-            point = new Vector2(0, 0) + direction.normalized * 1000 * distance;
-            Debug.Log(point);
 
-            Marker = Instantiate(Marker, point, quaternion.identity);
-            Marker.transform.SetParent(GameObject.Find("StaticMapImage").transform, false);
+            distance = 1000 * distance / inUnityPerPixel;  // 실제 거리를 유니티 지도상에서 몇 픽셀만큼 그려야하는지
+
+
+            Vector2 direction = new Vector2(Mathf.Sin(bearing * Mathf.Deg2Rad), Mathf.Cos(bearing * Mathf.Deg2Rad));    //방위각을 이용해 마커가 놓일 방향을 정하기
+
+
+            point = new Vector2(0, 0) + direction.normalized *  distance;     //노멀라이즈로 방향만 정한 뒤, distance만큼 떨어진 거리에 마커를 띄운다.
+
+            if(GameObject.Find("Marker_" + num) == null)
+            {
+                Marker = Instantiate(Marker, point, quaternion.identity);
+                MarkersbubbleState = Marker.GetComponent<BubbleState>();
+                MarkersbubbleState.thisData = poidata;
+                MarkersbubbleState.MarkerStart();
+                Marker.name = "Marker_" + num;
+                Marker.transform.SetParent(GameObject.Find("StaticMapImage").transform, false);
+
+            }
+
+            else
+            {
+                GameObject.Find("Marker_" + num).transform.localPosition = point;
+            }
+
 
 
         }
