@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BackButton : MonoBehaviour
@@ -32,7 +31,7 @@ public class BackButton : MonoBehaviour
 
     void BackToHome()   //길찾기 화면에서 메인화면으로 가는 메서드
     {
-        SceneManager.LoadScene("1.Home Page");
+        Debug.Log("홈 화면으로 이동하는 씬 전환 코드");
     }   
 
     void BackToNav()    //상세설명 상자에서 마커 누르기 전으로 돌아가는 메서드
