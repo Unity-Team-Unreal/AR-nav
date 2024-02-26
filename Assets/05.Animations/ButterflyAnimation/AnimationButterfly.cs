@@ -8,11 +8,14 @@ public class AnimationButterfly : MonoBehaviour
 {
     private Animator animator; 
     private bool isFirstAnimationDone = false;
+    AnimationTrigger animationTrigger;
 
     // 오브젝트의 Animator 컴포넌트를 참조하는 함수
     void Awake()
     {
         animator = GetComponent<Animator>();
+        animationTrigger = GetComponent<AnimationTrigger>();
+
     }
 
     // AR 이미지 매칭으로 오브젝트가 생성될 때 호출되는 함수
@@ -40,11 +43,12 @@ public class AnimationButterfly : MonoBehaviour
             if (isFirstAnimationDone)
             {
                 Debug.Log("클릭");
-                AnimationTrigger animationTrigger = GetComponent<AnimationTrigger>();
                 animationTrigger.OnAnimationEnd();
             }
         }
     }
+
+    
 
     // 첫 번째 애니메이션이 끝났음을 알리는 함수 (애니메이션 이벤트에 의해 호출될 수 있습니다)
     public void OnFirstAnimationDone()

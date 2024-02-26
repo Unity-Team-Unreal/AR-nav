@@ -14,7 +14,7 @@ public class AnimationCat : MonoBehaviour
     void Awake()
     {
         Catmoveani = GetComponent<Animator>();
-        Stateanimator = Catmoveani.transform.Find("Cat").GetComponent<Animator>();
+        Stateanimator = Catmoveani.transform.Find("Cat Move").GetComponent<Animator>();
 
         if (Stateanimator != null)
         {
