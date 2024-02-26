@@ -11,22 +11,41 @@ public class PointDesBoxScript : MonoBehaviour
     /// <summary>
     /// 마커를 눌렀을 때 나오는 설명UI를 띄우기 위한 스크립트
     /// </summary>
-    [SerializeField]Text PointName;
-    [SerializeField]Text PointDescript;
-    Animator _animator;
-    [HideInInspector]public bool isActivate;    //설명UI 활성여부. 뒤로가기 버튼에서 참조할 것이기 때문에 public
+    [SerializeField]Text ponintAdress;
+    [SerializeField]Text pointName;
+    [SerializeField]Text pointDescript;
+    PathBoxScript pathbox;
 
-    void Awake()
+    DesImageScript DesBoxImage;
+
+    Button button;
+
+    Animator _animator; //애니메이션으로 UI의 움직임을 구현할 예정
+
+
+    public POIData data;
+
+    [HideInInspector] public bool pointDesIsActivate;   //길찾기중인지 확인, 뒤로가기 버튼에서 참조할 것이기 때문에 public
+
+     void Awake()
     {
+        pointDesIsActivate = false;
+
+        pathbox = FindObjectOfType<PathBoxScript>(). GetComponent<PathBoxScript>();
+
+        DesBoxImage = FindObjectOfType<DesImageScript>().GetComponent<DesImageScript>();
+
+        button = GetComponentInChildren<Button>();
         _animator = GetComponent<Animator>();
+        button.onClick.AddListener(pathbox.PathBoxActivate);
     }
-    public void DescriptionBoxActivate()    //설명UI 활성화
+    public  void DescriptionBoxActivate()    //설명UI 활성화
     {
-        isActivate = true;
-
-        PointName.text = POI.datalist[3].Name();
-        PointDescript.text = POI.datalist[3].Description();
-        //POI.datalist를 직접 받아오는 것은 임시이며 BubbleState스크립트에서 받아오도록 수정할 것.
+        pointDesIsActivate = true;
+       DesBoxImage. desBoxEneable();
+        ponintAdress.text = data.Address();
+        pointName.text = data.Name();
+        pointDescript.text = data.Description();
 
        _animator.Play("Play"); 
 
@@ -34,8 +53,8 @@ public class PointDesBoxScript : MonoBehaviour
 
     public void DescriptionBoxDeactivate()  //설명UI 비활성화
     {
-        isActivate = false;
-
+       DesBoxImage. desBoxDisable();
+        pointDesIsActivate = false;
         _animator.Play("Reverse");
     }
 }

@@ -393,8 +393,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 425695505}
+  - {fileID: 1716233816}
   - {fileID: 1448215087}
-  - {fileID: 2035258923}
   - {fileID: 945226095}
   - {fileID: 812761343}
   - {fileID: 556262725}
@@ -772,11 +772,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 35
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
-    m_MaxSize: 40
+    m_MinSize: 1
+    m_MaxSize: 300
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -875,19 +875,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 556262727}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 556262729}
-        m_TargetAssemblyTypeName: BackButton, Assembly-CSharp
-        m_MethodName: BackbuttonEvnet
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &556262727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -939,7 +927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointdesBox: {fileID: 812761348}
-  pathbox: {fileID: 945226100}
+  pathBox: {fileID: 945226100}
 --- !u!1 &560882324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1376,9 +1364,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8208a55a6cc22b149a888c3cae8288a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PointName: {fileID: 1298193217}
-  PointDescript: {fileID: 487582558}
-  isActivate: 0
+  ponintAdress: {fileID: 1330757739}
+  pointName: {fileID: 1298193217}
+  pointDescript: {fileID: 487582558}
+  pointDesIsActivate: 0
 --- !u!1 &868548270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,19 +1519,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 931768709}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 945226100}
-        m_TargetAssemblyTypeName: PathBoxScript, Assembly-CSharp
-        m_MethodName: PathBoxActivate
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &931768709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1721,9 +1698,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00cb0df52281b949b74d5dfdb9b1f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isActivate: 0
-  start: {fileID: 0}
-  goal: {fileID: 0}
+  start: {fileID: 560882326}
+  goal: {fileID: 2132592530}
+  pathBoxIsActivate: 0
 --- !u!1 &1036436364
 GameObject:
   m_ObjectHideFlags: 0
@@ -2653,6 +2630,92 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1672525819}
   m_CullTransparentMesh: 1
+--- !u!1 &1716233815
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1716233816}
+  - component: {fileID: 1716233818}
+  - component: {fileID: 1716233817}
+  - component: {fileID: 1716233819}
+  m_Layer: 5
+  m_Name: DescriptionImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1716233816
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716233815}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 226113443}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1716233817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716233815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.6745283, b: 0.6745283, a: 0.22745098}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 0}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1716233818
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716233815}
+  m_CullTransparentMesh: 1
+--- !u!114 &1716233819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716233815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2d5fb483a4ba6446b22617dbc39925d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1874553846
 GameObject:
   m_ObjectHideFlags: 0
@@ -2963,6 +3026,7 @@ MonoBehaviour:
   clientID: r2kal6fto4
   clientPW: hEidFWsoN8dBnqFCreezcSC5HEE1NuYMNTmboVNz
   MapImage: {fileID: 425695506}
+  MapSizeLevel: 15
 --- !u!114 &2005741238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2990,7 +3054,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25d4135737a3284429911c0cff0f20e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  POIwebURL: https://docs.google.com/spreadsheets/d/10GaozCAYllIZpwaNcOVs_IMyFdZO7P77DjIqR2mWiBY/edit#gid=0&range=A2:D5
+  POIwebURL: https://docs.google.com/spreadsheets/d/12Tqn4M1GYrbYsB8X-1fSUCQAk45D33LB5Rj7kckgG0g/gviz/tq?tqx=out:csv
+  POIsheetName: "sheet=POI\uC704\uCE58"
+  POIrange: range=A13:G17
 --- !u!114 &2005741240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3110,42 +3176,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &2035258922
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2035258923}
-  m_Layer: 5
-  m_Name: Marks
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2035258923
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2035258922}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 226113443}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2061717316
 GameObject:
   m_ObjectHideFlags: 0

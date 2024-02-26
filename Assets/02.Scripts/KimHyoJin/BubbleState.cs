@@ -18,23 +18,59 @@ public class BubbleState : MonoBehaviour
 
     [SerializeField] Mark thisMark; //이 마커 인스턴스의 종류
 
+    PointDesBoxScript desBox;
+    PathBoxScript pathBox;
+
+
     [Header("POI 데이터 정보")]
-    string pointName;
-    string pointDescription;
-    float pointLatituede;
-    float pointLongituede;
+
+    [HideInInspector]public POIData thisData;
 
     CategoryState lastState;    //카테고리 변경 여부를 확인하기 위해서
 
     private void Awake()
     {
+        desBox = GameObject.Find("PointDescriptionPage")
+            .GetComponent<PointDesBoxScript>();
+
+        pathBox = GameObject.Find("SerachPathBox")
+            .GetComponent<PathBoxScript>();
+
         image = GetComponent<Image>();
         button = GetComponent<Button>();
-        button.onClick.AddListener(GameObject.Find("PointDescriptionPage")
-            .GetComponent<PointDesBoxScript>().DescriptionBoxActivate);   //마커를 누르면 POI 상세 설명창이 올라온다.
+        button.onClick.AddListener(giveData);
+        button.onClick.AddListener(desBox.DescriptionBoxActivate);   //마커를 누르면 POI 상세 설명창이 올라온다.
 
         lastState = SellectCategory.state;  //현재 선택된 카테고리를 마지막 카테고리로 지정
 
+    }
+
+    void giveData()
+    {
+        pathBox.data = thisData;
+        desBox.data = thisData;
+    }
+
+    public void MarkerStart()
+    {
+        MarkerCategorySellect(thisData.Category());
+    }
+
+    void MarkerCategorySellect(string category) //POIdata 내의 카테고리에 따라 마커의 카테고리를 정하는 메서드
+    {
+
+        switch (category)
+        {
+            case "카페":
+                thisMark = Mark.Camera; break;
+            case "식당":
+                thisMark = Mark.Park; break;
+            case "공공장소":
+                thisMark= Mark.Subway; break;
+            default: thisMark = Mark.Dosent; break;
+        }
+
+        MarkImageSellect();
     }
 
     void MarkImageSellect()     //마커의 종류에 따라 이미지를 결정하는 메서드
@@ -62,12 +98,9 @@ public class BubbleState : MonoBehaviour
             case Mark.Camera:
                 thisState = CategoryState.Photozone; image.sprite = MarkImage[6];
                 break;
-        }
-    }
 
-    private void Start()
-    {
-        MarkImageSellect();
+        }
+
     }
 
     void Update()
@@ -81,7 +114,11 @@ public class BubbleState : MonoBehaviour
         //이 POI의 카테고리와 활성화된 카테고리가 동일 또는 모두 보기 카테고리라면 버튼 활성화
         if (SellectCategory.state != CategoryState.All)
         {
-            if (thisState != SellectCategory.state) button.interactable = false;
+            if (thisState != SellectCategory.state)
+            {
+                button.interactable = false;
+
+            }
 
             else button.interactable = true;
         }

@@ -10,21 +10,22 @@ public class BackButton : MonoBehaviour
     /// </summary>
 
     [SerializeField]PointDesBoxScript pointdesBox;   //POI 설명상자 스크립트를 받아온다.
-    [SerializeField]PathBoxScript pathbox;  //길찾기 상자 스크립트를 받아온다.
-
+    [SerializeField] PathBoxScript pathBox;   //POI 길찾기 상자 스크립트를 받아온다.
     Button button;
-    void Awake()
+
+    private void Awake()
     {
         button = GetComponent<Button>();
+      button.onClick.AddListener(BackbuttonEvnet);
     }
 
     public void BackbuttonEvnet()
     {
-        if (pathbox.isActivate)
+        if (pathBox.pathBoxIsActivate)
         {
             CancelSearching();
         }
-        if(pointdesBox.isActivate)  BackToNav();
+        if(pointdesBox.pointDesIsActivate)  BackToNav();
         else BackToHome();
     }  //설명상자가 올라와있을 때 누르면 설명상자 닫고 아니라면 홈화면으로 옮기기
 
@@ -38,8 +39,8 @@ public class BackButton : MonoBehaviour
         pointdesBox.DescriptionBoxDeactivate();
     }
 
-    void CancelSearching()  //상세설명 -> 출발지&목적지 UI 에서 마커 누르기 전으로 돌아가는 메서드
+    void CancelSearching()  //출발지&목적지 UI 에서 상세설명으로 돌아가는 메서드
     {
-        pathbox.PathBoxDeactivate();
+        pathBox.PathBoxDeactivate();
     }
 }
