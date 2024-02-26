@@ -1,53 +1,68 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
 
-/// <summary>
-/// 도슨트 체험 페이지의 도슨트 촬영 화면 구현
-/// 도슨트 촬영 화면은 Image Detection을 이용하여 3D 오브젝트를 구현
-/// </summary>
+[RequireComponent(typeof(ARTrackedImageManager))]
 public class PhotozoneExperiencePageManager : MonoBehaviour
 {
     ARTrackedImageManager imageManager;
 
-    void Awake()
+    private void Awake()
     {
         imageManager = GetComponent<ARTrackedImageManager>();
-
         imageManager.trackedImagesChanged += OnImageTrackedEvent;
     }
 
+    // 이미지 상태가 변경될 때 호출되는 메서드
     void OnImageTrackedEvent(ARTrackedImagesChangedEventArgs arg)
     {
-        foreach (ARTrackedImage trackedImage in arg.added)
-        {
-            string imageName = trackedImage.referenceImage.name;
+        HandleAddedImages(arg.added);
+        HandleUpdatedImages(arg.updated);
+        HandleRemovedImages(arg.removed);
+    }
 
+    // 새 이미지가 감지될 때 호출되는 메서드
+    void HandleAddedImages(List<ARTrackedImage> addedImages)
+    {
+        foreach (ARTrackedImage trackedImage in addedImages)
+        {
+            // 이미지 이름을 사용하여 3D 오브젝트를 로드하고 인스턴스화
+            string imageName = trackedImage.referenceImage.name;
             GameObject prefab = Resources.Load<GameObject>(imageName);
 
+            // 인스턴스화
             if (prefab != null)
             {
                 GameObject obj = Instantiate(prefab, trackedImage.transform.position, trackedImage.transform.rotation);
                 obj.transform.SetParent(trackedImage.transform);
             }
         }
+    }
 
-        foreach (ARTrackedImage trackedImage in arg.updated)
+    // 이미지가 추적될 때 호출되는 메서드
+    void HandleUpdatedImages(List<ARTrackedImage> updatedImages)
+    {
+        foreach (ARTrackedImage trackedImage in updatedImages)
         {
+            // 이미지가 추적될 때 3D 오브젝트의 위치 및 회전을 업데이트
             if (trackedImage.transform.childCount > 0)
             {
-                trackedImage.transform.GetChild(0).position = trackedImage.transform.position;
-                trackedImage.transform.GetChild(0).rotation = trackedImage.transform.rotation;
-                trackedImage.transform.GetChild(0).gameObject.SetActive(true);
+                Transform child = trackedImage.transform.GetChild(0);
+                child.position = trackedImage.transform.position;
+                child.rotation = trackedImage.transform.rotation;
+                child.gameObject.SetActive(true);
             }
         }
+    }
 
-        foreach (ARTrackedImage trackedImage in arg.removed)
+    // 이미지가 제거될 때 호출되는 메서드
+    void HandleRemovedImages(List<ARTrackedImage> removedImages)
+    {
+        foreach (ARTrackedImage trackedImage in removedImages)
         {
+            // 이미지가 제거될 때 3D 오브젝트를 숨김
             if (trackedImage.transform.childCount > 0)
             {
                 trackedImage.transform.GetChild(0).gameObject.SetActive(false);
@@ -55,7 +70,8 @@ public class PhotozoneExperiencePageManager : MonoBehaviour
         }
     }
 
-    void OnDisable()
+    private void OnDisable()
+    //비활성화시 호출되는 함수
     {
         imageManager.trackedImagesChanged -= OnImageTrackedEvent;
     }

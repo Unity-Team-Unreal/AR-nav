@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+//using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 /// <summary>
 /// 도슨트 체험 페이지의 버튼 및 AR 영상 슬라이드 구현
@@ -20,7 +22,7 @@ public class DocentExperiencePageButton : MonoBehaviour
 
     void Start()
     {
-        previousSceneName = PlayerPrefs.GetString("PreviousScene");
+        //previousSceneName = PlayerPrefs.GetString("PreviousScene");
 
         backButton.onClick.AddListener(OnBackPage);
         returnButton.onClick.AddListener(OnTimeLineReturn);
@@ -48,7 +50,8 @@ public class DocentExperiencePageButton : MonoBehaviour
     {
         // 바로 전에 있던 씬으로 이동 => 바로 전에 있던 씬의 이름을 가져와야 한다.
         SceneManager.LoadScene(previousSceneName);
-        PlayerPrefs.DeleteKey("PreviousScene");
+        //SceneManager.LoadScene("3_2.AR Contents Detail Page");
+        //PlayerPrefs.DeleteKey("PreviousScene");
     }
 
     void OnTimeLineReturn()
@@ -57,4 +60,5 @@ public class DocentExperiencePageButton : MonoBehaviour
         arDocent.Play("metarig|Walk", -1, 0f);
         docentTimeLine.value = 0;
     }
+
 }
