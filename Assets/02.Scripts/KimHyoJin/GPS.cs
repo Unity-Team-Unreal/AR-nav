@@ -16,12 +16,12 @@ public class GPS : MonoBehaviour
 
     public void Request(string permission = null)
     {
-        if (Permission.HasUserAuthorizedPermission(Permission.FineLocation)) startGPS();
+        if (UnityEngine.Android.Permission.HasUserAuthorizedPermission(UnityEngine.Android.Permission.FineLocation)) startGPS();
         else
         {
             PermissionCallbacks callbacks = new PermissionCallbacks();
             callbacks.PermissionGranted += Request;
-            Permission.RequestUserPermission(Permission.FineLocation, callbacks);
+            UnityEngine.Android.Permission.RequestUserPermission(UnityEngine.Android.Permission.FineLocation, callbacks);
         }
 
 
@@ -43,7 +43,7 @@ public class GPS : MonoBehaviour
 
     public bool GetMyLocation( ref float latitude, ref float longitude)
     {
-        if(!Permission.HasUserAuthorizedPermission(Permission.FineLocation)) return false;
+        if(!UnityEngine.Android.Permission.HasUserAuthorizedPermission(UnityEngine.Android.Permission.FineLocation)) return false;
 
         if (!locationService.isEnabledByUser) return false;
 

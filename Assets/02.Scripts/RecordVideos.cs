@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,7 +33,6 @@ public class RecordVideos : MonoBehaviour
     void Awake()
     {
         m_Session = GetComponent<ARSession>();
-        
     }
 
     static int GetRotation() => Screen.orientation switch
@@ -62,7 +63,7 @@ public class RecordVideos : MonoBehaviour
                 using (var config = new ArRecordingConfig(session))
                 {
                     string fileName = DateTime.Now.ToString("yyyyMMdd_HHmmss") + "ar-video.mp4";
-                    m_Mp4Path = Path.Combine("/storage/emulated/0/DCIM/AR-Nav", fileName);
+                    m_Mp4Path = Path.Combine(Application.persistentDataPath, fileName);
                     config.SetMp4DatasetFilePath(session, m_Mp4Path);
                     config.SetRecordingRotation(session, GetRotation());
                     subsystem.StartRecording(config);
