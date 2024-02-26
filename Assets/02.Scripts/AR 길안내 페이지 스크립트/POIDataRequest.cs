@@ -66,10 +66,6 @@ public class POIDataRequest : MonoBehaviour
                 Debug.Log(rows[i]);
                 string[] columns = rows[i].Split('\t');
 
-                foreach (string column in columns)
-                {
-                    Debug.Log("line : " + i + " : " + column);
-                }
                 datas1 = columns;
             }
         }
@@ -95,10 +91,6 @@ public class POIDataRequest : MonoBehaviour
             {
                 string[] columns = rows[i].Split('\t');
 
-                foreach (string column in columns)
-                {
-                    Debug.Log("line : " + i + " : " + column);
-                }
                 datas2 = columns;
             }
         }
