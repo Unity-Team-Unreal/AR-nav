@@ -155,7 +155,7 @@ MonoBehaviour:
   Session: {fileID: 0}
   SessionOrigin: {fileID: 0}
   CameraManager: {fileID: 0}
-  ARCoreExtensionsConfig: {fileID: 0}
+  ARCoreExtensionsConfig: {fileID: 11400000, guid: f4ebb84a3bfecc94a9c6fd82251eb1fe, type: 2}
   CameraConfigFilter: {fileID: 0}
 --- !u!4 &5966300
 Transform:
@@ -3450,9 +3450,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _altitudeOffset: NaN
-  _latitude: 37.7138
-  _longitude: 126.7436
-  _altitude: 77
+  _latitude: 37.713800000000006
+  _longitude: 126.74359999999999
+  _altitude: 76.99999999906868
   _altitudeType: 0
   _useEditorAltitudeOverride: 0
   _editorAltitudeOverride: 0

@@ -11,6 +11,8 @@ public class DocentExperiencePageButton : MonoBehaviour
 {
     static string previousSceneName;
 
+    public static Animator arDocent;
+
     [SerializeField] Button backButton;
     [SerializeField] Button returnButton;
 
@@ -23,12 +25,23 @@ public class DocentExperiencePageButton : MonoBehaviour
         backButton.onClick.AddListener(OnBackPage);
         returnButton.onClick.AddListener(OnTimeLineReturn);
     }
-        
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             OnBackPage();
+        }
+
+        if (DocentExperiencePageManager.obj != null)
+        {
+            // 현재 애니메이션 상태 정보 가져오기
+            AnimatorStateInfo stateInfo = arDocent.GetCurrentAnimatorStateInfo(0);
+
+            // 애니메이션의 정규화된 시간을 사용하여 슬라이더 값 설정
+            float normalizedTime = stateInfo.normalizedTime;
+
+            docentTimeLine.value = normalizedTime;
         }
     }
     void OnBackPage()
@@ -40,6 +53,8 @@ public class DocentExperiencePageButton : MonoBehaviour
 
     void OnTimeLineReturn()
     {
+        // 애니메이션을 초기화
+        arDocent.Play("metarig|Walk", -1, 0f);
         docentTimeLine.value = 0;
     }
 }

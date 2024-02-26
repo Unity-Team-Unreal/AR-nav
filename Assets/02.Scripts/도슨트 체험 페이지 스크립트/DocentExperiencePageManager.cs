@@ -16,6 +16,8 @@ public class DocentExperiencePageManager : MonoBehaviour
     ARTrackedImageManager imageManager;
     List<GameObject> objs = new List<GameObject>();
 
+    public static GameObject obj;
+
     void Awake()
     {
         imageManager = GetComponent<ARTrackedImageManager>();
@@ -36,6 +38,7 @@ public class DocentExperiencePageManager : MonoBehaviour
                 GameObject obj = Instantiate(prefab, trackedImage.transform.position, trackedImage.transform.rotation);
                 obj.name = imageName;
                 obj.transform.SetParent(trackedImage.transform);
+                DocentExperiencePageButton.arDocent = obj.GetComponent<Animator>();
                 objs.Add(obj);
             }
         }
@@ -55,7 +58,7 @@ public class DocentExperiencePageManager : MonoBehaviour
 
                 print(objs.Find(x => x.name == imageName));
 
-                GameObject obj = objs.Find(x => x.name == imageName);
+                obj = objs.Find(x => x.name == imageName);
 
                 obj.SetActive(false);
 
