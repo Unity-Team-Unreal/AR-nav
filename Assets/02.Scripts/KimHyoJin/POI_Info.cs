@@ -16,12 +16,13 @@ public struct POIData   //저장할 POI의 정보 구조체
     private int number;
     private string category;
     private string name;
-    private float latitude;
-    private float longitude;
+    private double latitude;
+    private double longitude;
     private string branch;
     private string address;
     private string description;
-    public POIData(int number, string category, string name, string branch, float latitude, float longtitude, string address, string description)
+    private string eventinformation;
+    public POIData(int number, string category, string name, string branch, double latitude, double longtitude, string address, string description, string eventinformation)
     {
         this.number = number;
         this.category = category;
@@ -31,15 +32,17 @@ public struct POIData   //저장할 POI의 정보 구조체
         this.address = address;
         this.latitude = latitude;
         this.longitude = longtitude;
+        this.eventinformation = eventinformation;
     }
     public int Number() => number;
     public string Category() => category;
     public string Name() => name;
     public string Branch() => branch;
-    public float Latitude() => latitude;
-    public float Longitude() => longitude;
+    public double Latitude() => latitude;
+    public double Longitude() => longitude;
     public string Address() => address;
     public string Description() =>description;
+    public string Eventinformation() =>eventinformation;
 }
 
 
@@ -86,23 +89,28 @@ public class POI_Info : MonoBehaviour
             if (i % 2 == 0)
             {
                 splited = jsonRow[i].Split(',');   // ,를 기준으로 분리
+                if (splited.Length > 1 && splited[1] == "") splited[1] = POI.datalist.Last().Category();    //카테고리의 셀이 병합된 상태라 ""로 나오는 때가 있어서 처리, 상세정보 2줄째 예외처리
+
             }
 
             else
             {
-                if (splited.Length>1 && splited[1]=="") splited[1] = POI.datalist.Last().Category();    //카테고리의 셀이 병합된 상태라 ""로 나오는 때가 있어서 처리, 상세정보 2줄째 예외처리
+                string[] desAndEvent = jsonRow[i].Split(',');   // ,를 기준으로 분리
 
 
                 if (int.TryParse(splited[0], out int splited_1)
-                    &&float.TryParse(splited[5], out float splited_2)
-                    && float.TryParse(splited[4], out float splited_3))   //POI 정보 데이터와 이외의 것을 걸러내기 위한 조건문
+                    &&double.TryParse(splited[5], out double splited_2)
+                    && double.TryParse(splited[4], out double splited_3))   //POI 정보 데이터와 이외의 것을 걸러내기 위한 조건문
                 {
-                    POI.datalist.Add(new POIData(splited_1, splited[1], splited[3], splited[6], splited_2, splited_3, splited[7], jsonRow[i]));    //분리한 POI데이터를 알맞게 분배하여 datalist에 POI데이터 생성
+                    POI.datalist.Add(new POIData(splited_1, splited[1], splited[3], splited[6], splited_2, splited_3, splited[7], desAndEvent[0], desAndEvent[1]));    //분리한 POI데이터를 알맞게 분배하여 datalist에 POI데이터 생성
 
                     Debug.Log(POI.datalist.Last().Number());
                     Debug.Log(POI.datalist.Last().Name());
                     Debug.Log(POI.datalist.Last().Address());
                     Debug.Log(POI.datalist.Last().Description());
+                    Debug.Log(POI.datalist.Last().Eventinformation());
+                    Debug.Log(POI.datalist.Last().Longitude());
+                    Debug.Log(POI.datalist.Last().Latitude());
                 }
             }
         }

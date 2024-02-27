@@ -24,8 +24,8 @@ public class PathBoxScript : MonoBehaviour
 
     [HideInInspector] public bool pathBoxIsActivate;    //설명UI 활성여부. 뒤로가기 버튼에서 참조할 것이기 때문에 public
 
-    float latitude=0f;
-    float longitude=0f;
+    double latitude =0f;
+    double longitude =0f;
 
 
      GPS gps;
