@@ -1,10 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LifecycleHandler : MonoBehaviour
 {
     private Animator animator;
     private bool firstAnimationDone = false;
+
 
     private void Awake()
     {
@@ -14,6 +16,7 @@ public class LifecycleHandler : MonoBehaviour
     private void Start()
     {
         animator.Play("FirstAnimation");
+        
     }
 
     public void OnFirstAnimationDone()
@@ -23,6 +26,7 @@ public class LifecycleHandler : MonoBehaviour
 
     private void Update()
     {
+        
         if (firstAnimationDone && Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
         {
             Debug.Log("Å¬¸¯");

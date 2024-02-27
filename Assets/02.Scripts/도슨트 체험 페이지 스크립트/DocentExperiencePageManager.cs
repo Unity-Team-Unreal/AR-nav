@@ -21,7 +21,6 @@ public class DocentExperiencePageManager : MonoBehaviour
     void Awake()
     {
         imageManager = GetComponent<ARTrackedImageManager>();
-
         imageManager.trackedImagesChanged += OnImageTrackedEvent;
     }
 
