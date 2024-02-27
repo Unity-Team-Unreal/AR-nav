@@ -43,17 +43,20 @@ public class ARDirectionUIManager : MonoBehaviour
         pOILocationInformationButton.gameObject.SetActive(true);
     }
 
-    public void OnPOIButton(bool test)
+    public void OnPOIButton(bool[] remainDistance)
     {
-        if (test)
+        for (int i = 0; i < remainDistance.Length; i++)
         {
-            test3_text.text = "된다";
-            pOILocationInformationButton.gameObject.SetActive(true);
-        }
-        else
-        {
-            test3_text.text = "안 된다";
-            pOILocationInformationButton.gameObject.SetActive(false);
+            if (remainDistance[i])
+            {
+                test3_text.text = "된다";
+                pOILocationInformationButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                test3_text.text = "안 된다";
+                pOILocationInformationButton.gameObject.SetActive(false);
+            }
         }
     }
 }

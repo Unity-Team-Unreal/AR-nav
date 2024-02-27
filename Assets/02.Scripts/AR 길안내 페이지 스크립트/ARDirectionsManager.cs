@@ -30,6 +30,7 @@ public class ARDirectionsManager : GPS
     }
 
     double[] remainDistance;
+    bool[] effectiveDistance;
     IEnumerator RequestPOI()
     {
         while (true)
@@ -38,6 +39,7 @@ public class ARDirectionsManager : GPS
             yield return null;
         }
         remainDistance = new double[POI.datalist.Count];
+        effectiveDistance = new bool[POI.datalist.Count];
         lats = new double[POI.datalist.Count];
         longs = new double[POI.datalist.Count];
         {
@@ -70,10 +72,11 @@ public class ARDirectionsManager : GPS
 
                     test_text.text = $"목표와의 거리 : {remainDistance[i]}";
 
-                    arUIManager.OnPOIButton(remainDistance[i] <= 10f);
+                    effectiveDistance[i] = remainDistance[i] <= 10f;
+                    arUIManager.OnPOIButton(effectiveDistance);
                 }
             }
-        }        
+        }
     }
 
     // 지표면 거리 계산 공식(하버사인 공식)
