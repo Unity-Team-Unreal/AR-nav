@@ -21,7 +21,7 @@ public class MarkerInstantiate : MonoBehaviour
     
     //    마커를 생성하는 메서드.
     //    매개변수 : (순서대로)화면 가로, 화면 세로, 지도 줌 레벨, 기준점 위도, 기준점 경도, POI데이터
-    public void MarkerMake(int num, int width, int height, float Level, float latitude, float longitude, POIData poidata)
+    public void MarkerMake(int num, int width, int height, float Level, double latitude, double longitude, POIData poidata)
     {
         {
 

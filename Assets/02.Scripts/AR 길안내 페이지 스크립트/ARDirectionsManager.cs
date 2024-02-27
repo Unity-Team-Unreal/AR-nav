@@ -25,8 +25,8 @@ public class ARDirectionsManager : GPS
         Request();
     }
 
-    float myLat = 0f;
-    float myLong = 0f;
+    double myLat = 0f;
+    double myLong = 0f;
     void Update()
     {
         test();

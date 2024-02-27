@@ -46,7 +46,7 @@ public class GPS : MonoBehaviour
 
     
 
-    public bool GetMyLocation( ref float latitude, ref float longitude)     //사용자의 위치정보를 받아와 참조 매개변수에 반환하는 스크립트
+    public bool GetMyLocation( ref double latitude, ref double longitude)     //사용자의 위치정보를 받아와 참조 매개변수에 반환하는 스크립트
     {
         if(!Permission.HasUserAuthorizedPermission(Permission.FineLocation)) return false;  //GPS 권한 거절시 false
 

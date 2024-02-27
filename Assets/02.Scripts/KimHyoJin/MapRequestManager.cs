@@ -27,8 +27,8 @@ public class MapRequestManager : MonoBehaviour
     [Header("지도정보")]
     int width = 360;
     int height = 800;
-     float latitude=0f;
-     float longitude=0f;
+    double latitude =0f;
+    double longitude =0f;
     [SerializeField]int MapSizeLevel=17;
 
     [Header("GPS를 받기 위한 정보")]
