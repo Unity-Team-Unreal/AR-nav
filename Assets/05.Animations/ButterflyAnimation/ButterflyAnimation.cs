@@ -15,18 +15,14 @@ public class ButterflyAnimation : MonoBehaviour
     {
         legacyAnimation.Play("Movebutterfly");
         StartCoroutine(CheckAnimationStatus());
-        StartCoroutine(ClickNextAnimation());
     }
 
-    private string ClickNextAnimation()
+    private void Update()
     {
-        while (true)
+        if (firstAnimationDone && Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
         {
-            if (firstAnimationDone && Input.GetMouseButtonDown(0))
-            {
-                Debug.Log("클릭");
-                StartCoroutine(PlaySecondAnimationAndDestroy());
-            }
+            Debug.Log("클릭");
+            StartCoroutine(PlaySecondAnimationAndDestroy());
         }
     }
 

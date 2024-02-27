@@ -18,21 +18,16 @@ public class CatHandler : MonoBehaviour
     {
         animator.Play("FirstAnimation");
         Stateanimator.Play("Walk");
-        StartCoroutine(ClickNextAnimation());
     }
 
-    private IEnumerator ClickNextAnimation()
+    private void Update()
     {
-        while (true)
+        if (firstAnimationDone && Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
         {
-            if (firstAnimationDone && Input.GetMouseButtonDown(0))
-            {
-                Debug.Log("클릭");
-                animator.Play("NextAnimation");
-                Stateanimator.SetTrigger("NextAnimation");
-                StartCoroutine(DestroyAfterAnimation());
-            }
-            yield return new WaitForSeconds(1);
+            Debug.Log("클릭");
+            animator.Play("NextAnimation");
+            Stateanimator.SetTrigger("NextAnimation");
+            StartCoroutine(DestroyAfterAnimation());
         }
     }
 
