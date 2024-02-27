@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -17,24 +18,28 @@ public class CatHandler : MonoBehaviour
     {
         animator.Play("FirstAnimation");
         Stateanimator.Play("Walk");
+        StartCoroutine(ClickNextAnimation());
+    }
+
+    private IEnumerator ClickNextAnimation()
+    {
+        while (true)
+        {
+            if (firstAnimationDone && Input.GetMouseButtonDown(0))
+            {
+                Debug.Log("클릭");
+                animator.Play("NextAnimation");
+                Stateanimator.SetTrigger("NextAnimation");
+                StartCoroutine(DestroyAfterAnimation());
+            }
+            yield return new WaitForSeconds(1);
+        }
     }
 
     public void OnFirstAnimationDone()
     {
         firstAnimationDone = true;
         Stateanimator.SetTrigger("StateChange");
-    }
-
-    private void Update()
-    {
-        // 마우스 클릭이나 터치 입력이 있을 때만 다음 애니메이션 트리거를 작동합니다.
-        if (firstAnimationDone && Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("클릭");
-            animator.Play("NextAnimation");
-            Stateanimator.SetTrigger("NextAnimation");
-            StartCoroutine(DestroyAfterAnimation());
-        }
     }
 
     private IEnumerator DestroyAfterAnimation()
