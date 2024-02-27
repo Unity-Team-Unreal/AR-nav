@@ -650,6 +650,7 @@ GameObject:
   - component: {fileID: 425695505}
   - component: {fileID: 425695507}
   - component: {fileID: 425695506}
+  - component: {fileID: 425695508}
   m_Layer: 5
   m_Name: StaticMapImage
   m_TagString: Untagged
@@ -712,6 +713,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 425695504}
   m_CullTransparentMesh: 1
+--- !u!114 &425695508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425695504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60f53a1ab6838f141beee69e82825c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSize: 1
+  maxSize: 10
+  ZoomSpeed: 5
+  MoveSpeed: 600
 --- !u!1 &487582556
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,8 +943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774b9f72cfe15154abaaa3697499c342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointdesBox: {fileID: 812761348}
-  pathBox: {fileID: 945226100}
+  MainSceneName: "\uBA54\uC778\uC52C\uC774\uB984\uC744 \uC801\uC73C\uC2DC\uC624"
 --- !u!1 &560882324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,7 +1383,6 @@ MonoBehaviour:
   ponintAdress: {fileID: 1330757739}
   pointName: {fileID: 1298193217}
   pointDescript: {fileID: 487582558}
-  pointDesIsActivate: 0
 --- !u!1 &868548270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,7 +1715,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 560882326}
   goal: {fileID: 2132592530}
-  pathBoxIsActivate: 0
 --- !u!1 &1036436364
 GameObject:
   m_ObjectHideFlags: 0
@@ -2988,6 +3002,7 @@ GameObject:
   - component: {fileID: 2005741239}
   - component: {fileID: 2005741240}
   - component: {fileID: 2005741241}
+  - component: {fileID: 2005741242}
   m_Layer: 0
   m_Name: NavManager
   m_TagString: Untagged
@@ -3026,7 +3041,7 @@ MonoBehaviour:
   clientID: r2kal6fto4
   clientPW: hEidFWsoN8dBnqFCreezcSC5HEE1NuYMNTmboVNz
   MapImage: {fileID: 425695506}
-  MapSizeLevel: 15
+  MapSizeLevel: 14
 --- !u!114 &2005741238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3082,6 +3097,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Marker: {fileID: 4339955371568456598, guid: 5d685c7ae1ed5484886fb17ed0768290, type: 3}
+--- !u!114 &2005741242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005741234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cba98a4495eda74c8dc06aab841c5d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointDesBox: {fileID: 812761348}
+  desImage: {fileID: 1716233819}
+  pathBox: {fileID: 945226100}
+  pointDesIsActivate: 0
+  pathBoxIsActivate: 0
 --- !u!1 &2006334107
 GameObject:
   m_ObjectHideFlags: 0

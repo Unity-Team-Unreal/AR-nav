@@ -31,6 +31,7 @@ public class MapRequestManager : MonoBehaviour
     double longitude =0f;
     [SerializeField]int MapSizeLevel=17;
 
+
     [Header("GPS를 받기 위한 정보")]
      GPS gps;
 
@@ -69,20 +70,21 @@ public class MapRequestManager : MonoBehaviour
 
         string markerRequestAPI = "";
 
-        for (int i = 0; i < POI.datalist.Count; i++)    //POI datalist 리스트를 불러와 마커 배치
+
+        POI.datalist.Add(new POIData(0, "-", "MyLocation", "-", latitude, longitude, "-", "-", "-"));   //현재위치 POI에 추가
+
+        for (int i = 0; i < POI.datalist.Count; i++)    //POI datalist 리스트를 불러와 마커 배치(markerRequestAPI 문자열은 스태틱맵의 마커이므로 네이버 마커를 안쓰면 필요없다.)
         {
-            markerInstantiate.MarkerMake(i, width, height, MapSizeLevel, latitude, longitude, POI.datalist[i]) ;
+            markerInstantiate.MarkerMake(width, height, MapSizeLevel, latitude, longitude, POI.datalist[i]) ;
             markerRequestAPI += $"&markers=type:d|size:mid|color:red|pos:{POI.datalist[i].Longitude()}%20{POI.datalist[i].Latitude()}";
         }
 
 
 
-        string APIrequestURL = mapBaseURL + $"?w={width}&h={height}&center={longitude},{latitude}&level={MapSizeLevel}" +
-            $"&markers=type:d|size:mid|pos:{longitude}%20{latitude}" +
-            markerRequestAPI +
+        string APIrequestURL = mapBaseURL + $"?w={width}&h={height}&center={longitude},{latitude}&level={MapSizeLevel}"+
             $"&scale=2&format=png";     //지도 API를 받아오기 위한 요청
 
-        UnityWebRequest req = UnityWebRequestTexture.GetTexture(APIrequestURL);     //요청한 API 지도 텍스처를 받아올 인스턴스
+        UnityWebRequest req = UnityWebRequestTexture.GetTexture(APIrequestURL);     //요청한 API 지도 텍스처를 받아온다.
         req.SetRequestHeader("X-NCP-APIGW-API-KEY-ID", clientID);       //발급받은 ID
         req.SetRequestHeader("X-NCP-APIGW-API-KEY", clientPW);          //발급받은 PW
 
@@ -100,20 +102,5 @@ public class MapRequestManager : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            MapSizeLevel--;
-            StartCoroutine(MapAPIRequest());
-        }
-
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            MapSizeLevel++;
-            StartCoroutine(MapAPIRequest());
-
-        }
-    }
 
 }

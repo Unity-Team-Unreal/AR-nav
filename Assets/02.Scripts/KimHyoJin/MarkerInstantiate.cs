@@ -21,7 +21,7 @@ public class MarkerInstantiate : MonoBehaviour
     
     //    마커를 생성하는 메서드.
     //    매개변수 : (순서대로)화면 가로, 화면 세로, 지도 줌 레벨, 기준점 위도, 기준점 경도, POI데이터
-    public void MarkerMake(int num, int width, int height, float Level, double latitude, double longitude, POIData poidata)
+    public void MarkerMake(int width, int height, float Level, double latitude, double longitude, POIData poidata)
     {
         {
 
@@ -49,20 +49,20 @@ public class MarkerInstantiate : MonoBehaviour
 
             point = new Vector2(0, 0) + direction.normalized *  distance;     //노멀라이즈로 방향만 정한 뒤, distance만큼 떨어진 거리에 마커를 띄운다.
 
-            if(GameObject.Find("Marker_" + num) == null)
+            if(GameObject.Find("Marker_" + poidata.Number()) == null)
             {
                 Marker = Instantiate(Marker, point, quaternion.identity);
                 MarkersbubbleState = Marker.GetComponent<BubbleState>();
                 MarkersbubbleState.thisData = poidata;
-                MarkersbubbleState.MarkerStart();
-                Marker.name = "Marker_" + num;
+                Marker.name = "Marker_" + poidata.Number();
                 Marker.transform.SetParent(GameObject.Find("StaticMapImage").transform, false);
+                MarkersbubbleState.MarkerStart();
 
             }
 
             else
             {
-                GameObject.Find("Marker_" + num).transform.localPosition = point;
+                GameObject.Find("Marker_" + poidata.Number()).transform.localPosition = point;
             }
 
 
