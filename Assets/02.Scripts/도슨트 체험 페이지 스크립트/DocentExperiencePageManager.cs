@@ -38,6 +38,7 @@ public class DocentExperiencePageManager : MonoBehaviour
                 GameObject obj = Instantiate(prefab, trackedImage.transform.position, trackedImage.transform.rotation);
                 obj.name = imageName;
                 obj.transform.SetParent(trackedImage.transform);
+                // AR 환경에서 obj가 삽입됐을 때 Animator기능을 가져와서 DocentExperiencePageButton 클래스에 있는 Animator를 가진 arDocnet라는 필드의 기능을 하는 코드
                 DocentExperiencePageButton.arDocent = obj.GetComponent<Animator>();
                 objs.Add(obj);
             }
