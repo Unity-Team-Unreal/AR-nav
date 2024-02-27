@@ -15,48 +15,45 @@ public class PathBoxScript : MonoBehaviour
     [SerializeField] InputField start;
     [SerializeField] InputField goal;
 
-
-    public POIData data;
-
     Animator _animator; //애니메이션으로 UI의 움직임을 구현할 예정
 
-    DesImageScript DesBoxImage;
 
-    [HideInInspector] public bool pathBoxIsActivate;    //설명UI 활성여부. 뒤로가기 버튼에서 참조할 것이기 때문에 public
-
-    double latitude =0f;
-    double longitude =0f;
-
+    double latitude = 0f;
+    double longitude = 0f;
 
      GPS gps;
+
     void Awake()
     {
-        pathBoxIsActivate = false;
         gps = FindObjectOfType<GPS>().GetComponent<GPS>();
         _animator = GetComponent<Animator>();
-        DesBoxImage = FindObjectOfType<DesImageScript>().GetComponent<DesImageScript>();
 
     }
 
-    public  void PathBoxActivate()   //길찾기 UI를 활성화
+    public  void PathBoxActivate(POIData data)   //길찾기 UI를 활성화
     {
         gps.Request();
 
-        if (!gps.GetMyLocation(ref latitude, ref longitude))
+        if (gps.GetMyLocation(ref latitude, ref longitude))
         {
-            DesBoxImage.desBoxDisable();
-            pathBoxIsActivate = true;
             start.text = $"{latitude},{longitude}";
             goal.text = data.Name();
             _animator.Play("Play");
         }
+
+        else
+        {
+            start.text = $"위치 찾기 거부 또는 실패시 나올 이름";
+            goal.text = data.Name();
+            _animator.Play("Play");
+
+        }
         
     }
 
+
     public  void PathBoxDeactivate() //길찾기 UI 비활성화
     {
-        DesBoxImage. desBoxEneable();
-        pathBoxIsActivate = false;
         _animator.Play("Reverse");
     }
 

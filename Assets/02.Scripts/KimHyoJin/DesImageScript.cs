@@ -15,6 +15,14 @@ public class DesImageScript : MonoBehaviour
    public void desBoxEneable()
     {
         DesBoxImage.enabled = true;
+        DesBoxImage.color = new Color(1, 1, 1, 1);
+    }
+
+
+    public void desBoxEneableButNoImage()
+    {
+        DesBoxImage.enabled = true;
+        DesBoxImage.color = new Color(1,1,1,0);
     }
 
     public  void desBoxDisable()
