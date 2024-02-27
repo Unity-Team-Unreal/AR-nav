@@ -54,7 +54,7 @@ public class TakePhotos : MonoBehaviour
 
         byte[] bytes = image.EncodeToPNG();
         string fileName = DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".png";
-        string filePath = Path.Combine("/storage/emulated/0/DCIM/AR-Nav", fileName);
+        string filePath = Path.Combine(path, fileName);
         File.WriteAllBytes(filePath, bytes);
 
         Destroy(rt);
