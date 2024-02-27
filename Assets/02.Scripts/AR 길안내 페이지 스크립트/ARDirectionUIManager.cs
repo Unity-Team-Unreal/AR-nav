@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// AR 길찾기 페이지에서 UI 관리
+/// </summary>
 public class ARDirectionUIManager : MonoBehaviour
 {
     [SerializeField] Button operationEndsButton;

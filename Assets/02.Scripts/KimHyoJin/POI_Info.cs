@@ -85,7 +85,7 @@ public class POI_Info : MonoBehaviour
         {
             jsonRow[i] = jsonRow[i].Replace("\"", string.Empty);
 
-            Debug.Log(jsonRow[i]);
+            //Debug.Log(jsonRow[i]);
             if (i % 2 == 0)
             {
                 splited = jsonRow[i].Split(',');   // ,를 기준으로 분리
@@ -104,13 +104,13 @@ public class POI_Info : MonoBehaviour
                 {
                     POI.datalist.Add(new POIData(splited_1, splited[1], splited[3], splited[6], splited_2, splited_3, splited[7], desAndEvent[0], desAndEvent[1]));    //분리한 POI데이터를 알맞게 분배하여 datalist에 POI데이터 생성
 
-                    Debug.Log(POI.datalist.Last().Number());
-                    Debug.Log(POI.datalist.Last().Name());
-                    Debug.Log(POI.datalist.Last().Address());
-                    Debug.Log(POI.datalist.Last().Description());
-                    Debug.Log(POI.datalist.Last().Eventinformation());
-                    Debug.Log(POI.datalist.Last().Longitude());
-                    Debug.Log(POI.datalist.Last().Latitude());
+                    //Debug.Log(POI.datalist.Last().Number());
+                    //Debug.Log(POI.datalist.Last().Name());
+                    //Debug.Log(POI.datalist.Last().Address());
+                    //Debug.Log(POI.datalist.Last().Description());
+                    //Debug.Log(POI.datalist.Last().Eventinformation());
+                    //Debug.Log(POI.datalist.Last().Longitude());
+                    //Debug.Log(POI.datalist.Last().Latitude());
                 }
             }
         }

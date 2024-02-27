@@ -1,9 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.Android;
 using UnityEngine.UI;
 
 /// <summary>
@@ -11,8 +10,8 @@ using UnityEngine.UI;
 /// </summary>
 public class ARDirectionsManager : GPS
 {
-    [SerializeField] double[] lats;
-    [SerializeField] double[] longs;
+    double[] lats;
+    double[] longs;
 
     ARDirectionUIManager arUIManager;
 
@@ -25,25 +24,56 @@ public class ARDirectionsManager : GPS
         Request();
     }
 
+    void Start()
+    {
+        StartCoroutine(RequestPOI());
+    }
+
+    double[] remainDistance;
+    IEnumerator RequestPOI()
+    {
+        while (true)
+        {
+            if (POI.datalist.Count > 0) break;
+            yield return null;
+        }
+        remainDistance = new double[POI.datalist.Count];
+        lats = new double[POI.datalist.Count];
+        longs = new double[POI.datalist.Count];
+        {
+            for (int i = 0; i < POI.datalist.Count; i++)
+            {
+                lats[i] = POI.datalist[i].Latitude();
+                longs[i] = POI.datalist[i].Longitude();
+            }
+        }
+        yield break;
+    }
+
     double myLat = 0f;
     double myLong = 0f;
     void Update()
     {
         test();
     }
-
     void test()
     {
-        if (GetMyLocation(ref myLat, ref myLong))
+        if (POI.datalist.Count > 0)
         {
-            test2_text.text = $"{myLat}, {myLong}";
+            if (GetMyLocation(ref myLat, ref myLong))
+            {
+                test2_text.text = $"{myLat}, {myLong}";
 
-            double remainDistance = Distance(myLat, myLong, lats[0], longs[0]);
+                for (int i = 0; i < lats.Length; i++)
+                {
+                    remainDistance[i] = Distance(myLat, myLong, lats[i], longs[i]);
 
-            test_text.text = $"목표와의 거리 : {remainDistance}";
+                    test_text.text = $"목표와의 거리 : {remainDistance[i]}";
 
-            arUIManager.OnPOIButton(remainDistance <= 30f) ;
-        }
+                    arUIManager.OnPOIButton(remainDistance[i] <= 10f);
+                }
+            }
+        }        
     }
 
     // 지표면 거리 계산 공식(하버사인 공식)
