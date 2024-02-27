@@ -143,14 +143,21 @@ public class BubbleState : MonoBehaviour
             if (thisState != SellectCategory.state)
             {
                 markerButton.interactable = false;
-
             }
 
-            else markerButton.interactable = true;
+            else
+            {
+                markerButton.interactable = true;
+                markerButton.gameObject.transform.SetAsLastSibling();
+
+            }
         }
 
         //아니라면 버튼 비활성화
-        else markerButton.interactable = true;
+        else 
+        {
+            markerButton.interactable = true;
+        }
     }
 
 }

@@ -24,7 +24,11 @@ public class BackButton : MonoBehaviour
 
     public void BackbuttonEvnet()
     {
-        if(uIController.pathBoxIsActivate) uIController.PathBoxOff();
+        if (uIController.pathBoxIsActivate)
+        {
+            uIController.PathBoxOff();
+            uIController.CategoryBoxOn();
+        }
 
         else if (uIController.pointDesIsActivate) uIController.DescriptBoxOff();
 
