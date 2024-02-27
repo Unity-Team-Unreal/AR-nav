@@ -14,6 +14,9 @@ public class MapTransformManager : MonoBehaviour
     RawImage MapImage;
 
     Vector3 mapPosition;
+
+    Touch touch;
+    Vector3 touchedPos;
     void Start()
     {
         MapImage = GetComponent<RawImage>();
@@ -42,6 +45,20 @@ public class MapTransformManager : MonoBehaviour
 
     }
 
+
+
+    void TouchMoveTest()
+    {
+        if(Input.touchCount>0)
+            for(int i = 0; i < Input.touchCount; i++)
+            {
+                Touch tempTouchs = Input.GetTouch(i);
+                if(tempTouchs.phase == TouchPhase.Began)
+                {
+                    touchedPos = Camera.main.ScreenToWorldPoint(tempTouchs.position);
+                }
+            }
+    }
 
 
     void MapMove()

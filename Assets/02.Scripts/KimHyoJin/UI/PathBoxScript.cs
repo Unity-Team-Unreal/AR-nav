@@ -36,14 +36,16 @@ public class PathBoxScript : MonoBehaviour
 
         if (gps.GetMyLocation(ref latitude, ref longitude))
         {
-            start.text = $"{latitude},{longitude}";
+
+
+            start.text = $"현재 위치";
             goal.text = data.Name();
             _animator.Play("Play");
         }
 
         else
         {
-            start.text = $"위치 찾기 거부 또는 실패시 나올 이름";
+            start.text = $"현재 위치";
             goal.text = data.Name();
             _animator.Play("Play");
 
