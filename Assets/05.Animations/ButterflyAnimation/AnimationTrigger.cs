@@ -3,7 +3,7 @@ using UnityEngine;
 public class AnimationTrigger : MonoBehaviour
 {
     public AnimationClip legacyClip;
-    private new Animation animation;
+    private Animation animation;
 
     void Start()
     {
