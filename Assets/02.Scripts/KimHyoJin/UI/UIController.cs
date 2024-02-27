@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
+    [SerializeField] PathFinderButtonScript pathFinderBox;
     [SerializeField] PointDesBoxScript pointDesBox;
     [SerializeField] DesImageScript desImage;
     [SerializeField] PathBoxScript pathBox;
@@ -18,27 +19,31 @@ public class UIController : MonoBehaviour
     {
         categoryBox.SetActive(true);
     }
-    public void CategoryBoxOff()
-    {
-        categoryBox.SetActive(false);
-    }
     public void DescriptBoxOn(POIData data, bool isGetImage)
     {
 
         if (isGetImage)
         {
-            desImage.desBoxEneable(data);
+            desImageBoxOn(data);
             pointDesBox.DescriptionBoxActivate(data);
         }
 
         else
         {
-            desImage.desBoxEneableButNoImage();
+            desImageBoxOn();
             pointDesBox.DescriptionBoxActivate(data);
         }
 
         pointDesIsActivate = true;
 
+    }
+    public void desImageBoxOn(POIData data)
+    {
+        desImage.desBoxEneable(data);
+    }
+    public void desImageBoxOn()
+    {
+        desImage.desBoxEneableButNoImage();
     }
     public void PathBoxOn(POIData data)
     {
@@ -46,29 +51,49 @@ public class UIController : MonoBehaviour
 
         CategoryBoxOff();
 
-        desImage.desBoxEneableButNoImage();
+        desImageBoxOn();
 
         pathBox.PathBoxActivate(data);
 
+        PathFinderBoxOn();
+
         pathBoxIsActivate = true;
+    }
+    public void PathFinderBoxOn()
+    {
+        pathFinderBox.PathBoxActivate();
     }
     public void DescriptBoxOff()
     {
-        desImage.desBoxDisable();
+        desImageBoxOff();
 
         pointDesBox.DescriptionBoxDeactivate();
 
         pointDesIsActivate = false;
 
     }
-    public void PathBoxOff()
+    public void desImageBoxOff()
     {
         desImage.desBoxDisable();
+    }
+    public void PathBoxOff()
+    {
+        desImageBoxOff();
 
         pathBox.PathBoxDeactivate();
 
+        PathFinderBoxOff();
+
         pathBoxIsActivate = false;
 
+    }
+    public void CategoryBoxOff()
+    {
+        categoryBox.SetActive(false);
+    }
+    public void PathFinderBoxOff()
+    {
+        pathFinderBox.PathBoxDeActivate();
     }
 
 }
