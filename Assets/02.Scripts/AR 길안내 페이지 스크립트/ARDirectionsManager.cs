@@ -12,7 +12,7 @@ public class ARDirectionsManager : GPS
 {
     double[] lats;
     double[] longs;
-
+    static public (double[] lats, double[] longs)[] paths;
     ARDirectionUIManager arUIManager;
 
     public Text test_text; // 삭제 가능
@@ -30,6 +30,7 @@ public class ARDirectionsManager : GPS
     }
 
     double[] remainDistance;
+    bool[] effectiveDistance;
     IEnumerator RequestPOI()
     {
         while (true)
@@ -38,6 +39,7 @@ public class ARDirectionsManager : GPS
             yield return null;
         }
         remainDistance = new double[POI.datalist.Count];
+        effectiveDistance = new bool[POI.datalist.Count];
         lats = new double[POI.datalist.Count];
         longs = new double[POI.datalist.Count];
         {
@@ -54,9 +56,10 @@ public class ARDirectionsManager : GPS
     double myLong = 0f;
     void Update()
     {
-        test();
+        TurnOnUI();
     }
-    void test()
+    // 좌표 값을 기준으로 일정한 거리에 다가오면 켜지는 UI기능을 구현할 것
+    void TurnOnUI()
     {
         if (POI.datalist.Count > 0)
         {
@@ -70,10 +73,12 @@ public class ARDirectionsManager : GPS
 
                     test_text.text = $"목표와의 거리 : {remainDistance[i]}";
 
-                    arUIManager.OnPOIButton(remainDistance[i] <= 10f);
+                    effectiveDistance[i] = remainDistance[i] <= 10f; // 10미터
+                    // ARDirectionUIManager에 함수를 만들어서 위 조건에 맞으면 UI가 켜지는 기능 추가
+                    arUIManager.OnPOIButton(effectiveDistance);
                 }
             }
-        }        
+        }
     }
 
     // 지표면 거리 계산 공식(하버사인 공식)

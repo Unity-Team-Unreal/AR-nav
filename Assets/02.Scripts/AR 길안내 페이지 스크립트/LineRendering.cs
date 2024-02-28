@@ -7,9 +7,9 @@ using UnityEngine;
 public class LineRendering : MonoBehaviour
 {
     [SerializeField] AREarthManager earthmanager;
-    GeospatialPose pose = new GeospatialPose();
-    Pose position;
-    Vector3 vector;
+    GeospatialPose poseGPS = new GeospatialPose();
+    Pose posi;
+    Vector3[] pathObjs;
 
     float latitude;
     float longitude;
@@ -26,27 +26,27 @@ public class LineRendering : MonoBehaviour
 
     void AnchorSpawn()
     {
-        vector = new Vector3(0,0,0);
-        pose.Latitude = latitude;
-        pose.Longitude = longitude;
+        poseGPS.Latitude = latitude;
+        poseGPS.Longitude = longitude;
 
-        position = earthmanager.Convert(pose);
+        posi = earthmanager.Convert(poseGPS);
+        posi.position.y = 0;
 
-        Instantiate(anchorPrefab, position.position, position.rotation);
+        Instantiate(anchorPrefab, posi.position, posi.rotation);
         line.positionCount = POI.datalist.Count;
-
-        for (int i = 0; i < POI.datalist.Count; i++)
-        {
-            line.SetPosition(i, vector);
-        }
-
+                
     }
-
+    
     void CreateLine() 
     {
-        for (int i = 0; i < POI.datalist.Count; i++)
+        pathObjs = new Vector3[ARDirectionsManager.paths.Length + 1];
+        pathObjs[0] = new Vector3(0, -1.5f, 0);
+        for (int i = 0; i < pathObjs.Length - 1; i++)
         {
-            line.SetPosition(i, vector);
+            LineRenderer lineRendererObject = Instantiate(line);
+            line.SetPosition(0, pathObjs[i]);
+            line.SetPosition(1, pathObjs[i + 1]);
+            lineRendererObject.transform.eulerAngles = new Vector3(90f, 0, 0);
         }
     } 
 }
