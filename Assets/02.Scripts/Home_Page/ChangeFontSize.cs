@@ -11,12 +11,23 @@ public class ChangeFontSize : MonoBehaviour
 
     void Awake()
     {
-        // 부모 오브젝트의 모든 자식 오브젝트 중에서 TextMeshProUGUI 컴포넌트를 가지고 있는 오브젝트를 찾아서 원래 폰트 크기를 저장
+        List<TextMeshProUGUI> autoSizeTextComponents = new List<TextMeshProUGUI>();
+
         foreach (TextMeshProUGUI textMeshPro in GetComponentsInChildren<TextMeshProUGUI>())
         {
             originalFontSizes[textMeshPro] = textMeshPro.fontSize;
+
+            // AutoSizing이 가능한 컴포넌트인지 확인 후 리스트에 추가
+            if (textMeshPro.enableAutoSizing)
+            {
+                autoSizeTextComponents.Add(textMeshPro);
+            }
         }
+
+        // List를 배열로 변환
+        AutosizeText = autoSizeTextComponents.ToArray();
     }
+
 
     public void OnClickOrTouch()
     {
