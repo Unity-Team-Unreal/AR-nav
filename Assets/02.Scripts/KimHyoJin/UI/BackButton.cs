@@ -9,9 +9,11 @@ public class BackButton : MonoBehaviour
     /// <summary>
     /// 2D지도, 길찾기 화면에서 사용할 뒤로가기 버튼에 대한 스크립트
     /// </summary>
-    UIController uIController;
-    Button button;
-    [SerializeField] string MainSceneName;
+
+    UIController uIController;  //ui를 움직이는 UI컨트롤러
+    Button button;  //뒤로가기 버튼
+
+    [SerializeField] string MainSceneName;  //메인 신으로 넘어가기 위한 씬 이름
 
     private void Awake()
     {
@@ -19,22 +21,25 @@ public class BackButton : MonoBehaviour
 
         button = GetComponent<Button>();
         
-        button.onClick.AddListener(BackbuttonEvnet);
+        button.onClick.AddListener(BackbuttonEvnet);    //뒤로가기 버튼에 이벤트 추가
     }
 
     public void BackbuttonEvnet()
     {
-        if (uIController.pathBoxIsActivate)
+        if (uIController.pathBoxIsActivate)     //경로 찾기 실행중일 때 뒤로가기 버튼을 누르면
         {
-            uIController.PathBoxOff();
-            uIController.CategoryBoxOn();
+            uIController.PathBoxOff();      //경로찾기 박스 비활성화
+            uIController.CategoryBoxOn();   //하단 카테고리 박스 활성화
         }
 
         else if (uIController.pointDesIsActivate) uIController.DescriptBoxOff();
+        //상세설명 실행중일 때 뒤로가기 버튼을 누르면 상세설명 박스 비활성화
 
         else BackToHome();
+        //기본 상태에서 뒤로가기 버튼을 누르면 메인 신으로 넘어가기
 
-    }  //설명상자가 올라와있을 때 누르면 설명상자 닫고 아니라면 홈화면으로 옮기기
+
+    }
 
     void BackToHome()   //길찾기 화면에서 메인화면으로 가는 메서드
     {
