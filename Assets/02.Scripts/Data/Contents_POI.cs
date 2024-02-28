@@ -14,7 +14,7 @@ public class Contents_POI : ScriptableObject //ScriptableObject¸¦ »ó¼Ó
 
 public class ContentsData
 {
-    public int number;
+    public string number;
     public string contentsname;
     public string description;
     public string latitude;

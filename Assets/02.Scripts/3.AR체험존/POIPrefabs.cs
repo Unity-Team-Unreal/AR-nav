@@ -41,7 +41,7 @@ public class POIPrefabs : MonoBehaviour
         // 클릭된 데이터를 DataManager에 저장
         ContentsDataManager.Instance.contentsData = _contentsData;
         
-        if (_contentsData.number == 2)
+        if (int.Parse(_contentsData.number) == 2)
         {
             SceneManager.LoadScene("3_1.AR Contents Detail Page");
         }
