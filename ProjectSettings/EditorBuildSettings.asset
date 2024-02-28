@@ -5,45 +5,39 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/01.Scenes/PJT_Scene/0.Loading Page.unity
+  - enabled: 1
+    path: Assets/01.Scenes/0.Loading_Page.unity
     guid: 78f4832bda767cb47ac3b906a8348d75
-  - enabled: 0
-    path: Assets/01.Scenes/PJT_Scene/1..unity
+  - enabled: 1
+    path: Assets/01.Scenes/1.Home_Page.unity
     guid: 9557db81f4252a2489cc69040118ab13
-  - enabled: 0
-    path: Assets/01.Scenes/PJT_Scene/1_2.Smart senior center Page.unity
+  - enabled: 1
+    path: Assets/01.Scenes/1_1.Navigation.unity
+    guid: 99d6e45d2e5834946bc45d325a60f10a
+  - enabled: 1
+    path: Assets/01.Scenes/1_2.Smart_senior_center_Page.unity
     guid: 843f6b6b95017a047b28e768af65c13a
-  - enabled: 0
-    path: Assets/01.Scenes/PJT_Scene/1_3.AR Contents Page.unity
+  - enabled: 1
+    path: Assets/01.Scenes/1_3.AR_Contents_Page.unity
     guid: 0fa1c50aa147e174bb33782de02a3a87
-  - enabled: 0
-    path: Assets/01.Scenes/PJT_Scene/1_4.VR Experience Page.unity
+  - enabled: 1
+    path: Assets/01.Scenes/1_4.VR_Experience_Page.unity
     guid: 93cb3c56b65fd8a4090ddd93bfa48a3a
   - enabled: 1
-    path: Assets/01.Scenes/KimHyoJin/KimHyoJin.unity
-    guid: 99d6e45d2e5834946bc45d325a60f10a
-  - enabled: 0
-    path: Assets/01.Scenes/PJT_Scene/3_1.AR Contents Detail Page.unity
+    path: Assets/01.Scenes/3_1.AR_Contents_Detail_Page.unity
     guid: 64182bfafe465bb44953378368a6df44
-  - enabled: 0
-    path: "Assets/01.Scenes/PJT_Scene/3\uB2E4\uC2DC2.unity"
+  - enabled: 1
+    path: Assets/01.Scenes/3_2.AR_Contents_Detail_Page.unity
     guid: bf10d8aa641a47443910c186f9b7394d
-  - enabled: 0
-    path: "Assets/01.Scenes/AR \uAE38\uC548\uB0B4 \uD398\uC774\uC9C0.unity"
+  - enabled: 1
+    path: Assets/01.Scenes/AR_Navigation.unity
     guid: e760653f4379d44468c1ae053b163aeb
-  - enabled: 0
+  - enabled: 1
+    path: Assets/01.Scenes/Docent_main.unity
+    guid: 696f2b4c372bbd144a5e2575342e2443
+  - enabled: 1
     path: Assets/01.Scenes/PhotoZone_main.unity
     guid: abee77ed91c48914aab0bdfa2f55c73f
-  - enabled: 0
-    path: Assets/01.Scenes/PhotoZoneDocument.unity
-    guid: 82b2f8f1389502644b8d489d6a2fa75e
-  - enabled: 0
-    path: "Assets/01.Scenes/\uB3C4\uC2A8\uD2B8 \uCCB4\uD5D8 \uD398\uC774\uC9C0.unity"
-    guid: 696f2b4c372bbd144a5e2575342e2443
-  - enabled: 0
-    path: "Assets/01.Scenes/AR \uAE38\uC548\uB0B4 \uD398\uC774\uC9C0.unity"
-    guid: e760653f4379d44468c1ae053b163aeb
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 2ef5240974802c1469264a9889848114, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: d39ab3ebaec936f43a8f58af1895590b, type: 2}

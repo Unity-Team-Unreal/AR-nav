@@ -18,16 +18,6 @@ MonoBehaviour:
     m_Storage: []
   m_Images:
   - m_SerializedGuid:
-      m_GuidLow: 5213676914808972781
-      m_GuidHigh: 9018336848014824127
-    m_SerializedTextureGuid:
-      m_GuidLow: 1960368909432543995
-      m_GuidHigh: 11548021913426366475
-    m_Size: {x: 0.2, y: 0.2}
-    m_SpecifySize: 1
-    m_Name: "\uAE30\uCC28"
-    m_Texture: {fileID: 2800000, guid: fb725afba1221b340b903408bfd042a0, type: 3}
-  - m_SerializedGuid:
       m_GuidLow: 5443576031909004723
       m_GuidHigh: 5229114908658000813
     m_SerializedTextureGuid:

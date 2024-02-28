@@ -189,7 +189,7 @@ public class Contents_POI_Info : MonoBehaviour
     {
         
         //씬 이름에 따라 게임 오브젝트 활성화 여부 설정
-        if (scene.name == "1_3.AR Contents Page")
+        if (scene.name == "1_3.AR_Contents_Page")
         {
             this.gameObject.SetActive(true);
         }

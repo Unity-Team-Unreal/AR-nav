@@ -19,7 +19,7 @@ public class LoadingScreen : MonoBehaviour
     IEnumerator LoadAsyncScene()
     {
         // "1.Home Page" 씬을 비동기 방식으로 로드합니다.
-        AsyncOperation operation = SceneManager.LoadSceneAsync("1.Home Page");
+        AsyncOperation operation = SceneManager.LoadSceneAsync("1.Home_Page");
 
         //씬 비활성화
         operation.allowSceneActivation = false;

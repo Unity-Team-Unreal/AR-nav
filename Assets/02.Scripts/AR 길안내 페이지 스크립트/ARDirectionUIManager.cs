@@ -91,7 +91,7 @@ public class ARDirectionUIManager : MonoBehaviour
 
     void OnOperationEnds() // 운행 종료 버튼을 눌렀을 때
     {
-        SceneManager.LoadScene("KimHyoJin");
+        SceneManager.LoadScene("1_1.Navigation");
     }
 
     void OnPOILocationInformation() // POI 장소안내 버튼을 눌렀을 때

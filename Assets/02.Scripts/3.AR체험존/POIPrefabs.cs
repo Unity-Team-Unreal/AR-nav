@@ -50,11 +50,11 @@ public class POIPrefabs : MonoBehaviour
         // ¾À ·Îµù
         if (int.Parse(_contentsData.number) == 2)
         {
-            SceneManager.LoadScene("3_1.AR Contents Detail Page");
+            SceneManager.LoadScene("3_1.AR_Contents_Detail_Page");
         }
         else
         {
-            SceneManager.LoadScene("3_2.AR Contents Detail Page");
+            SceneManager.LoadScene("3_2.AR_Contents_Detail_Page");
         }
     }
 }
