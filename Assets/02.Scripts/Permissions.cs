@@ -13,6 +13,9 @@ public class Permissions : MonoBehaviour
 
     [SerializeField] string SceneName;
 
+    /// <summary>
+    /// 사용자에게 권한 요청
+    /// </summary>
     public void RequestPermission()
     {
         string permissionName = GetPermissionName(permissionType);
@@ -26,6 +29,11 @@ public class Permissions : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 권한 유형에 따른 권한 이름 가져오기
+    /// </summary>
+    /// <param name="type"></param>
+    /// <returns></returns>
     private string GetPermissionName(PermissionType type)
     {
         switch (type)
