@@ -75,17 +75,17 @@ public class ARDirectionUIManager : MonoBehaviour
         addresses = new string[POI.datalist.Count];
         descriptions = new string[POI.datalist.Count];
         eventinformations = new string[POI.datalist.Count];
+        
+        for (int i = 0; i < POI.datalist.Count; i++)
         {
-            for (int i = 0; i < POI.datalist.Count; i++)
-            {
-                categorys[i] = POI.datalist[i].Category();
-                names[i] = POI.datalist[i].Name();
-                branchs[i] = POI.datalist[i].Branch();
-                addresses[i] = POI.datalist[i].Address();
-                descriptions[i] = POI.datalist[i].Description();
-                eventinformations[i] = POI.datalist[i].Eventinformation();
-            }
+            categorys[i] = POI.datalist[i].Category();
+            names[i] = POI.datalist[i].Name();
+            branchs[i] = POI.datalist[i].Branch();
+            addresses[i] = POI.datalist[i].Address();
+            descriptions[i] = POI.datalist[i].Description();
+            eventinformations[i] = POI.datalist[i].Eventinformation();
         }
+        
         yield break;
     }
 
@@ -108,7 +108,7 @@ public class ARDirectionUIManager : MonoBehaviour
 
     public void OnPOIButton(bool[] remainDistance)
     {
-        for (int i = 0; i < remainDistance.Length; i++)
+        for (int i = 0; i < POI.datalist.Count; i++)
         {
             // UI 띄우기 및 좌표에 맞는 정보 갱신
             if (remainDistance[i])
@@ -125,12 +125,13 @@ public class ARDirectionUIManager : MonoBehaviour
 
                 classification.sprite = (categorys[i] == "카페") ? icon_cafe : (categorys[i] == "식당") ? icon_restaurant : icon_Publicplaces;
                 couponIcon.sprite = (categorys[i] == "공공장소") ? icon_note : icon_coupon;
-                popupClassification.sprite = icon_cafe;
+                popupClassification.sprite = (categorys[i] == "카페") ? icon_cafe : (categorys[i] == "식당") ? icon_restaurant : icon_Publicplaces;
                 popupCouponIcon.sprite = (categorys[i] == "공공장소") ? icon_note : icon_coupon;
                 barcode.sprite = (categorys[i] == "공공장소") ? null : icon_barcode;
             }
             else
             {
+                // 해당 POI에 대한 거리가 30미터 이상이면 UI 비활성화
                 pOILocationInformationButton.gameObject.SetActive(false);
             }
         }

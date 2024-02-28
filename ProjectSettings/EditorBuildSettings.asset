@@ -5,43 +5,43 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/01.Scenes/PJT_Scene/0.Loading Page.unity
     guid: 78f4832bda767cb47ac3b906a8348d75
-  - enabled: 1
+  - enabled: 0
     path: Assets/01.Scenes/PJT_Scene/1..unity
     guid: 9557db81f4252a2489cc69040118ab13
-  - enabled: 1
+  - enabled: 0
     path: Assets/01.Scenes/PJT_Scene/2.AR Navigation Page.unity
     guid: 2df5e7b5b9235a44eb5102b9136a61b2
-  - enabled: 1
+  - enabled: 0
     path: Assets/01.Scenes/PJT_Scene/3.AR Contents Page.unity
     guid: 0fa1c50aa147e174bb33782de02a3a87
-  - enabled: 1
+  - enabled: 0
     path: Assets/01.Scenes/PJT_Scene/3_1.AR Contents Detail Page.unity
     guid: 64182bfafe465bb44953378368a6df44
-  - enabled: 1
+  - enabled: 0
     path: "Assets/01.Scenes/PJT_Scene/3\uB2E4\uC2DC2.unity"
     guid: bf10d8aa641a47443910c186f9b7394d
-  - enabled: 1
+  - enabled: 0
     path: Assets/01.Scenes/PJT_Scene/4.Timemuchine Page.unity
     guid: 843f6b6b95017a047b28e768af65c13a
-  - enabled: 1
+  - enabled: 0
     path: Assets/01.Scenes/PJT_Scene/5.Sliver Service Page.unity
     guid: 93cb3c56b65fd8a4090ddd93bfa48a3a
-  - enabled: 1
+  - enabled: 0
     path: Assets/01.Scenes/KimHyoJin/KimHyoJin.unity
     guid: 99d6e45d2e5834946bc45d325a60f10a
-  - enabled: 1
+  - enabled: 0
     path: Assets/01.Scenes/PhotoZone_main.unity
     guid: abee77ed91c48914aab0bdfa2f55c73f
-  - enabled: 1
+  - enabled: 0
     path: Assets/01.Scenes/PhotoZone_Result.unity
     guid: 2a46258b07174b343bd11488afa1506e
-  - enabled: 1
+  - enabled: 0
     path: Assets/01.Scenes/PhotoZoneDocument.unity
     guid: 82b2f8f1389502644b8d489d6a2fa75e
-  - enabled: 1
+  - enabled: 0
     path: "Assets/01.Scenes/\uB3C4\uC2A8\uD2B8 \uCCB4\uD5D8 \uD398\uC774\uC9C0.unity"
     guid: 696f2b4c372bbd144a5e2575342e2443
   - enabled: 1

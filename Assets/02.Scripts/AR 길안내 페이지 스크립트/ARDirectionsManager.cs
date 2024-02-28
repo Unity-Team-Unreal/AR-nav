@@ -16,7 +16,6 @@ public class ARDirectionsManager : GPS
     ARDirectionUIManager arUIManager;
 
     public Text test_text; // 삭제 가능
-    public Text test2_text; // 삭제 가능
 
     void Awake()
     {
@@ -42,13 +41,13 @@ public class ARDirectionsManager : GPS
         effectiveDistance = new bool[POI.datalist.Count];
         lats = new double[POI.datalist.Count];
         longs = new double[POI.datalist.Count];
+        
+        for (int i = 0; i < POI.datalist.Count; i++)
         {
-            for (int i = 0; i < POI.datalist.Count; i++)
-            {
-                lats[i] = POI.datalist[i].Latitude();
-                longs[i] = POI.datalist[i].Longitude();
-            }
+            lats[i] = POI.datalist[i].Latitude();
+            longs[i] = POI.datalist[i].Longitude();
         }
+        
         yield break;
     }
 
@@ -58,6 +57,7 @@ public class ARDirectionsManager : GPS
     {
         TurnOnUI();
     }
+    double lastDistanceUpdateTime = 0f;
     // 좌표 값을 기준으로 일정한 거리에 다가오면 켜지는 UI기능을 구현할 것
     void TurnOnUI()
     {
@@ -65,15 +65,17 @@ public class ARDirectionsManager : GPS
         {
             if (GetMyLocation(ref myLat, ref myLong))
             {
-                test2_text.text = $"{myLat}, {myLong}";
-
-                for (int i = 0; i < lats.Length; i++)
+                // 시간 간격을 설정하여 일정 주기마다 UI를 업데이트하도록 함
+                if (Time.time - lastDistanceUpdateTime >= 1f)
                 {
-                    remainDistance[i] = Distance(myLat, myLong, lats[i], longs[i]);
+                    for (int i = 0; i < lats.Length; i++)
+                    {
+                        remainDistance[i] = Distance(myLat, myLong, lats[i], longs[i]);
 
-                    test_text.text = $"목표와의 거리 : {remainDistance[i]}";
+                        test_text.text = $"목표와의 거리\n cafe 07 am : {remainDistance[0]}\n 더 브래드 36.5도 : {remainDistance[1]}\n 마장동뚝배기&1인한우육회 : {remainDistance[2]}\n 홍익돈까스 : {remainDistance[3]}\n 대한상공회의소 경기인력개발원 : {remainDistance[4]}";
 
-                    effectiveDistance[i] = remainDistance[i] <= 10f; // 10미터
+                        effectiveDistance[i] = remainDistance[i] <= 30f; // 30미터
+                    }
                     // ARDirectionUIManager에 함수를 만들어서 위 조건에 맞으면 UI가 켜지는 기능 추가
                     arUIManager.OnPOIButton(effectiveDistance);
                 }
