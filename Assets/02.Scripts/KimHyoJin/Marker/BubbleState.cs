@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -114,6 +115,7 @@ public class BubbleState : MonoBehaviour
 
     void onClickEventOpenDesBox()
     {
+
         if (thisData.Number() == 0) return;
 
         uIController.DescriptBoxOn(thisData, thisMark == Mark.Camera || thisMark == Mark.Dosent);

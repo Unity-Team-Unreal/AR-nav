@@ -15,12 +15,7 @@ public class DesImageScript : MonoBehaviour
    public void desBoxEneable(POIData data)
     {
         string a;
-
-        if (data.Number() == 1)  a = "포토존1";
-        else if (data.Number() == 2)  a = "포토존2";
-        else if (data.Number() == 3) a = "포토존3";
-        else if (data.Number() == 4)  a = "포토존4";
-        else a = "포토존5";
+        a = $"포토존{data.Number()}";
         DesBoxImage.enabled = true;
         DesBoxImage.texture = Resources.Load<Texture2D>($"Photoimage/{a}");
         DesBoxImage.color = new Color(1, 1, 1, 1);

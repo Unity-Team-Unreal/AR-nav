@@ -23,8 +23,6 @@ public class MarkerInstantiate : MonoBehaviour
     //    매개변수 : (순서대로)화면 가로, 화면 세로, 지도 줌 레벨, 기준점 위도, 기준점 경도, POI데이터
     public void MarkerMake(int width, int height, float Level, double latitude, double longitude, POIData poidata)
     {
-        {
-
             float Lv1size = 156_543;    //줌 레벨 1의 픽셀당 미터
             float perPixel = Lv1size / Mathf.Pow(2, Level + 1);     //1단계마다 절반씩 줄어들며, openstreetmap 기준이므로 네이버맵에 맞게 1단계 더 올린다.
 
@@ -38,7 +36,7 @@ public class MarkerInstantiate : MonoBehaviour
 
 
             float distance = (float)distanceInKilometerByHaversine(latitude, longitude, poidata.Latitude(), poidata.Longitude());     //기준점과 마커와의 실제 거리 재기
-            int bearing = bearingP1toP2(latitude, longitude, poidata.Latitude(), poidata.Longitude());    //기준점과 마커와의 방위각 재기
+            float bearing = bearingP1toP2(latitude, longitude, poidata.Latitude(), poidata.Longitude());    //기준점과 마커와의 방위각 재기
 
 
             distance = 1000 * distance / inUnityPerPixel;  // 실제 거리를 유니티 지도상에서 몇 픽셀만큼 그려야하는지
@@ -48,6 +46,7 @@ public class MarkerInstantiate : MonoBehaviour
 
 
             point = new Vector2(0, 0) + direction.normalized *  distance;     //노멀라이즈로 방향만 정한 뒤, distance만큼 떨어진 거리에 마커를 띄운다.
+
 
             if(GameObject.Find("Marker_" + poidata.Number()) == null)
             {
@@ -60,14 +59,8 @@ public class MarkerInstantiate : MonoBehaviour
 
             }
 
-            else
-            {
-                GameObject.Find("Marker_" + poidata.Number()).transform.localPosition = point;
-            }
+            else GameObject.Find("Marker_" + poidata.Number()).transform.localPosition = point;
 
-
-
-        }
     }
 
 
