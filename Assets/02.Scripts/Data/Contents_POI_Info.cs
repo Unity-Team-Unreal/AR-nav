@@ -71,15 +71,18 @@ public class Contents_POI_Info : MonoBehaviour
 
     private void Awake()
     {
+        gameObject.SetActive(true);
+
         //싱글톤 설정
         var objs = FindObjectsOfType<Contents_POI_Info>();
+
         if (objs.Length != 1)
         {
             Destroy(gameObject);
             return;
         }
         DontDestroyOnLoad(gameObject);
-
+        
         //이미지 로드
         Photozoneimage = Resources.LoadAll<Texture2D>("Photoimage");
         Docentimage = Resources.LoadAll<Texture2D>("Docentimage");
@@ -179,7 +182,7 @@ public class Contents_POI_Info : MonoBehaviour
     {
         // 여기서 "My Scene"는 이 오브젝트가 활성화되어야 하는 씬의 이름입니다.
         // 이 이름을 자신의 씬 이름으로 변경하세요.
-        if (scene.name == "3.AR Contents Page")
+        if (scene.name == "1_3.AR Contents Page")
         {
             this.gameObject.SetActive(true);
         }

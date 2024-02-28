@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class DataManager : MonoBehaviour
+public class ContentsDataManager : MonoBehaviour
 {
     // 싱글톤 인스턴스
-    public static DataManager Instance;
+    public static ContentsDataManager Instance;
 
     // 전달할 데이터
     public ContentsData contentsData;
