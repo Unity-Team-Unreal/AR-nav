@@ -62,7 +62,7 @@ public class ARDirectionUIManager : MonoBehaviour
         StartCoroutine(RequestPOI());
     }
 
-    IEnumerator RequestPOI()
+    IEnumerator RequestPOI() // POI 데이터들을 쓰기 편하게 저장
     {
         while (true)
         {
@@ -89,18 +89,18 @@ public class ARDirectionUIManager : MonoBehaviour
         yield break;
     }
 
-    void OnOperationEnds()
+    void OnOperationEnds() // 운행 종료 버튼을 눌렀을 때
     {
         SceneManager.LoadScene("KimHyoJin");
     }
 
-    void OnPOILocationInformation()
+    void OnPOILocationInformation() // POI 장소안내 버튼을 눌렀을 때
     {
         couponInformationPopupPanel.SetActive(true);
         pOILocationInformationButton.gameObject.SetActive(false);
     }
 
-    void OnPopupEscape()
+    void OnPopupEscape() // 팝업창 닫기 버튼을 눌렀을 때
     {
         couponInformationPopupPanel.SetActive(false);
         pOILocationInformationButton.gameObject.SetActive(true);

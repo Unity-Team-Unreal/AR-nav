@@ -28,7 +28,7 @@ public class DocentExperiencePageButton : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)) // Esc 버튼을 눌렀을 때 폰으로는 뒤로가기 버튼을 눌렀을 때
         {
             OnBackPage();
         }
@@ -53,7 +53,7 @@ public class DocentExperiencePageButton : MonoBehaviour
 
     void OnTimeLineReturn()
     {
-        // 애니메이션을 초기화
+        // 애니메이션과 슬라이드 값 초기화
         arDocent.Play("metarig|Walk", -1, 0f);
         docentTimeLine.value = 0;
     }

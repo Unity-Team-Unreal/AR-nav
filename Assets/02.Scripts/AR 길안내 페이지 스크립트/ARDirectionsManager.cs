@@ -8,19 +8,17 @@ using UnityEngine.UI;
 /// <summary>
 /// 특정 좌표 주위에 도달하면 꺼져있던 UI가 켜지는 기능 구현
 /// </summary>
-public class ARDirectionsManager : GPS
+public class ARDirectionsManager : GPS // GPS를 상속
 {
-    double[] lats;
-    double[] longs;
+    double[] lats; // 위도
+    double[] longs; // 경도
     static public (double[] lats, double[] longs)[] paths;
     ARDirectionUIManager arUIManager;
-
-    public Text test_text; // 삭제 가능
 
     void Awake()
     {
         arUIManager = GetComponent<ARDirectionUIManager>();
-        Request();
+        Request(); // 사용자에게 GPS 권한 요청
     }
 
     void Start()
@@ -30,7 +28,7 @@ public class ARDirectionsManager : GPS
 
     double[] remainDistance;
     bool[] effectiveDistance;
-    IEnumerator RequestPOI()
+    IEnumerator RequestPOI() // POI 데이터인 위도와 경도를 쓰기 편하게 저장
     {
         while (true)
         {
@@ -63,16 +61,14 @@ public class ARDirectionsManager : GPS
     {
         if (POI.datalist.Count > 0)
         {
-            if (GetMyLocation(ref myLat, ref myLong))
+            if (GetMyLocation(ref myLat, ref myLong)) // 현재 위도와 경도를 받아오면서 성공했을 때
             {
                 // 시간 간격을 설정하여 일정 주기마다 UI를 업데이트하도록 함
                 if (Time.time - lastDistanceUpdateTime >= 5f)
                 {
                     for (int i = 0; i < lats.Length; i++)
                     {
-                        remainDistance[i] = Distance(myLat, myLong, lats[i], longs[i]);
-
-                        test_text.text = $"목표와의 거리\n cafe 07 am : {remainDistance[0]}\n 더 브래드 36.5도 : {remainDistance[1]}\n 마장동뚝배기&1인한우육회 : {remainDistance[2]}\n 홍익돈까스 : {remainDistance[3]}\n 대한상공회의소 경기인력개발원 : {remainDistance[4]}";
+                        remainDistance[i] = Distance(myLat, myLong, lats[i], longs[i]); // 현재 좌표와 POI 좌표 사이의 거리
 
                         effectiveDistance[i] = remainDistance[i] <= 30f; // 30미터
                     }
