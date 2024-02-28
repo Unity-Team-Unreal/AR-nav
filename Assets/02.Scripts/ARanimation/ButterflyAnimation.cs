@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class ButterflyAnimation : MonoBehaviour
 {
@@ -17,6 +17,16 @@ public class ButterflyAnimation : MonoBehaviour
         StartCoroutine(CheckAnimationStatus());
     }
 
+    private void Update()
+    {
+        if (firstAnimationDone && Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
+        {
+            Debug.Log("클릭");
+            StartCoroutine(PlaySecondAnimationAndDestroy());
+        }
+    }
+
+
     private IEnumerator CheckAnimationStatus()
     {
         while (legacyAnimation.isPlaying)
@@ -25,15 +35,6 @@ public class ButterflyAnimation : MonoBehaviour
         }
 
         firstAnimationDone = true;
-    }
-
-    private void Update()
-    {
-        if (firstAnimationDone && Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("클릭");
-            StartCoroutine(PlaySecondAnimationAndDestroy());
-        }
     }
 
     private IEnumerator PlaySecondAnimationAndDestroy()

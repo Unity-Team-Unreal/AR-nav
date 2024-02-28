@@ -39,7 +39,7 @@ public class POIPrefabs : MonoBehaviour
     public void OnClick()
     { 
         // 클릭된 데이터를 DataManager에 저장
-        DataManager.Instance.contentsData = _contentsData;
+        ContentsDataManager.Instance.contentsData = _contentsData;
         
         if (_contentsData.number == 2)
         {
