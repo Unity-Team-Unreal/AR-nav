@@ -11,6 +11,8 @@ public class PointDesBoxScript : MonoBehaviour
     /// <summary>
     /// 마커를 눌렀을 때 나오는 설명UI를 띄우기 위한 스크립트
     /// </summary>
+
+    [Header("상세설명 박스에 띄울 정보")]
     [SerializeField]Text ponintAdress;
     [SerializeField]Text pointName;
     [SerializeField]Text pointDescript;
@@ -29,13 +31,14 @@ public class PointDesBoxScript : MonoBehaviour
         ponintAdress.text = data.Address();
         pointName.text = data.Name();
         pointDescript.text = data.Description();
+        //각 정보들을 전달받은 POI 데이터에 맞게 기록
 
-       _animator.Play("Play");
+       _animator.Play("Play");  //UI 띄우기
 
     }
 
     public void DescriptionBoxDeactivate()  //설명UI 비활성화
     {
-        _animator.Play("Reverse");
+        _animator.Play("Reverse");  //UI 닫기
     }
 }

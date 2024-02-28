@@ -727,9 +727,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minSize: 1
-  maxSize: 10
-  ZoomSpeed: 5
-  MoveSpeed: 600
+  maxSize: 6
+  ZoomSpeed: 1
+  MoveSpeed: 50
 --- !u!1 &487582556
 GameObject:
   m_ObjectHideFlags: 0

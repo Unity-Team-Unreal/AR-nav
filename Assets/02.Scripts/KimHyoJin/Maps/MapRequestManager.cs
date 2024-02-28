@@ -35,7 +35,7 @@ public class MapRequestManager : MonoBehaviour
     [Header("GPS를 받기 위한 정보")]
      GPS gps;
 
-
+    [Header("마커를 생성하는 스크립트")]
     MarkerInstantiate markerInstantiate;
 
     void Awake()
@@ -43,7 +43,9 @@ public class MapRequestManager : MonoBehaviour
         gps=GetComponent<GPS>();
         markerInstantiate = GetComponent<MarkerInstantiate>();
         MapImage = MapImage.gameObject.GetComponent<RawImage>();
+
         gps.Request();  //GPS 클래스의 request 메서드를 호출. 사용자에게서 GPS 권한을 받아오고 수락시 location service 실행
+
         MapSizeLevel = Mathf.Clamp(MapSizeLevel, 1, 20);    //지도의 확대 레벨을 1~20 사이로 제한
 
     }
@@ -51,7 +53,7 @@ public class MapRequestManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(MapAPIRequest());
+        StartCoroutine(MapAPIRequest());    //지도를 띄우고 마커생성을 요청하는 코루틴
     }
     IEnumerator MapAPIRequest()     //네이버 지도 API를 받아와 MapImage에 표시하는 메서드
     {
@@ -62,21 +64,14 @@ public class MapRequestManager : MonoBehaviour
         {
             latitude = 37.466480f;
             longitude = 126.657566f;     //그렇지 않다면 재물포역으로
-
-            latitude = 37.713670f;
-            longitude = 126.743557f;    //테스트용 경인개
         }
 
 
-        string markerRequestAPI = "";
+        POI.datalist.Add(new POIData(0, "-", "MyLocation", "-", latitude, longitude, "-", "-", "-"));   //마커 생성을 위해 현재위치 데이터를 POI에 추가
 
-
-        POI.datalist.Add(new POIData(0, "-", "MyLocation", "-", latitude, longitude, "-", "-", "-"));   //현재위치 POI에 추가
-
-        for (int i = 0; i < POI.datalist.Count; i++)    //POI datalist 리스트를 불러와 마커 배치(markerRequestAPI 문자열은 스태틱맵의 마커이므로 네이버 마커를 안쓰면 필요없다.)
+        for (int i = 0; i < POI.datalist.Count; i++)    //POI datalist 리스트를 불러와 마커 배치
         {
-            markerInstantiate.MarkerMake(width, height, MapSizeLevel, latitude, longitude, POI.datalist[i]) ;
-            markerRequestAPI += $"&markers=type:d|size:mid|color:red|pos:{POI.datalist[i].Longitude()}%20{POI.datalist[i].Latitude()}";
+            markerInstantiate.MarkerMake(width, height, MapSizeLevel, latitude, longitude, POI.datalist[i]);
         }
 
 
@@ -84,11 +79,14 @@ public class MapRequestManager : MonoBehaviour
         string APIrequestURL = mapBaseURL + $"?w={width}&h={height}&center={longitude},{latitude}&level={MapSizeLevel}"+
             $"&scale=2&format=png";     //지도 API를 받아오기 위한 요청
 
-        UnityWebRequest req = UnityWebRequestTexture.GetTexture(APIrequestURL);     //요청한 API 지도 텍스처를 받아온다.
+
+        UnityWebRequest req = UnityWebRequestTexture.GetTexture(APIrequestURL);     //요청한 API대로 지도 텍스처를 받아온다.
         req.SetRequestHeader("X-NCP-APIGW-API-KEY-ID", clientID);       //발급받은 ID
         req.SetRequestHeader("X-NCP-APIGW-API-KEY", clientPW);          //발급받은 PW
 
+
         yield return req.SendWebRequest();  //API요청
+
 
         MapImage.texture = DownloadHandlerTexture.GetContent(req);  //MapImage에 받아온 지도의 텍스처 입히기
 
