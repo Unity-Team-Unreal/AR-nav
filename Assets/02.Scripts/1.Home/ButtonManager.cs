@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// 버튼 클릭 시 씬을 전환하는 기능을 구현하는 스크립트
+/// </summary>
 public class ButtonManager : MonoBehaviour
 {
 
@@ -13,7 +16,8 @@ public class ButtonManager : MonoBehaviour
         public string sceneName; // 버튼 클릭 시 이동할 씬의 이름
     }
 
-    public ButtonSceneMapping[] buttonSceneMappings; // 버튼과 씬 이름을 연결하는 매핑 정보의 배열
+    // 버튼과 씬 이름을 연결하는 매핑 정보의 배열
+    public ButtonSceneMapping[] buttonSceneMappings; 
 
 
     private void Start()

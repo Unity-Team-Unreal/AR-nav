@@ -4,28 +4,34 @@ using TMPro;
 using UnityEngine.UI;
 using System;
 
-
+/// <summary>
+/// POI 프리팹 스크립트
+/// </summary>
 public class POIPrefabs : MonoBehaviour
 {
-    public TMP_Text contentsNameText; // UI 요소
-    public TMP_Text descriptionText; // UI 요소
-    public Image poiImage; // UI 요소
-    private ContentsData _contentsData; // 프리팹이 가지고 있는 데이터
-    
+    // UI 요소
+    public TMP_Text contentsNameText; 
+    public TMP_Text descriptionText; 
+    public Image poiImage;
+
+    // 프리팹이 가지고 있는 데이터
+    private ContentsData _contentsData; 
     
 
-
+    // 초기화 함수
     public void Init(ContentsData contentsData)
     {
         _contentsData = contentsData;
-        //Type = _contentsPOI.type;
 
         // UI 요소에 데이터 할당
         contentsNameText.text = _contentsData.contentsname;
         descriptionText.text = _contentsData.description;
+
+        // 이미지 변경 함수 호출
         ChangeImage(poiImage, _contentsData.Image);
     }
 
+    // 이미지 변경 함수
     public void ChangeImage(Image imageComponent, Texture2D newTexture)
     {
         // Texture2D를 Sprite로 변환
@@ -40,7 +46,8 @@ public class POIPrefabs : MonoBehaviour
     { 
         // 클릭된 데이터를 DataManager에 저장
         ContentsDataManager.Instance.contentsData = _contentsData;
-        
+
+        // 씬 로딩
         if (int.Parse(_contentsData.number) == 2)
         {
             SceneManager.LoadScene("3_1.AR Contents Detail Page");
@@ -49,6 +56,5 @@ public class POIPrefabs : MonoBehaviour
         {
             SceneManager.LoadScene("3_2.AR Contents Detail Page");
         }
-
     }
 }

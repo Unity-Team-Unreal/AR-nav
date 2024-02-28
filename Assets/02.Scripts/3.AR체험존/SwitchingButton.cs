@@ -1,17 +1,24 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 두 개의 토글 버튼과 그에 해당하는 UI요소 관리하는 스크립트
+/// </summary>
 public class SwitchingButton : MonoBehaviour
 {
+    [Header("토글그룹")]
+    [SerializeField] private Toggle togglePhoto;
+    [SerializeField] private Toggle toggleDocent;
 
-    [SerializeField] public Toggle toggleA;
-    [SerializeField] public Toggle toggleB;
-    [SerializeField] private GameObject imageA;
-    [SerializeField] private GameObject imageB;
-    [SerializeField] private GameObject scrollViewA;
-    [SerializeField] private GameObject scrollViewB;
+    [Header("토글이미지")]
+    [SerializeField] private GameObject imagePhoto;
+    [SerializeField] private GameObject imageDocent;
 
+    [Header("스크롤뷰")]
+    [SerializeField] private GameObject scrollViewPhoto;
+    [SerializeField] private GameObject scrollViewDocent;
 
+    //현재 활성화된 토글 저장 변수
     private Toggle activeToggle;
 
     public Toggle ActiveToggle { get { return activeToggle; } private set { activeToggle = value; } }
@@ -20,64 +27,68 @@ public class SwitchingButton : MonoBehaviour
 
     void Awake()
     {
-        toggleA.group = toggleB.group; // 토글 그룹 설정
+        // 토글 그룹 설정
+        togglePhoto.group = toggleDocent.group;
 
-        // 상태 변경 이벤트에 대한 리스너 등록
-        toggleA.onValueChanged.AddListener(OnToggleValueChanged);
-        toggleB.onValueChanged.AddListener(OnToggleValueChanged);
+        // 토글 상태 변경 이벤트 등록
+        togglePhoto.onValueChanged.AddListener(OnToggleValueChanged);
+        toggleDocent.onValueChanged.AddListener(OnToggleValueChanged);
 
-        // toggleA를 초기에 활성화
-        toggleA.isOn = true;
+        // 초기설정
+        togglePhoto.isOn = true;
+        toggleDocent.isOn = false;
 
+        // 초기 요소 활성화
+        ToggleElements(togglePhoto, imagePhoto, imageDocent, scrollViewPhoto, scrollViewDocent);
 
-        // toggleB를 초기에 비활성화
-        toggleB.isOn = false;
-
-        ToggleElements(toggleA, imageA, imageB, scrollViewA, scrollViewB);
-
-        activeToggle = toggleA;
+        // 현재 활성화된 토글 설정
+        activeToggle = togglePhoto;
 
     }
 
+    // 토글 상태변화
     void OnToggleValueChanged(bool isOn)
     {
+        // 토글이 켜진 경우
         if (isOn)
         {
-            if (toggleA.isOn)
+            //현재 켜진 토글 확인
+            if (togglePhoto.isOn)
             {
-
-
-                ToggleElements(toggleA, imageA, imageB, scrollViewA, scrollViewB);
-                activeToggle = toggleA;
-
-
+                // 토글A 활성화 시 처리
+                ToggleElements(togglePhoto, imagePhoto, imageDocent, scrollViewPhoto, scrollViewDocent);
+                activeToggle = togglePhoto;
             }
-            else if (toggleB.isOn)
+            else if (toggleDocent.isOn)
             {
-
-
-                ToggleElements(toggleB, imageB, imageA, scrollViewB, scrollViewA);
-                activeToggle = toggleB;
-
-
+                // 토글B 활성화 시 처리
+                ToggleElements(toggleDocent, imageDocent, imagePhoto, scrollViewDocent, scrollViewPhoto);
+                activeToggle = toggleDocent;
             }
         }
     }
 
-    // 이미지와 스크롤뷰를 활성화 또는 비활성화하는 함수
+    /// <summary>
+    /// 이미지와 스크롤뷰를 활성화 또는 비활성화하는 함수
+    /// </summary>
+    /// <param name="toggle">활성화할 토글</param>
+    /// <param name="activeElement">활성화 이미지</param>
+    /// <param name="inactiveElement">비활성화 이미지 </param>
+    /// <param name="activeScrollView">스크롤 뷰 활성화</param>
+    /// <param name="inactiveScrollView">스크롤뷰 비활성화</param>
     void ToggleElements(Toggle toggle, GameObject activeElement, GameObject inactiveElement, GameObject activeScrollView, GameObject inactiveScrollView)
     {
+        // 활성화 요소
         if (activeElement != null)
             activeElement.SetActive(toggle.isOn);
-
+        // 비활성화 요소
         if (inactiveElement != null)
             inactiveElement.SetActive(!toggle.isOn);
-
+        // 스크롤 뷰 활성화
         if (activeScrollView != null)
             activeScrollView.SetActive(toggle.isOn);
-
+        // 스크롤뷰 비활성화
         if (inactiveScrollView != null)
             inactiveScrollView.SetActive(!toggle.isOn);
-
     }
 }

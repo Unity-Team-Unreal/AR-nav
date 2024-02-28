@@ -10,7 +10,8 @@ using UnityEngine.UI;
 
 public class Contents_POI_Info : MonoBehaviour
 {
-    //싱글톤 인스턴스
+
+    #region 싱글톤 인스턴스
     private static Contents_POI_Info instance;
     public static Contents_POI_Info Instance
     {
@@ -19,7 +20,7 @@ public class Contents_POI_Info : MonoBehaviour
             if (instance == null)
             {
                 var obj = FindAnyObjectByType<Contents_POI_Info>();
-                if(obj != null)
+                if (obj != null)
                 {
                     instance = obj;
                 }
@@ -31,42 +32,36 @@ public class Contents_POI_Info : MonoBehaviour
             }
             return instance;
         }
-    }
+    } 
+    #endregion
 
-    //POI 데이터 링크
-    [Header("컨텐츠 링크")]
-    string PhotozonewebURL = "https://docs.google.com/spreadsheets/d/1IvrflSuhz0SyUppKPaiRQAeIQcxmbsudvWExyd3tOec/export?format=tsv&range=A2:F6"; // POI 데이터를 불러올 웹 
-    string DocentPOIwebURL = "https://docs.google.com/spreadsheets/d/1IvrflSuhz0SyUppKPaiRQAeIQcxmbsudvWExyd3tOec/export?format=tsv&gid=1564857787&range=A2:F6"; // POI 데이터를 불러올 웹 
-
-    //gid=1564857787
+   
+    [Header("POI 컨텐츠 링크")]
+    [SerializeField] private string PhotozonewebURL = "https://docs.google.com/spreadsheets/d/1IvrflSuhz0SyUppKPaiRQAeIQcxmbsudvWExyd3tOec/export?format=tsv&range=A2:F6"; // 포토존 POI 데이터링크
+    [SerializeField] private string DocentPOIwebURL = "https://docs.google.com/spreadsheets/d/1IvrflSuhz0SyUppKPaiRQAeIQcxmbsudvWExyd3tOec/export?format=tsv&gid=1564857787&range=A2:F6"; // 도슨트 POI 데이터링크
 
     //데이터 배열
-    string[] rowsData;  // 행 데이터를 저장하는 배열
-    string[] columnsData;   // 열 데이터를 저장하는 배열
-    
-    //이미지
-    [Header("컨텐츠 이미지")]
-    public Texture2D[] Photozoneimage;
-    public Texture2D[] Docentimage;
+    [SerializeField] private string[] rowsData;  // 행 데이터를 저장하는 배열
+    [SerializeField] private string[] columnsData;   // 열 데이터를 저장하는 배열
+       
+    [Header("컨텐츠 이미지 배열")]
+    [SerializeField] private Texture2D[] Photozoneimage; 
+    [SerializeField] private Texture2D[] Docentimage;
 
-    //이미지 경로
     [Header("컨텐츠 이미지 경로")]
-    public string Photo_floder = "Photoimage";
-    public string Docent_floder = "Docentimage";
+    [SerializeField] private string Photo_floder = "Photoimage";
+    [SerializeField] private string Docent_floder = "Docentimage";
 
-    //POI 데이터
     [Header("POI 데이터")]
-    public Contents_POI photozone;
-    public Contents_POI Docent;
+    [SerializeField] private Contents_POI photozoneData;
+    [SerializeField] private Contents_POI DocentData;
 
-    //컨텐츠 프리팹
     [Header("컨텐츠 생성 오브젝트")]
-    public GameObject contentsDataPfb; //POI 프리팹
+    [SerializeField] private GameObject contentsDataPfb;
 
-    //컨텐츠 생성 위치
     [Header("컨텐츠 생성 위치")]
-    public Transform PhotoscrollViewContent; //포토존 스크롤 뷰의 Contents
-    public Transform Docentscrolltransform; //도슨트 스크롤 뷰의 Contents
+    [SerializeField] private Transform Photoscrolltransform;
+    [SerializeField] private Transform Docentscrolltransform;
 
 
     private void Awake()
@@ -84,12 +79,12 @@ public class Contents_POI_Info : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         
         //이미지 로드
-        Photozoneimage = Resources.LoadAll<Texture2D>("Photoimage");
-        Docentimage = Resources.LoadAll<Texture2D>("Docentimage");
+        Photozoneimage = Resources.LoadAll<Texture2D>(Photo_floder);
+        Docentimage = Resources.LoadAll<Texture2D>(Docent_floder);
 
         //데이터 불러오기 시작
-        StartCoroutine(requestCoroutine(photozone, PhotozonewebURL, Photozoneimage, PhotoscrollViewContent)); // 코루틴 시작 
-        StartCoroutine(requestCoroutine(Docent, DocentPOIwebURL, Docentimage, Docentscrolltransform));
+        StartCoroutine(requestCoroutine(photozoneData, PhotozonewebURL, Photozoneimage, Photoscrolltransform)); // 코루틴 시작 
+        StartCoroutine(requestCoroutine(DocentData, DocentPOIwebURL, Docentimage, Docentscrolltransform));
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -115,19 +110,19 @@ public class Contents_POI_Info : MonoBehaviour
         // 웹 요층 결과에 따른 처리
         switch (WebData.result)
         {
-            case UnityWebRequest.Result.Success: //성공
+            case UnityWebRequest.Result.Success:
+                //성공 : 데이터 처리
+                if (WebData.isDone) // 웹 요청이 완료되었는지 확인
+                {
+                    POIDB(WebData.downloadHandler.text, contentspoi, texture2D, transform);
+                }
                 break;
             case UnityWebRequest.Result.ConnectionError:
             case UnityWebRequest.Result.ProtocolError: 
             case UnityWebRequest.Result.DataProcessingError:
-                //실패: 에러 처리
+                //실패 : 에러 처리
                 Debug.LogError(WebData.error);
                 break;
-        }
-
-        if (WebData.isDone) // 웹 요청이 완료되었는지 확인
-        {
-            POIDB(WebData.downloadHandler.text, contentspoi, texture2D, transform); // 웹 요청의 결과를 문자열로    
         }
     }
 
@@ -142,13 +137,11 @@ public class Contents_POI_Info : MonoBehaviour
     {
         // 행 데이터 분리
         rowsData = tsv.Split('\n');
-
-        // 열개수 확인
-        int columnSize = rowsData[0].Split("\t").Length;
-
+        
+        // POI 데이터 구조체 할당
         poi.contentsdata = new ContentsData[rowsData.Length];
         
-        //데이터 순회
+
         for (int i = 0; i < rowsData.Length; i++)
         {
             // 열 데이터 분리
@@ -157,9 +150,10 @@ public class Contents_POI_Info : MonoBehaviour
             // POI 프리팹 생성
             GameObject poiPrefabsIntance = Instantiate(contentsDataPfb, transform);
 
+
             for(int j = 0;  j < columnsData.Length; j++)
             {
-                // 데이터 저장 및 초기화
+                //ContentsData에 열데이터 저장
                 ContentsData contentsData = new ContentsData();
 
                 contentsData.number = columnsData[0];
@@ -170,24 +164,31 @@ public class Contents_POI_Info : MonoBehaviour
                 contentsData.guide = columnsData[5];
                 contentsData.Image = texture2D[i];
 
+                //poi.contentsdata 배열에 추가
                 poi.contentsdata[i] = contentsData;
             }
             
-
+            // POI 프리팹 초기화
             poiPrefabsIntance.GetComponent<POIPrefabs>().Init(poi.contentsdata[i]);
 
 
-            //구글 스프레드 시트 데이터 디버그
+            //구글 스프레드 시트 데이터 디버깅
             /*foreach (var column in columnsData)
             {
                 Debug.Log("line: " + i + ": " + column);
             }*/
         }
     }
+
+    /// <summary>
+    /// 씬 로딩 후 처리
+    /// </summary>
+    /// <param name="scene">로딩된 씬 정보</param>
+    /// <param name="mode">씬 로딩 정보</param>
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // 여기서 "My Scene"는 이 오브젝트가 활성화되어야 하는 씬의 이름입니다.
-        // 이 이름을 자신의 씬 이름으로 변경하세요.
+        
+        //씬 이름에 따라 게임 오브젝트 활성화 여부 설정
         if (scene.name == "1_3.AR Contents Page")
         {
             this.gameObject.SetActive(true);

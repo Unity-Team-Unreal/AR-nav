@@ -2002,12 +2002,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ea2ebbccf04c04f9f46ac6133981c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toggleA: {fileID: 1100264212}
-  toggleB: {fileID: 1616229325}
-  imageA: {fileID: 1346367660}
-  imageB: {fileID: 462286178}
-  scrollViewA: {fileID: 450018521}
-  scrollViewB: {fileID: 1072812647}
+  togglePhoto: {fileID: 1100264212}
+  toggleDocent: {fileID: 1616229325}
+  imagePhoto: {fileID: 1346367660}
+  imageDocent: {fileID: 462286178}
+  scrollViewPhoto: {fileID: 450018521}
+  scrollViewDocent: {fileID: 1072812647}
 --- !u!114 &1764657193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2064,14 +2064,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4dd64b952586e44906f8c71f8b2a92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PhotozonewebURL: https://docs.google.com/spreadsheets/d/1IvrflSuhz0SyUppKPaiRQAeIQcxmbsudvWExyd3tOec/export?format=tsv&range=A2:F6
+  DocentPOIwebURL: https://docs.google.com/spreadsheets/d/1IvrflSuhz0SyUppKPaiRQAeIQcxmbsudvWExyd3tOec/export?format=tsv&gid=1564857787&range=A2:F6
+  rowsData: []
+  columnsData: []
   Photozoneimage: []
   Docentimage: []
   Photo_floder: Photoimage
   Docent_floder: Docentimage
-  photozone: {fileID: 11400000, guid: 9d6972582db316e4a808bb6889928fb5, type: 2}
-  Docent: {fileID: 11400000, guid: 8b29520ab1faea24da60bbcca4de6820, type: 2}
+  photozoneData: {fileID: 11400000, guid: 9d6972582db316e4a808bb6889928fb5, type: 2}
+  DocentData: {fileID: 11400000, guid: 8b29520ab1faea24da60bbcca4de6820, type: 2}
   contentsDataPfb: {fileID: 6486758063497948400, guid: a955d6d76295e1246ba994a407b080a8, type: 3}
-  PhotoscrollViewContent: {fileID: 2072987531}
+  Photoscrolltransform: {fileID: 2072987531}
   Docentscrolltransform: {fileID: 1721814185}
 --- !u!1 &1865212790
 GameObject:
