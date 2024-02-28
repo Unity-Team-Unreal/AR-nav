@@ -14,11 +14,10 @@ public class UImanager : MonoBehaviour
     public TMP_Text Guide;
     public Image image;
 
-
     void Start()
     {
         // DataManager에서 데이터 가져오기
-        ContentsData contentsData = DataManager.Instance.contentsData;
+        ContentsData contentsData = ContentsDataManager.Instance.contentsData;
 
         // 데이터를 화면에 표시
         if (contentsData != null)

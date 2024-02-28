@@ -5,13 +5,10 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-
 #if UNITY_ANDROID
 using UnityEngine.XR.ARCore;
 using UnityEngine.XR.ARFoundation;
 #endif
-
 
 
 [RequireComponent(typeof(ARSession))]

@@ -2,11 +2,10 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LifecycleHandler : MonoBehaviour
+public class TrainLifeSycle : MonoBehaviour
 {
     private Animator animator;
     private bool firstAnimationDone = false;
-
 
     private void Awake()
     {
