@@ -1,12 +1,16 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// 나비 애니메이션 스크립트
+/// 
+/// </summary>
 public class ButterflyAnimation : MonoBehaviour
 {
     // 애니메이션 컴포넌트
     private Animation legacyAnimation;
 
-    // 첫 번째 애니메이션 종료 여부
+    // 첫 번째 애니메이션 재생 완료 상태
     private bool firstAnimationDone = false;
 
     private void Awake()
@@ -27,8 +31,6 @@ public class ButterflyAnimation : MonoBehaviour
         // 첫 번째 애니메이션 종료 && 마우스 클릭 또는 터치
         if (firstAnimationDone && Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
         {
-            Debug.Log("클릭");
-
             // 두 번째 애니메이션 재생
             StartCoroutine(PlaySecondAnimationAndDestroy());
         }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class UImanager : MonoBehaviour
 {
+    //contents POI 타입
     public Type type;
 
     [Header("AR 체험존 UI요소")]
@@ -33,6 +34,11 @@ public class UImanager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 이미지 변환 코드
+    /// </summary>
+    /// <param name="imageComponent">변경할 이미지 컴포넌트</param>
+    /// <param name="newTexture">새로운 텍스쳐</param>
     public void ChangeImage(Image imageComponent, Texture2D newTexture)
     {
         if (imageComponent != null && newTexture != null)

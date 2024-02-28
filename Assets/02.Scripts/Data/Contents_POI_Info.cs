@@ -10,8 +10,6 @@ using UnityEngine.UI;
 
 public class Contents_POI_Info : MonoBehaviour
 {
-
-    #region ΩÃ±€≈Ê ¿ŒΩ∫≈œΩ∫
     private static Contents_POI_Info instance;
     public static Contents_POI_Info Instance
     {
@@ -26,14 +24,13 @@ public class Contents_POI_Info : MonoBehaviour
                 }
                 else
                 {
-                    var newObj = new GameObject().AddComponent<Contents_POI_Info>();
-                    instance = newObj;
+                    return null;
                 }
             }
             return instance;
         }
     } 
-    #endregion
+
 
    
     [Header("POI ƒ¡≈Ÿ√˜ ∏µ≈©")]

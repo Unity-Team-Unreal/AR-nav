@@ -13,7 +13,7 @@ public class DocentExperiencePageButton : MonoBehaviour
 
     public static Animator arDocent;
 
-    [SerializeField] Button backButton;
+    //[SerializeField] Button backButton;
     [SerializeField] Button returnButton;
 
     [SerializeField] Slider docentTimeLine;
@@ -22,16 +22,12 @@ public class DocentExperiencePageButton : MonoBehaviour
     {
         previousSceneName = PlayerPrefs.GetString("PreviousScene");
 
-        backButton.onClick.AddListener(OnBackPage);
+
         returnButton.onClick.AddListener(OnTimeLineReturn);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) // Esc 버튼을 눌렀을 때 폰으로는 뒤로가기 버튼을 눌렀을 때
-        {
-            OnBackPage();
-        }
 
         if (DocentExperiencePageManager.obj != null)
         {
@@ -44,12 +40,7 @@ public class DocentExperiencePageButton : MonoBehaviour
             docentTimeLine.value = normalizedTime;
         }
     }
-    void OnBackPage()
-    {
-        // 바로 전에 있던 씬으로 이동 => 바로 전에 있던 씬의 이름을 가져와야 한다.
-        SceneManager.LoadScene(previousSceneName);
-        PlayerPrefs.DeleteKey("PreviousScene");
-    }
+
 
     void OnTimeLineReturn()
     {
