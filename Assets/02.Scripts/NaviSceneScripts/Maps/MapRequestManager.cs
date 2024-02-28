@@ -64,6 +64,9 @@ public class MapRequestManager : MonoBehaviour
         {
             latitude = 37.466480f;
             longitude = 126.657566f;     //그렇지 않다면 재물포역으로
+
+            latitude = 37.713572f;
+            longitude = 126.742726f;
         }
 
 

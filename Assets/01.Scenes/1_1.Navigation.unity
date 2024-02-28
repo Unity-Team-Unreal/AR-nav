@@ -3459,6 +3459,7 @@ MonoBehaviour:
   desImage: {fileID: 1716233819}
   pathBox: {fileID: 945226100}
   categoryBox: {fileID: 1448215086}
+  ClickedNum: 0
   pointDesIsActivate: 0
   pathBoxIsActivate: 0
 --- !u!1 &2006334107

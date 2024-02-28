@@ -28,7 +28,6 @@ public class BubbleState : MonoBehaviour
     [Header("지도")]
     RawImage Map;
 
-
     [Header("POI 데이터 정보")]
     [HideInInspector]public POIData thisData;
 
@@ -125,12 +124,13 @@ public class BubbleState : MonoBehaviour
 
         uIController.DescriptBoxOn(thisData, thisMark == Mark.Camera || thisMark == Mark.Dosent);   // 카메라 또는 도슨트 마커인지 여부와 함께 전달
 
+        uIController.ClickedNum = thisData.Number();
     }
     void onClickEventOpenPathBox()
     {
         if (thisData.Number() == 0) return; //내 위치 마커는 제외
 
-        uIController.PathBoxOn(thisData);
+        if(thisData.Number()== uIController.ClickedNum)  uIController.PathBoxOn(thisData);
 
     }
     void Update()

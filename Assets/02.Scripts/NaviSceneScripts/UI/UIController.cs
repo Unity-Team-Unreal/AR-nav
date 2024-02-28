@@ -17,6 +17,7 @@ public class UIController : MonoBehaviour
     [SerializeField] PathBoxScript pathBox;
     [SerializeField] GameObject categoryBox;
 
+    public int ClickedNum = 0;
 
     [HideInInspector] public bool pointDesIsActivate;   //길찾기중인지 확인, 뒤로가기 버튼에서 참조할 것이기 때문에 public
     [HideInInspector] public bool pathBoxIsActivate;    //설명UI 활성여부. 뒤로가기 버튼에서 참조할 것이기 때문에 public
@@ -71,6 +72,8 @@ public class UIController : MonoBehaviour
     }
     public void PathBoxOn(POIData data)     //길찾기 박스 활성화
     {
+        Debug.Log(data.Name());
+
         DescriptBoxOff();   //상세설명 박스 끄기
 
         CategoryBoxOff();   //하단 카테고리바 비활성화

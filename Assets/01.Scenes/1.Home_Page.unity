@@ -985,7 +985,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleFactor: 5
-  AutosizeText: []
 --- !u!1 &508908556
 GameObject:
   m_ObjectHideFlags: 0
@@ -1559,7 +1558,7 @@ MonoBehaviour:
   - button: {fileID: 2104057255}
     sceneName: 1_3.AR_Contents_Page
   - button: {fileID: 1924310077}
-    sceneName: 1_4.VR_Experience_Page
+    sceneName: 1_4.VR_Contents_Page
 --- !u!1 &605001293
 GameObject:
   m_ObjectHideFlags: 0
