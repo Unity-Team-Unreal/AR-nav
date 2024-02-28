@@ -1520,6 +1520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1647e724756cc014fbf14eaea9e7984f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ARnaviSceneName: "AR \uAE38\uC548\uB0B4 \uD398\uC774\uC9C0"
 --- !u!1 &879812985
 GameObject:
   m_ObjectHideFlags: 0
