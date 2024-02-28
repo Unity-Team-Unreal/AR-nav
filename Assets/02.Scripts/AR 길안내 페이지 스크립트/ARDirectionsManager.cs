@@ -66,7 +66,7 @@ public class ARDirectionsManager : GPS
             if (GetMyLocation(ref myLat, ref myLong))
             {
                 // 시간 간격을 설정하여 일정 주기마다 UI를 업데이트하도록 함
-                if (Time.time - lastDistanceUpdateTime >= 1f)
+                if (Time.time - lastDistanceUpdateTime >= 5f)
                 {
                     for (int i = 0; i < lats.Length; i++)
                     {
