@@ -56,6 +56,7 @@ public class ARDirectionsManager : GPS // GPS를 상속
         TurnOnUI();
     }
     double lastDistanceUpdateTime = 0f;
+
     // 좌표 값을 기준으로 일정한 거리에 다가오면 켜지는 UI기능을 구현할 것
     void TurnOnUI()
     {
