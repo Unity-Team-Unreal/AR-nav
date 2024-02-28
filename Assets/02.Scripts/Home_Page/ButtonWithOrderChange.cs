@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// 버튼 호버링시 오브젝트 레이어 순서조정
+/// </summary>
 public class ButtonWithOrderChange : MonoBehaviour, IPointerEnterHandler
 {
     // 마우스가 버튼 위로 이동했을 때 호출됩니다.

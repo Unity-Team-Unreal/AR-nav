@@ -4,16 +4,19 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UImanager : MonoBehaviour
+/// <summary>
+/// ARcontents Page UI 요소 연결
+/// </summary>
+public class ContentsDetaileUImanager : MonoBehaviour
 {
     //contents POI 타입
-    public Type type;
+    [SerializeField] private Type type;
 
     [Header("AR 체험존 UI요소")]
-    public TMP_Text contentsname;
-    public TMP_Text Description;
-    public TMP_Text Guide;
-    public Image image;
+    [SerializeField] private TMP_Text contentsname;
+    [SerializeField] private TMP_Text Description;
+    [SerializeField] private TMP_Text Guide;
+    [SerializeField] private Image image;
 
     void Start()
     {

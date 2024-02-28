@@ -7,7 +7,9 @@ using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-
+/// <summary>
+/// POI 데이터 받아오기 및 프리팹 생성
+/// </summary>
 public class Contents_POI_Info : MonoBehaviour
 {
     private static Contents_POI_Info instance;
@@ -29,10 +31,9 @@ public class Contents_POI_Info : MonoBehaviour
             }
             return instance;
         }
-    } 
+    }
 
 
-   
     [Header("POI 컨텐츠 링크")]
     [SerializeField] private string PhotozonewebURL = "https://docs.google.com/spreadsheets/d/1IvrflSuhz0SyUppKPaiRQAeIQcxmbsudvWExyd3tOec/export?format=tsv&range=A2:F6"; // 포토존 POI 데이터링크
     [SerializeField] private string DocentPOIwebURL = "https://docs.google.com/spreadsheets/d/1IvrflSuhz0SyUppKPaiRQAeIQcxmbsudvWExyd3tOec/export?format=tsv&gid=1564857787&range=A2:F6"; // 도슨트 POI 데이터링크
@@ -65,7 +66,6 @@ public class Contents_POI_Info : MonoBehaviour
     {
         gameObject.SetActive(true);
 
-        //싱글톤 설정
         var objs = FindObjectsOfType<Contents_POI_Info>();
 
         if (objs.Length != 1)
@@ -74,7 +74,7 @@ public class Contents_POI_Info : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(gameObject);
-        
+
         //이미지 로드
         Photozoneimage = Resources.LoadAll<Texture2D>(Photo_floder);
         Docentimage = Resources.LoadAll<Texture2D>(Docent_floder);
@@ -184,7 +184,7 @@ public class Contents_POI_Info : MonoBehaviour
     /// <param name="mode">씬 로딩 정보</param>
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        
+
         //씬 이름에 따라 게임 오브젝트 활성화 여부 설정
         if (scene.name == "1_3.AR_Contents_Page")
         {
