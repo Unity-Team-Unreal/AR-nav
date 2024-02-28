@@ -146,6 +146,8 @@ public class Contents_POI_Info : MonoBehaviour
         // 열개수 확인
         int columnSize = rowsData[0].Split("\t").Length;
 
+        poi.contentsdata = new ContentsData[rowsData.Length];
+        
         //데이터 순회
         for (int i = 0; i < rowsData.Length; i++)
         {
@@ -155,12 +157,12 @@ public class Contents_POI_Info : MonoBehaviour
             // POI 프리팹 생성
             GameObject poiPrefabsIntance = Instantiate(contentsDataPfb, transform);
 
-            // 데이터 저장 및 초기화
-            for (int j = 0; j < columnSize; j++)
+            for(int j = 0;  j < columnsData.Length; j++)
             {
+                // 데이터 저장 및 초기화
+                ContentsData contentsData = new ContentsData();
 
-                ContentsData contentsData = poi.contentsdata[i];
-                contentsData.number = int.Parse(columnsData[0]);
+                contentsData.number = columnsData[0];
                 contentsData.contentsname = columnsData[1];
                 contentsData.description = columnsData[2];
                 contentsData.latitude = columnsData[3];
@@ -168,14 +170,18 @@ public class Contents_POI_Info : MonoBehaviour
                 contentsData.guide = columnsData[5];
                 contentsData.Image = texture2D[i];
 
-                poiPrefabsIntance.GetComponent<POIPrefabs>().Init(poi.contentsdata[i]);
+                poi.contentsdata[i] = contentsData;
             }
+            
+
+            poiPrefabsIntance.GetComponent<POIPrefabs>().Init(poi.contentsdata[i]);
+
 
             //구글 스프레드 시트 데이터 디버그
-            foreach (var column in columnsData)
+            /*foreach (var column in columnsData)
             {
                 Debug.Log("line: " + i + ": " + column);
-            }
+            }*/
         }
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
