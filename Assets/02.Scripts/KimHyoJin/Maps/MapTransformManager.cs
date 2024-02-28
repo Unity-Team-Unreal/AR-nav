@@ -21,7 +21,7 @@ public class MapTransformManager : MonoBehaviour
     Vector3 movePos;
 
 
-    void Start()
+    void Awake()
     {
         MapImage = GetComponent<RawImage>();
 
@@ -70,15 +70,18 @@ public class MapTransformManager : MonoBehaviour
             // 거리 차이 구함(거리가 이전보다 크면(마이너스가 나오면)손가락을 벌린 상태_줌인 상태)
             float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
 
-            if (deltaMagnitudeDiff > 0) MapImage.transform.localScale *= 1f + (ZoomSpeed * Time.deltaTime);
+            Vector3 mapScale = MapImage.transform.localScale;
+            
+            mapScale.x += -deltaMagnitudeDiff * ZoomSpeed * Time.deltaTime;
+            mapScale.y += -deltaMagnitudeDiff * ZoomSpeed * Time.deltaTime;
 
-            else if (deltaMagnitudeDiff<0)  MapImage.transform.localScale /= 1f + (ZoomSpeed * Time.deltaTime);
+            float MapScaleX = Mathf.Clamp(mapScale.x, minSize, maxSize);    //지도의 확대 레벨을 사이로 제한
 
-            float MapScaleX = Mathf.Clamp(MapImage.transform.localScale.x, minSize, maxSize);    //지도의 확대 레벨을 사이로 제한
-
-            float MapScaleY = Mathf.Clamp(MapImage.transform.localScale.y, minSize, maxSize);    //지도의 확대 레벨을 사이로 제한
+            float MapScaleY = Mathf.Clamp(mapScale.x, minSize, maxSize);    //지도의 확대 레벨을 사이로 제한
 
             MapImage.transform.localScale = new Vector2(MapScaleX, MapScaleY);
+
+            DontOutMAP();
         }
     }
 
@@ -114,18 +117,24 @@ public class MapTransformManager : MonoBehaviour
                 movePos = (Vector3)(prePos - nowPos) * Time.deltaTime * MoveSpeed * MapImage.transform.localScale.x;
                 MapImage.transform.Translate(movePos);
 
-                float x = (Screen.width / 2) * (transform.localScale.x - 1);
-                float y = (Screen.height / 2) * (transform.localScale.y - 1);
-
-                float MapPositionX = Mathf.Clamp(MapImage.rectTransform.anchoredPosition.x, -x, x);    //지도의 확대 레벨을 사이로 제한
-
-                float MapPositionY = Mathf.Clamp(MapImage.rectTransform.anchoredPosition.y, -y, y);    //지도의 확대 레벨을 사이로 제한
-
-                MapImage.rectTransform.anchoredPosition = new Vector2(MapPositionX, MapPositionY);
-
                 prePos = touch.position - touch.deltaPosition;
             }
+            DontOutMAP();
         }
+
+
+    }
+
+    void DontOutMAP()
+    {
+        float x = (Screen.width / 2) * (transform.localScale.x - 1);
+        float y = (Screen.height / 2) * (transform.localScale.y - 1);
+
+        float MapPositionX = Mathf.Clamp(MapImage.rectTransform.anchoredPosition.x, -x, x);    //지도의 이동 제한
+
+        float MapPositionY = Mathf.Clamp(MapImage.rectTransform.anchoredPosition.y, -y, y);    //지도의 이동 제한
+
+        MapImage.rectTransform.anchoredPosition = new Vector2(MapPositionX, MapPositionY);
 
     }
 }

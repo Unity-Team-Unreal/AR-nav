@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/01.Scenes/KimHyoJin/KimHyoJin.unity
+    guid: 99d6e45d2e5834946bc45d325a60f10a
+  - enabled: 1
     path: Assets/01.Scenes/PJT_Scene/0.Loading Page.unity
     guid: 78f4832bda767cb47ac3b906a8348d75
   - enabled: 1
@@ -29,9 +32,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scenes/PJT_Scene/5.Sliver Service Page.unity
     guid: 93cb3c56b65fd8a4090ddd93bfa48a3a
-  - enabled: 1
-    path: Assets/01.Scenes/KimHyoJin/KimHyoJin.unity
-    guid: 99d6e45d2e5834946bc45d325a60f10a
   - enabled: 1
     path: Assets/01.Scenes/PhotoZone_main.unity
     guid: abee77ed91c48914aab0bdfa2f55c73f
