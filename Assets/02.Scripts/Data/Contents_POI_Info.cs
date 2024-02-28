@@ -143,6 +143,7 @@ public class Contents_POI_Info : MonoBehaviour
         // 행 데이터 분리
         rowsData = tsv.Split('\n');
 
+        
         // 열개수 확인
         int columnSize = rowsData[0].Split("\t").Length;
 
