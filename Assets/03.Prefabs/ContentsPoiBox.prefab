@@ -467,7 +467,7 @@ GameObject:
   - component: {fileID: 8232307398818733484}
   - component: {fileID: 2516709887045565428}
   m_Layer: 5
-  m_Name: PhotozoneBox
+  m_Name: ContentsPoiBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

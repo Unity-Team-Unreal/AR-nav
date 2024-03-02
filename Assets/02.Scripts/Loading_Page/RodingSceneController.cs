@@ -8,10 +8,17 @@ using UnityEngine.UI;
 /// </summary>
 public class LoadingScreen : MonoBehaviour
 {
+    Data_POI data_poi;
     [SerializeField] private Image loadingBar;  // 로딩바 UI   
 
+    private void Awake()
+    {
+        
+    }
     private void Start()
     {
+        data_poi = FindObjectOfType<Data_POI>();
+        data_poi.GetData();
         //비동기 방식 씬 로드
         StartCoroutine(LoadAsyncScene());
     }
@@ -19,8 +26,8 @@ public class LoadingScreen : MonoBehaviour
     IEnumerator LoadAsyncScene()
     {
         // "1.Home Page" 씬을 비동기 방식으로 로드합니다.
-        AsyncOperation operation = SceneManager.LoadSceneAsync("1.Home_Page");
-
+        AsyncOperation operation = SceneManager.LoadSceneAsync("1.Home_Page");   
+        
         //씬 비활성화
         operation.allowSceneActivation = false;
 

@@ -27,5 +27,6 @@ public class Contents_POI : ScriptableObject //ScriptableObject¸¦ »ó¼Ó
 {
     public Type type;
     public ContentsData[] contentsdata;
+
 }
 

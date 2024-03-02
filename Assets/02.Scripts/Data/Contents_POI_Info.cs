@@ -170,10 +170,10 @@ public class Contents_POI_Info : MonoBehaviour
 
 
             //구글 스프레드 시트 데이터 디버깅
-            /*foreach (var column in columnsData)
+            foreach (var column in columnsData)
             {
                 Debug.Log("line: " + i + ": " + column);
-            }*/
+            }
         }
     }
 
