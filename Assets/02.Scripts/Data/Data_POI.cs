@@ -9,17 +9,20 @@ using static UnityEngine.Rendering.DebugUI.Table;
 
 public class Data_POI : MonoBehaviour
 {
-    public Contents_POI POIcontainer;
+    public Contents_POI DocentsPOI;
+    public Contents_POI PhotoPOI;
     public GameObject POIprefabs;
 
-    public string WebRink = "";
+    public string DocentsWebRink = "";
+    public string PhotoWebRink = "";
     
     public void GetData()
     {
-        StartCoroutine(requestCoroutine(WebRink));
+        StartCoroutine(requestCoroutine(DocentsWebRink, DocentsPOI));
+        StartCoroutine(requestCoroutine(PhotoWebRink, PhotoPOI));
     }
 
-    IEnumerator requestCoroutine(string POIlink)
+    IEnumerator requestCoroutine(string POIlink, Contents_POI poicontainer)
     {
         //웹 요청 생성
         UnityWebRequest WebData = UnityWebRequest.Get(POIlink);
@@ -35,7 +38,7 @@ public class Data_POI : MonoBehaviour
                 //성공 : 데이터 처리
                 if (WebData.isDone) // 웹 요청이 완료되었는지 확인
                 {
-                    SpreadSpilt(WebData.downloadHandler.text);
+                    SpreadSpilt(WebData.downloadHandler.text, poicontainer);
                 }
                 break;
             case UnityWebRequest.Result.ConnectionError:
@@ -47,14 +50,14 @@ public class Data_POI : MonoBehaviour
         }
     }
 
-    private void SpreadSpilt(string text)
+    private void SpreadSpilt(string text, Contents_POI poicontainer)
     {
         string[] rows;
         string[] columns;
 
         rows = text.Split('\n');
 
-        POIcontainerLength(rows.Length);
+        POIcontainerLength(rows.Length, poicontainer);
 
         for (int i = 0; i < rows.Length; i++)
         {
@@ -73,7 +76,7 @@ public class Data_POI : MonoBehaviour
                 contentsData.guide = columns[5];
 
                 //poi.contentsdata 배열에 추가
-                POIcontainer.contentsdata[i] = contentsData;
+                poicontainer.contentsdata[i] = contentsData;
             }
 /*            foreach (var column in columns)
             {
@@ -84,11 +87,11 @@ public class Data_POI : MonoBehaviour
     }
 
 
-    private void POIcontainerLength(int length)
+    private void POIcontainerLength(int length, Contents_POI poicontainer)
     {
-        if (POIcontainer == null || POIcontainer.contentsdata.Length != length)
+        if (poicontainer == null || poicontainer.contentsdata.Length != length)
         {
-            POIcontainer.contentsdata = new ContentsData[length];
+            poicontainer.contentsdata = new ContentsData[length];
         }
         else
         {
