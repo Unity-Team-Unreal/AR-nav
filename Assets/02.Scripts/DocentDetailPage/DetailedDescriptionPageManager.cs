@@ -37,7 +37,9 @@ public class DetailedDescriptionPageManager : MonoBehaviour
         //SceneManager.LoadScene("Test Scene"); // ""내에 도슨트 리스트 페이지 씬의 이름을 적으면 된다.
     }
 
-
+    /// <summary>
+    /// 위치보기 버튼을 눌렀을 때 일어나는 이벤트
+    /// </summary>
     void OnViewLocation()
     {
         // 핸드폰에 위치접근 허용이 꺼져있으면 팝업창 켜짐
@@ -54,7 +56,9 @@ public class DetailedDescriptionPageManager : MonoBehaviour
             SceneManager.LoadScene("임시 길 안내 서비스"); // ""내에 길 안내 서비스 씬의 이름을 적으면 된다.
         }
     }
-
+    /// <summary>
+    /// 도슨트 시작 버튼을 눌렀을 때 일어나는 이벤트
+    /// </summary>
     void OnDocentStart()
     {
         // 핸드폰에 카메라접근 허용이 꺼져있으면 팝업창 켜짐

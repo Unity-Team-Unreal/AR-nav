@@ -24,6 +24,10 @@ public class DocentExperiencePageManager : MonoBehaviour
         imageManager.trackedImagesChanged += OnImageTrackedEvent; // 화면에서 ImageTracked가 계속 활성화되게 한다.
     }
 
+    /// <summary>
+    /// 이미지를 디텍딩하고 있을 때 AR 오브젝트가 나오고, 하지 않을 때 AR 오브젝트가 사라지게 함
+    /// </summary>
+    /// <param name="arg"></param>
     void OnImageTrackedEvent(ARTrackedImagesChangedEventArgs arg)
     {
         foreach (ARTrackedImage trackedImage in arg.added) // ARTrackedImage에서 추가를 할 때

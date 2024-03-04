@@ -28,7 +28,11 @@ public class ARDirectionsManager : GPS // GPS를 상속
 
     double[] remainDistance;
     bool[] effectiveDistance;
-    IEnumerator RequestPOI() // POI 데이터인 위도와 경도를 쓰기 편하게 저장
+    /// <summary>
+    /// POI 데이터인 위도와 경도를 쓰기 편하게 저장
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator RequestPOI()
     {
         while (true)
         {
@@ -57,7 +61,9 @@ public class ARDirectionsManager : GPS // GPS를 상속
     }
     double lastDistanceUpdateTime = 0f;
 
-    // 좌표 값을 기준으로 일정한 거리에 다가오면 켜지는 UI기능을 구현할 것
+    /// <summary>
+    /// 좌표 값을 기준으로 일정한 거리에 다가오면 켜지는 UI기능을 구현할 것
+    /// </summary>
     void TurnOnUI()
     {
         if (POI.datalist.Count > 0)
@@ -80,7 +86,14 @@ public class ARDirectionsManager : GPS // GPS를 상속
         }
     }
 
-    // 지표면 거리 계산 공식(하버사인 공식)
+    /// <summary>
+    /// 지표면 거리 계산 공식(하버사인 공식)
+    /// </summary>
+    /// <param name="lat1"></param>
+    /// <param name="lon1"></param>
+    /// <param name="lat2"></param>
+    /// <param name="lon2"></param>
+    /// <returns></returns>
     double Distance(double lat1, double lon1, double lat2, double lon2)
     {
         double theta = lon1 - lon2;

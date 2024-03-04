@@ -61,8 +61,11 @@ public class ARDirectionUIManager : MonoBehaviour
 
         StartCoroutine(RequestPOI());
     }
-
-    IEnumerator RequestPOI() // POI 데이터들을 쓰기 편하게 저장
+    /// <summary>
+    /// POI 데이터들을 쓰기 편하게 저장
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator RequestPOI()
     {
         while (true)
         {
@@ -88,24 +91,33 @@ public class ARDirectionUIManager : MonoBehaviour
         
         yield break;
     }
-
-    void OnOperationEnds() // 운행 종료 버튼을 눌렀을 때
+    /// <summary>
+    /// 운행 종료 버튼을 눌렀을 때
+    /// </summary>
+    void OnOperationEnds()
     {
         SceneManager.LoadScene("1_1.Navigation");
     }
-
-    void OnPOILocationInformation() // POI 장소안내 버튼을 눌렀을 때
+    /// <summary>
+    /// POI 장소안내 버튼을 눌렀을 때
+    /// </summary>
+    void OnPOILocationInformation()
     {
         couponInformationPopupPanel.SetActive(true);
         pOILocationInformationButton.gameObject.SetActive(false);
     }
-
-    void OnPopupEscape() // 팝업창 닫기 버튼을 눌렀을 때
+    /// <summary>
+    /// 팝업창 닫기 버튼을 눌렀을 때
+    /// </summary>
+    void OnPopupEscape()
     {
         couponInformationPopupPanel.SetActive(false);
         pOILocationInformationButton.gameObject.SetActive(true);
     }
-
+    /// <summary>
+    /// POI 데이터로 그 좌표에 일정거리 다가왔을 시 그에 맞는 정보를 갱신하고 버튼 UI를 띄운다.
+    /// </summary>
+    /// <param name="remainDistance"></param>
     public void OnPOIButton(bool[] remainDistance)
     {
         for (int i = 0; i < POI.datalist.Count; i++)

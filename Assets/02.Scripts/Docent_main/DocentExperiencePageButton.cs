@@ -41,7 +41,9 @@ public class DocentExperiencePageButton : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// 되돌리기 버튼을 눌렀을 때 일어나는 이벤트
+    /// </summary>
     void OnTimeLineReturn()
     {
         // 애니메이션과 슬라이드 값 초기화
